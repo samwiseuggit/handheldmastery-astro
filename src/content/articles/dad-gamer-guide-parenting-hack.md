@@ -4,7 +4,11 @@ category: "Blog"
 date: "2026-03-22"
 readTime: "6 min read"
 tags: ["lifestyle", "parenting"]
+<<<<<<< HEAD
 description: "There is a specific moment in parenthood when you realize your gaming life as you knew it is over. It happens somewhere between the first 2 AM feeding and..."
+=======
+description: "Why handheld gaming consoles are the ultimate parenting hack for dad-gamers with limited time."
+>>>>>>> 74d789bbf18ef8a14d09366981859a3244167e13
 ---
 
 <p>There is a specific moment in parenthood when you realize your gaming life as you knew it is over. It happens somewhere between the first 2 AM feeding and the toddler phase where "screen time" becomes a negotiation tactic. Your gaming PC sits dark. The living room TV belongs to <em>Bluey</em> now. The idea of a three-hour <em>Elden Ring</em> session feels as plausible as a full night's sleep. This is where handheld PCs stop being a luxury and start being a survival tool — not because they deliver the most pixels or the highest framerates, but because they fit into the fragmented, unpredictable, interruption-heavy reality of parenting in a way no other gaming device can.</p>
