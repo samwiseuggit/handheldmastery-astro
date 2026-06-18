@@ -1,0 +1,13 @@
+{
+  "name": "PS5 DualSense Edge",
+  "category": "Peripherals",
+  "rating": 4.3,
+  "price": 199,
+  "description": "Premium pro controller with back buttons.",
+  "tags": [
+    "Hall Effect sticks",
+    "Back buttons",
+    "Custom profiles"
+  ],
+  "slug": "ps5-dualsense-edge"
+}

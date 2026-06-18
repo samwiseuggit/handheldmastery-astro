@@ -1,0 +1,13 @@
+{
+  "name": "GuliKit Hall Effect Joystick",
+  "category": "Peripherals",
+  "rating": 4.7,
+  "price": 29,
+  "description": "Permanent stick drift fix for Steam Deck.",
+  "tags": [
+    "Hall Effect sensor",
+    "Steam Deck/OLED",
+    "No soldering"
+  ],
+  "slug": "gulikit-hall-effect-joystick"
+}

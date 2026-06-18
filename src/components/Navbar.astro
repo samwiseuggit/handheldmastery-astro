@@ -1,0 +1,38 @@
+---
+interface Props {
+  active?: string;
+}
+const { active } = Astro.props;
+
+const navLinks = [
+  { label: "Home", href: "/", id: "home" },
+  { label: "Compare", href: "/compare", id: "compare" },
+  { label: "Blog", href: "/blog", id: "blog" },
+  { label: "Toolbox", href: "/toolbox", id: "toolbox" },
+  { label: "Monetization", href: "/monetization", id: "monetization" },
+  { label: "Sitemap", href: "/sitemap", id: "sitemap" },
+  { label: "Contact", href: "/contact", id: "contact" },
+];
+---
+
+<nav class="bg-bg-dark border-b border-border-dark sticky top-0 z-50">
+  <div class="max-w-[1280px] mx-auto flex items-center justify-between px-4 h-[140px]">
+    <a href="/" class="flex items-center shrink-0" style="line-height:0">
+      <img src="/logo.png" alt="Hand Held Mastery" class="h-[112px] block" />
+    </a>
+    <div class="flex items-center gap-1">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class={`text-sm font-medium px-3 py-1.5 transition-colors ${
+            active === link.id
+              ? "bg-card-dark text-accent-cyan"
+              : "text-text-muted hover:text-text-primary"
+          }`}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,87 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const programs = [
+  { name: "Amazon Associates", commission: "1-10%", cookie: "24 hours", category: "General", url: "https://affiliate-program.amazon.com/" },
+  { name: "Newegg Affiliate", commission: "0.5-1%", cookie: "7 days", category: "Electronics", url: "https://www.newegg.com/affiliate/" },
+  { name: "Best Buy Affiliate", commission: "1-7%", cookie: "24 hours", category: "Electronics", url: "https://www.bestbuy.com/site/affiliate-program/" },
+  { name: "Adsterra", commission: "CPM/CPC", cookie: "N/A", category: "Ad Network", url: "https://adsterra.com/" },
+  { name: "Ezoic", commission: "Ad Revenue", cookie: "N/A", category: "Ad Network", url: "https://www.ezoic.com/" },
+  { name: "ShareASale", commission: "Varies", cookie: "30-90 days", category: "Network", url: "https://www.shareasale.com/" },
+];
+
+const tips = [
+  "Write genuine, detailed reviews that help readers make informed decisions.",
+  "Compare products side-by-side to capture high-intent buyer traffic.",
+  "Use SEO-optimized titles targeting 'best', 'vs', and 'review' keywords.",
+  "Include affiliate links naturally within content, not just at the end.",
+  "Update old articles quarterly to keep rankings and commissions high.",
+];
+---
+
+<Layout title="Monetization Hub | Hand Held Mastery" active="monetization">
+  <div class="max-w-[1280px] mx-auto px-4 py-10">
+    <div class="mb-10 text-center">
+      <h1 class="text-3xl font-extrabold text-text-primary sm:text-4xl">Monetization Hub</h1>
+      <p class="mt-3 text-lg text-text-muted">Turn your handheld gaming passion into passive income.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+      {[{ label: "Avg. Commission", value: "3-8%" }, { label: "Target Audience", value: "2M+ Gamers" }, { label: "Market Growth", value: "+35%/yr" }].map((s) => (
+        <div class="bg-card-dark border border-border-dark p-5 text-center">
+          <div class="text-2xl font-bold text-text-primary">{s.value}</div>
+          <div class="text-sm text-text-muted">{s.label}</div>
+        </div>
+      ))}
+    </div>
+
+    <h2 class="text-xl font-bold text-text-primary mb-4">Affiliate Programs</h2>
+    <div class="mb-12 overflow-hidden border border-border-dark">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-card-dark">
+            <th class="px-4 py-3 text-left font-semibold text-[#CBD5E1]">Program</th>
+            <th class="px-4 py-3 text-left font-semibold text-[#CBD5E1]">Commission</th>
+            <th class="px-4 py-3 text-left font-semibold text-[#CBD5E1]">Cookie</th>
+            <th class="px-4 py-3 text-left font-semibold text-[#CBD5E1]">Category</th>
+            <th class="px-4 py-3 text-left font-semibold text-[#CBD5E1]">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {programs.map((p) => (
+            <tr class="border-t border-border-dark hover:bg-card-dark/50">
+              <td class="px-4 py-3 font-medium text-text-secondary">{p.name}</td>
+              <td class="px-4 py-3 text-text-muted">{p.commission}</td>
+              <td class="px-4 py-3 text-text-muted">{p.cookie}</td>
+              <td class="px-4 py-3"><span class="px-2 py-0.5 text-xs text-text-muted bg-[#1E293B]">{p.category}</span></td>
+              <td class="px-4 py-3"><a href={p.url} target="_blank" rel="noopener noreferrer" class="text-accent-cyan hover:text-sky-300 text-sm">Join &rarr;</a></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-2">
+      <div class="bg-card-dark border border-border-dark p-6">
+        <h2 class="text-lg font-bold text-text-primary mb-4">Monetization Tips</h2>
+        <ul class="space-y-3">
+          {tips.map((tip) => (
+            <li class="flex gap-3 text-sm text-text-muted">
+              <span class="text-success-green mt-0.5 shrink-0">&#10003;</span>
+              {tip}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="bg-card-dark border border-border-dark p-6">
+        <h2 class="text-lg font-bold text-text-primary mb-4">Work With Us</h2>
+        <p class="text-sm text-text-muted leading-relaxed mb-4">
+          Interested in partnering with Hand Held Mastery? We collaborate with brands, developers, and fellow creators in the handheld gaming space.
+        </p>
+        <a href="/contact" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-accent-purple hover:bg-accent-purple-hover transition-colors">
+          Get in Touch &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

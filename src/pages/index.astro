@@ -1,0 +1,147 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const products = await getCollection("products");
+const articles = await getCollection("articles");
+
+const featuredConsoles = products
+  .filter((p) => p.data.category === "Consoles")
+  .slice(0, 5);
+
+const latestArticles = articles
+  .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf())
+  .slice(0, 6);
+
+const categories = [
+  { name: "Consoles", count: products.filter((p) => p.data.category === "Consoles").length, icon: "🎮", slug: "Consoles" },
+  { name: "Power", count: products.filter((p) => p.data.category === "Power Solutions").length, icon: "⚡", slug: "Power Solutions" },
+  { name: "Storage", count: products.filter((p) => p.data.category === "Storage").length, icon: "💾", slug: "Storage" },
+  { name: "Docks", count: products.filter((p) => p.data.category === "Docks & Hubs").length, icon: "🔌", slug: "Docks & Hubs" },
+  { name: "Peripherals", count: products.filter((p) => p.data.category === "Peripherals").length, icon: "🎯", slug: "Peripherals" },
+];
+
+const tools = [
+  { name: "EmuDeck", desc: "All-in-one emulation setup", link: "https://www.emudeck.com/", badge: "Essential" },
+  { name: "Decky Loader", desc: "Plugin system for Steam Deck", link: "https://github.com/SteamDeckHomebrew/decky-loader", badge: "Essential" },
+  { name: "Handheld Companion", desc: "Motion controls & TDP on Windows", link: "https://handheldcompanion.com/", badge: "Recommended" },
+  { name: "Lossless Scaling", desc: "Frame generation for any game", link: "https://store.steampowered.com/app/993090", badge: "Worth It" },
+  { name: "Moonlight", desc: "Low-latency game streaming", link: "https://moonlight-stream.org/", badge: "Free" },
+];
+
+const categoryLabels: Record<string, string> = {
+  "Consoles": "CONSOLE",
+  "Power Solutions": "POWER SOLUTION",
+  "Storage": "STORAGE",
+  "Docks & Hubs": "DOCK & HUB",
+  "Peripherals": "PERIPHERAL",
+};
+---
+
+<Layout title="Hand Held Mastery | Handheld PC Gaming Console Reviews" active="home">
+  <div class="max-w-[1280px] mx-auto px-4 py-10">
+    <!-- Hero -->
+    <div class="py-10 text-center">
+      <h1 class="text-3xl font-bold text-text-primary sm:text-4xl">
+        Hand Held Mastery
+      </h1>
+      <p class="mt-3 text-lg text-text-muted">
+        The definitive technical resource for handheld PC gaming consoles.
+      </p>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      {[
+        { label: "Products", value: `${products.length}+` },
+        { label: "Articles", value: `${articles.length}+` },
+        { label: "Software Tools", value: "10+" },
+        { label: "Retailer Networks", value: "5+" },
+      ].map((stat) => (
+        <div class="bg-card-dark border border-border-dark p-5 text-center">
+          <div class="text-2xl font-bold text-text-primary">{stat.value}</div>
+          <div class="text-sm text-text-muted">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Featured Consoles -->
+    <h2 class="text-xl font-bold text-text-primary mb-4">Featured Handheld Consoles</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+      {featuredConsoles.map((p) => (
+        <a
+          href={`/compare/${p.data.slug}`}
+          class="block bg-card-dark border border-border-dark p-5 hover:border-accent-purple transition-all hover:-translate-y-0.5"
+        >
+          <span class="text-xs font-semibold tracking-wider uppercase text-accent-cyan-light mb-2 block">
+            {categoryLabels[p.data.category] || p.data.category.toUpperCase()}
+          </span>
+          <h3 class="text-base font-semibold text-text-primary mb-2">{p.data.name}</h3>
+          <p class="text-xl font-bold text-text-primary mb-2">${p.data.price}</p>
+          <p class="text-sm text-text-dim leading-relaxed">{p.data.description}</p>
+          <div class="flex flex-wrap gap-2 mt-3">
+            {p.data.tags.map((tag) => (
+              <span class="text-xs px-2 py-1 bg-[#0F172A] text-text-muted">{tag}</span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Browse Categories -->
+    <h2 class="text-xl font-bold text-text-primary mb-4">Browse by Category</h2>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
+      {categories.map((cat) => (
+        <a
+          href={`/compare?cat=${encodeURIComponent(cat.slug)}`}
+          class="bg-card-dark border border-border-dark p-5 text-center hover:border-accent-purple transition-all"
+        >
+          <div class="text-3xl mb-2">{cat.icon}</div>
+          <h3 class="text-sm font-semibold text-text-primary">{cat.name}</h3>
+          <p class="text-xs text-text-dim">{cat.count} products</p>
+        </a>
+      ))}
+    </div>
+
+    <!-- Latest Articles -->
+    <h2 class="text-xl font-bold text-text-primary mb-4">Latest Articles</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+      {latestArticles.map((article) => (
+        <a
+          href={`/articles/${article.slug}`}
+          class="block bg-card-dark border border-border-dark p-5 hover:border-accent-purple transition-all"
+        >
+          <span class="inline-block px-2 py-0.5 text-xs bg-[#0F172A] text-accent-cyan-light mb-2">
+            {article.data.category}
+          </span>
+          <h3 class="text-sm font-semibold text-text-primary mb-2 line-clamp-2">{article.data.title}</h3>
+          <p class="text-xs text-text-dim">{article.data.date} &middot; {article.data.readTime}</p>
+        </a>
+      ))}
+    </div>
+
+    <!-- Toolbox -->
+    <h2 class="text-xl font-bold text-text-primary mb-4">Gamer's Toolbox</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
+      {tools.map((tool) => (
+        <div class="bg-card-dark border border-border-dark p-5">
+          <h4 class="text-sm font-semibold text-text-primary mb-1">{tool.name}</h4>
+          <p class="text-xs text-text-dim mb-2">{tool.desc}</p>
+          <span class="text-xs px-2 py-0.5 bg-[#0F172A] text-text-muted">{tool.badge}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center py-12 bg-card-dark border border-border-dark">
+      <h2 class="text-2xl font-bold text-text-primary mb-3">Compare Products</h2>
+      <p class="text-text-muted mb-6">Browse 50+ handheld gaming products with real-time pricing and specs.</p>
+      <a
+        href="/compare"
+        class="inline-flex items-center gap-2 bg-accent-purple text-white font-semibold px-6 py-3 hover:bg-accent-purple-hover transition-colors"
+      >
+        Compare Now &rarr;
+      </a>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,13 @@
+{
+  "name": "Sabrent Rocket 2230 1TB",
+  "category": "Storage",
+  "rating": 4.4,
+  "price": 99,
+  "description": "Compact 2230 SSD perfect for handheld form factors.",
+  "tags": [
+    "PCIe 4.0",
+    "5000 MB/s",
+    "2230 form factor"
+  ],
+  "slug": "sabrent-rocket-2230-1tb"
+}
