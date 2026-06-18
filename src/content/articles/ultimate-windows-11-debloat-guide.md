@@ -4,7 +4,7 @@ category: "How-To"
 date: "2026-01-18"
 readTime: "10 min read"
 tags: ["Windows 11", "optimization"]
-description: "Out of the box, Windows 11 is a terrible operating system for handheld gaming. Not because it lacks features, but because it treats your 80 Wh-battery ROG Xbox Ally X or 74 Wh Legion Go 2 like a corporate desktop managed by an IT department halfway a..."
+description: "Out of the box, Windows 11 is a terrible operating system for handheld gaming. Not because it lacks features, but because it treats your 80 Wh-battery ROG..."
 ---
 
 <p>Out of the box, Windows 11 is a terrible operating system for handheld gaming. Not because it lacks features, but because it treats your <code>80 Wh</code>-battery ROG Xbox Ally X or <code>74 Wh</code> Legion Go 2 like a corporate desktop managed by an IT department halfway across the world. Background telemetry services, pre-installed bloatware, constant diagnostic data collection, and a suite of "helpful" Microsoft apps collectively consume <code>15-20%</code> of your CPU cycles and shave precious minutes off battery life that you paid a premium to get [^217^][^333^]. On a device where every watt-hour matters, that overhead translates directly into fewer frames per second and shorter gaming sessions.</p>

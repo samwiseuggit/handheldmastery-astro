@@ -4,7 +4,7 @@ category: "Blog"
 date: "2026-03-08"
 readTime: "7 min read"
 tags: ["storage", "SD cards"]
-description: "The math is brutal and getting worse. Call of Duty: Modern Warfare III demands 235 GB. Baldur's Gate 3 with patches sits at 150 GB. Forza Horizon 5 with all DLC exceeds 170 GB. A single AAA title from 2025-2026 can consume 25-47% of the internal stor..."
+description: "The math is brutal and getting worse. Call of Duty: Modern Warfare III demands 235 GB. Baldur's Gate 3 with patches sits at 150 GB. Forza Horizon 5 with..."
 ---
 
 <p>The math is brutal and getting worse. <em>Call of Duty: Modern Warfare III</em> demands 235 GB. <em>Baldur's Gate 3</em> with patches sits at 150 GB. <em>Forza Horizon 5</em> with all DLC exceeds 170 GB. A single AAA title from 2025-2026 can consume 25-47% of the internal storage on a base-model handheld, and that's before you've installed a single emulator, indie game, or Proton compatibility layer. The 512 GB internal SSD in the entry-level Steam Deck OLED ($549) formats down to roughly 465 GB usable, and SteamOS reserves ~20 GB for the operating system — leaving under 450 GB for everything else [^80^]. Two AAA games and you're already managing storage.</p>

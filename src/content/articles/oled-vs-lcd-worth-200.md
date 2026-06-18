@@ -4,7 +4,7 @@ category: "Blog"
 date: "2026-02-08"
 readTime: "9 min read"
 tags: ["display", "OLED"]
-description: "The $200 price delta between the Steam Deck LCD (discontinued 256GB model, historically $399) and the Steam Deck OLED ($549 MSRP) represents the most consequential purchasing decision in handheld gaming. It's not about storage — the OLED starts at 51..."
+description: "The $200 price delta between the Steam Deck LCD (discontinued 256GB model, historically $399) and the Steam Deck OLED ($549 MSRP) represents the most..."
 ---
 
 <p>The $200 price delta between the Steam Deck LCD (discontinued 256GB model, historically $399) and the Steam Deck OLED ($549 MSRP) represents the most consequential purchasing decision in handheld gaming. It's not about storage — the OLED starts at 512GB versus the LCD's 256GB. It's not about battery, though the OLED gains 10 Wh. It's about the display technology sitting between your eyeballs and the game, and whether that technology justifies what amounts to a 50% price increase at the entry level.</p>

@@ -4,7 +4,7 @@ category: "Blog"
 date: "2026-03-15"
 readTime: "9 min read"
 tags: ["emulation", "retro gaming"]
-description: "Emulation is the silent killer app for handheld PCs. While AAA titles get the marketing budgets, it's the ability to play Metroid Prime at 60 FPS on a device that fits in a backpack, or fire up God of War Collection without digging a PS3 out of stora..."
+description: "Emulation is the silent killer app for handheld PCs. While AAA titles get the marketing budgets, it's the ability to play Metroid Prime at 60 FPS on a..."
 ---
 
 <p>Emulation is the silent killer app for handheld PCs. While AAA titles get the marketing budgets, it's the ability to play <em>Metroid Prime</em> at 60 FPS on a device that fits in a backpack, or fire up <em>God of War Collection</em> without digging a PS3 out of storage, that justifies the purchase for a significant slice of the handheld gaming community. The hardware has reached an inflection point: 2026's APUs are finally fast enough to handle seventh-generation console emulation (PS3, Xbox 360) with playable results, while sixth-generation systems (GameCube, PS2, Dreamcast) run at full speed without breaking a sweat.</p>

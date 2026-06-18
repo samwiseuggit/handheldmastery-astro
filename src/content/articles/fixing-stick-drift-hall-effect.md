@@ -4,7 +4,7 @@ category: "How-To"
 date: "2026-03-03"
 readTime: "8 min read"
 tags: ["Hall Effect", "repair"]
-description: "Thumbstick drift is the most common hardware failure mode in handheld gaming PCs. Every potentiometer-based joystick — the type used in the Steam Deck OLED, most Joy-Cons, and the majority of gamepads — will eventually develop drift. It is not a matt..."
+description: "Thumbstick drift is the most common hardware failure mode in handheld gaming PCs. Every potentiometer-based joystick — the type used in the Steam Deck..."
 ---
 
 <p>Thumbstick drift is the most common hardware failure mode in handheld gaming PCs. Every potentiometer-based joystick — the type used in the Steam Deck OLED, most Joy-Cons, and the majority of gamepads — will eventually develop drift. It is not a matter of if, but when. The carbon film resistive track inside a potentiometer wears down with physical contact, dust infiltrates the sensor housing, and the dead zone creeps outward until your character walks in circles during cutscenes. The Steam Deck OLED ships with capacitive, non-Hall thumbsticks [^80^], making it particularly susceptible to this wear pattern over heavy use.</p>

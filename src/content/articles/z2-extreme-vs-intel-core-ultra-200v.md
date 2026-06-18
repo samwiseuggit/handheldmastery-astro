@@ -4,7 +4,7 @@ category: "Versus"
 date: "2026-03-05"
 readTime: "11 min read"
 tags: ["comparison", "AMD", "Intel"]
-description: "The architecture war for handheld gaming supremacy has never been this competitive. For years, AMD's custom APUs dominated the category virtually unopposed — from the Steam Deck's bespoke Zen 2 chip through the ROG Ally's Z1 Extreme. Intel's entry in..."
+description: "The architecture war for handheld gaming supremacy has never been this competitive. For years, AMD's custom APUs dominated the category virtually..."
 ---
 
 <p>The architecture war for handheld gaming supremacy has never been this competitive. For years, AMD's custom APUs dominated the category virtually unopposed — from the Steam Deck's bespoke Zen 2 chip through the ROG Ally's Z1 Extreme. Intel's entry into the space with Lunar Lake (Core Ultra 7 258V) changed that narrative entirely. Now, with AMD's Ryzen Z2 Extreme (Strix Point) powering 2026's flagship handhelds, the two architectures are trading blows in a power envelope where every watt matters and every frame counts. This deep-dive compares the two chips across synthetic benchmarks, real-world gaming, power efficiency, driver maturity, and emulation — then projects what Intel's upcoming Arc G3 Extreme means for the second half of 2026.</p>

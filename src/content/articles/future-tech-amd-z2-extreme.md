@@ -4,7 +4,7 @@ category: "Blog"
 date: "2026-02-22"
 readTime: "10 min read"
 tags: ["AMD", "hardware"]
-description: "The AMD Ryzen Z2 Extreme (codename Strix Point) isn't some distant rumor — it's already shipping inside the ROG Xbox Ally X, the Lenovo Legion Go 2, and making its way into a half-dozen other handhelds hitting shelves in early 2026. If you're still g..."
+description: "The AMD Ryzen Z2 Extreme (codename Strix Point) isn't some distant rumor — it's already shipping inside the ROG Xbox Ally X, the Lenovo Legion Go 2, and..."
 ---
 
 <p>The AMD Ryzen Z2 Extreme (codename Strix Point) isn't some distant rumor — it's already shipping inside the ROG Xbox Ally X, the Lenovo Legion Go 2, and making its way into a half-dozen other handhelds hitting shelves in early 2026. If you're still gaming on a Z1 Extreme or — heaven forbid — a Steam Deck OLED's custom Zen 2 APU, the Z2 Extreme represents the single largest generational leap in handheld PC silicon since the category's inception. This is the chip that defines what 2026 (and likely 2027) handheld gaming looks like, and the technical picture is more nuanced than the marketing slides suggest.</p>

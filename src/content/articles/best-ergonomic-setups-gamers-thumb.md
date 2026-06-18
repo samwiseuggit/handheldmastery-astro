@@ -4,7 +4,7 @@ category: "Blog"
 date: "2026-03-01"
 readTime: "8 min read"
 tags: ["ergonomics", "health"]
-description: "Handheld PC gaming demands more from your hands than any other form factor. A standard gaming session on a Steam Deck OLED (640 g) or Legion Go 2 (920 g) has your thumbs manipulating analog sticks, your index fingers hovering over shoulder buttons, y..."
+description: "Handheld PC gaming demands more from your hands than any other form factor. A standard gaming session on a Steam Deck OLED (640 g) or Legion Go 2 (920 g)..."
 ---
 
 <p>Handheld PC gaming demands more from your hands than any other form factor. A standard gaming session on a Steam Deck OLED (640 g) or Legion Go 2 (920 g) has your thumbs manipulating analog sticks, your index fingers hovering over shoulder buttons, your wrists supporting the entire device weight, and your shoulders compensating for a screen held at chest level — often for hours at a stretch. The medical literature has a name for what happens when that goes wrong: De Quervain's tenosynovitis, commonly called "Gamer's Thumb," along with a cluster of related repetitive strain injuries that can turn your favorite hobby into a source of chronic pain [^246^][^248^]. This guide breaks down the biomechanics of handheld gaming injury, the accessories that actually help, and the setups that let you marathon without visiting an orthopedist.</p>

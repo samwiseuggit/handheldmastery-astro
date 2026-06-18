@@ -4,7 +4,7 @@ category: "How-To"
 date: "2026-01-25"
 readTime: "12 min read"
 tags: ["SSD", "upgrade"]
-description: "A single modern AAA game now ships with 100-150 GB of assets, textures, and audio. Install three titles like Call of Duty, Baldur's Gate 3, and Forza Motorsport on a base 512 GB Steam Deck OLED, and you have already consumed 60-70% of your internal s..."
+description: "A single modern AAA game now ships with 100-150 GB of assets, textures, and audio. Install three titles like Call of Duty, Baldur's Gate 3, and Forza..."
 ---
 
 <p>A single modern AAA game now ships with <code>100-150 GB</code> of assets, textures, and audio. Install three titles like Call of Duty, Baldur's Gate 3, and Forza Motorsport on a base <code>512 GB</code> Steam Deck OLED, and you have already consumed <code>60-70%</code> of your internal storage before accounting for the operating system, shader caches, and save files [^80^]. The ROG Xbox Ally X ships with <code>1 TB</code> of M.2 2280 storage, which is more generous but still tight if you maintain a library of more than eight to ten large games [^144^]. The Legion Go 2 comes with <code>1 TB</code> in an M.2 2242 form factor, a less common size that limits your upgrade options [^55^].</p>

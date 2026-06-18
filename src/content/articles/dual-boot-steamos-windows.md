@@ -4,7 +4,7 @@ category: "How-To"
 date: "2026-02-24"
 readTime: "13 min read"
 tags: ["dual-boot", "SteamOS"]
-description: "The Linux-vs-Windows debate is not theoretical for handheld PC gamers — it is a practical question you face every time you launch a game. SteamOS delivers battery life and performance that Windows 11 cannot match on identical hardware: in Dead Cells,..."
+description: "The Linux-vs-Windows debate is not theoretical for handheld PC gamers — it is a practical question you face every time you launch a game. SteamOS delivers..."
 ---
 
 <p>The Linux-vs-Windows debate is not theoretical for handheld PC gamers — it is a practical question you face every time you launch a game. SteamOS delivers battery life and performance that Windows 11 cannot match on identical hardware: in <em>Dead Cells</em>, the Steam Deck OLED runs over 6 hours on SteamOS versus just 2h45m on Windows 11 [^333^]. In <em>Cyberpunk 2077</em> at the same preset, SteamOS pushes ~59 FPS where Windows manages only ~46 FPS [^333^]. The Legion Go S running SteamOS achieves a staggering 69% higher FPS in <em>Cyberpunk 2077</em> compared to its Windows counterpart [^62^]. But Windows 11 remains the only way to run Xbox Game Pass natively, play titles with kernel-level anti-cheat, and access the full breadth of PC game launchers. Dual-booting resolves this conflict without forcing a compromise. This guide walks through the complete dual-boot setup on Steam Deck and compatible handhelds, with data-backed context for every decision.</p>

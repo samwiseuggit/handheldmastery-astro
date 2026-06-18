@@ -4,7 +4,7 @@ category: "Versus"
 date: "2026-03-12"
 readTime: "9 min read"
 tags: ["comparison", "iPad Pro"]
-description: "The TSA checkpoint is the great equalizer of portable electronics. Whether you are carrying a $549 Steam Deck OLED or a $1,299 iPad Pro M4, both go into the same grey bin, both get subjected to the same dubious X-ray gaze, and both emerge with finger..."
+description: "The TSA checkpoint is the great equalizer of portable electronics. Whether you are carrying a $549 Steam Deck OLED or a $1,299 iPad Pro M4, both go into..."
 ---
 
 <p>The TSA checkpoint is the great equalizer of portable electronics. Whether you are carrying a $549 Steam Deck OLED or a $1,299 iPad Pro M4, both go into the same grey bin, both get subjected to the same dubious X-ray gaze, and both emerge with fingerprint smudges that neither owner asked for. But once you are past security, settled into a cramped 737 economy seat with a four-hour flight ahead, the differences between these devices become stark. One is a purpose-built gaming machine with built-in controls and access to thirty years of PC gaming history. The other is a general-purpose computing marvel that happens to play games remarkably well — provided you are willing to assemble the experience yourself. This comparison examines both platforms through the lens of the traveling gamer, because the airport, the hotel room, and the commuter train are where handheld devices either justify their carry-on weight or become expensive regrets.</p>

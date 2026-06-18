@@ -4,7 +4,7 @@ category: "How-To"
 date: "2026-02-17"
 readTime: "9 min read"
 tags: ["remote play", "streaming"]
-description: "Remote play is the most underappreciated capability of modern handheld gaming PCs. Your ROG Xbox Ally X or Steam Deck OLED packs enough raw power to run AAA games natively at 30-60 FPS, but there are scenarios where streaming from a more powerful hos..."
+description: "Remote play is the most underappreciated capability of modern handheld gaming PCs. Your ROG Xbox Ally X or Steam Deck OLED packs enough raw power to run..."
 ---
 
 <p>Remote play is the most underappreciated capability of modern handheld gaming PCs. Your ROG Xbox Ally X or Steam Deck OLED packs enough raw power to run AAA games natively at <code>30-60 FPS</code>, but there are scenarios where streaming from a more powerful host makes far more sense: playing graphically demanding titles that push the handheld's APU to its wattage limits, accessing your full game library without managing storage space, or simply preserving battery life by offloading rendering to a desktop PC plugged into the wall [^195^][^222^]. When your handheld acts only as a display and input device, it can throttle its own APU to <code>5W</code> and stretch battery life to <code>6-8 hours</code> while the host PC does the heavy lifting [^222^].</p>

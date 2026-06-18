@@ -4,7 +4,7 @@ category: "How-To"
 date: "2026-03-24"
 readTime: "9 min read"
 tags: ["4K TV", "docked"]
-description: "Handhelds are designed for portability, but their USB-C ports output video signals that can drive 4K displays. A Steam Deck connected to a 65-inch OLED TV becomes a living-room console — one that draws a fraction of the power of a PlayStation 5 and p..."
+description: "Handhelds are designed for portability, but their USB-C ports output video signals that can drive 4K displays. A Steam Deck connected to a 65-inch OLED TV..."
 ---
 
 <p>Handhelds are designed for portability, but their USB-C ports output video signals that can drive 4K displays. A Steam Deck connected to a 65-inch OLED TV becomes a living-room console — one that draws a fraction of the power of a PlayStation 5 and produces less fan noise than most laptops. The key is understanding what these handheld APUs can realistically output, selecting the right dock for your TV and handheld, and configuring the settings that matter for big-screen play. A naive 4K setup produces a stuttery, overheated mess. A properly configured docked handheld delivers a genuinely enjoyable living-room experience for a wide range of titles.</p>

@@ -4,7 +4,7 @@ category: "How-To"
 date: "2026-03-17"
 readTime: "8 min read"
 tags: ["cloud gaming", "Xbox"]
-description: "Cloud gaming transforms a handheld from a locally constrained device into a terminal for a remote gaming supercomputer. For handheld owners, this is transformative in two directions: you gain access to AAA titles that exceed local hardware capabiliti..."
+description: "Cloud gaming transforms a handheld from a locally constrained device into a terminal for a remote gaming supercomputer. For handheld owners, this is..."
 ---
 
 <p>Cloud gaming transforms a handheld from a locally constrained device into a terminal for a remote gaming supercomputer. For handheld owners, this is transformative in two directions: you gain access to AAA titles that exceed local hardware capabilities, and you reduce local power draw from 15-30W to under 5W, stretching battery life from hours into the double digits. Xbox Cloud Gaming (xCloud) remains the most compelling service for Game Pass subscribers, with a library spanning hundreds of titles including day-one Microsoft first-party releases. Setting it up correctly — with the right browser, optimal bitrate settings, and network tuning — makes the difference between a stuttery, artifact-filled stream and a experience that is indistinguishable from local play on a 7-inch screen.</p>

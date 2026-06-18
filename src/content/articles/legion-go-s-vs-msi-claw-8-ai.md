@@ -4,7 +4,7 @@ category: "Versus"
 date: "2026-01-27"
 readTime: "9 min read"
 tags: ["comparison", "Legion Go"]
-description: "The handheld market's mid-tier has become a battleground of competing philosophies. The Lenovo Legion Go S ($599, SteamOS, AMD Z2 Go) and the MSI Claw 8 AI+ ($899, Windows 11, Intel Core Ultra 7 258V) both pitch 8-inch displays and ambitions of porta..."
+description: "The handheld market's mid-tier has become a battleground of competing philosophies. The Lenovo Legion Go S ($599, SteamOS, AMD Z2 Go) and the MSI Claw 8..."
 ---
 
 <p>The handheld market's mid-tier has become a battleground of competing philosophies. The Lenovo Legion Go S ($599, SteamOS, AMD Z2 Go) and the MSI Claw 8 AI+ ($899, Windows 11, Intel Core Ultra 7 258V) both pitch 8-inch displays and ambitions of portable AAA gaming, but they arrive at that goal through fundamentally different engineering and software choices. The Legion Go S bets on OS-level optimization — Valve's SteamOS wringing unexpected performance from modest Zen 3+ silicon — while MSI throws Intel's most efficient architecture, 32 GB of RAM, and an 80 Wh battery at the problem, hoping hardware superiority overcomes Windows' inherent overhead. At a $300 price delta, the comparison isn't just about which is faster. It's about whether SteamOS's efficiency premium justifies the cheaper, simpler silicon, or if Lunar Lake's raw architectural advantages are worth the Windows tax.</p>
