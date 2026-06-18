@@ -1,8 +1,73 @@
 ---
+const AD_KEY = '4428d04f24f7240a987e9ddf4e0c117c';
+const CONTAINER_ID = `ad-container-${AD_KEY}`;
 ---
-<div class="bg-[#0f172a] border-b border-[#1e293b] min-h-[90px]">
-  <div class="max-w-[728px] mx-auto py-2 text-center">
-    <script is:inline>atOptions={'key':'4428d04f24f7240a987e9ddf4e0c117c','format':'iframe','height':90,'width':728,'params':{}};</script>
-    <script is:inline src="https://www.highperformanceformat.com/4428d04f24f7240a987e9ddf4e0c117c/invoke.js"></script>
+
+<div class="ad-wrapper">
+  <div id={CONTAINER_ID} class="ad-placeholder">
+    <span class="ad-label">Advertisement</span>
   </div>
 </div>
+
+<script is:inline define:vars={{ AD_KEY, CONTAINER_ID }}>
+(function() {
+  var container = document.getElementById(CONTAINER_ID);
+  if (!container) return;
+
+  // Set Adsterra options
+  window.atOptions = {
+    'key': AD_KEY,
+    'format': 'iframe',
+    'height': 90,
+    'width': 728,
+    'params': {}
+  };
+
+  // Create and load the script
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = 'https://www.highperformanceformat.com/' + AD_KEY + '/invoke.js';
+  script.async = true;
+  script.onload = function() {
+    container.classList.add('ad-loaded');
+  };
+  script.onerror = function() {
+    container.style.display = 'none';
+  };
+
+  // Insert script into container
+  container.appendChild(script);
+})();
+</script>
+
+<style>
+  .ad-wrapper {
+    background: #0f172a;
+    border-bottom: 1px solid #1e293b;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ad-placeholder {
+    width: 728px;
+    height: 90px;
+    max-width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ad-label {
+    font-size: 10px;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 2px;
+    right: 4px;
+  }
+  .ad-loaded .ad-label {
+    display: none;
+  }
+</style>

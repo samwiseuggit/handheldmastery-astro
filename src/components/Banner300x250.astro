@@ -1,6 +1,70 @@
 ---
+const AD_KEY = '7c2df93d5624e49231fd19d9c1271eb8';
+const CONTAINER_ID = `ad-container-${AD_KEY}`;
 ---
-<div class="bg-[#0f172a] border border-[#1e293b] min-h-[250px] text-center p-2">
-  <script is:inline>atOptions={'key':'7c2df93d5624e49231fd19d9c1271eb8','format':'iframe','height':250,'width':300,'params':{}};</script>
-  <script is:inline src="https://www.highperformanceformat.com/7c2df93d5624e49231fd19d9c1271eb8/invoke.js"></script>
+
+<div class="ad-wrapper-300">
+  <div id={CONTAINER_ID} class="ad-placeholder-300">
+    <span class="ad-label">Advertisement</span>
+  </div>
 </div>
+
+<script is:inline define:vars={{ AD_KEY, CONTAINER_ID }}>
+(function() {
+  var container = document.getElementById(CONTAINER_ID);
+  if (!container) return;
+
+  window.atOptions = {
+    'key': AD_KEY,
+    'format': 'iframe',
+    'height': 250,
+    'width': 300,
+    'params': {}
+  };
+
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = 'https://www.highperformanceformat.com/' + AD_KEY + '/invoke.js';
+  script.async = true;
+  script.onload = function() {
+    container.classList.add('ad-loaded');
+  };
+  script.onerror = function() {
+    container.style.display = 'none';
+  };
+
+  container.appendChild(script);
+})();
+</script>
+
+<style>
+  .ad-wrapper-300 {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+  }
+  .ad-placeholder-300 {
+    width: 300px;
+    height: 250px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ad-label {
+    font-size: 10px;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 2px;
+    right: 4px;
+  }
+  .ad-loaded .ad-label {
+    display: none;
+  }
+</style>

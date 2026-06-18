@@ -1,18 +1,67 @@
 ---
+const AD_KEY = '5c26b7ecaf04d39f5c64b43d88b2005a';
+const CONTAINER_ID = `container-${AD_KEY}`;
+const SCRIPT_SRC = `https://pl29763347.effectivecpmnetwork.com/${AD_KEY}/invoke.js`;
 ---
-<div class="native-ad-container">
-  <script is:inline async data-cfasync="false" src="https://pl29763347.effectivecpmnetwork.com/5c26b7ecaf04d39f5c64b43d88b2005a/invoke.js"></script>
-  <div id="container-5c26b7ecaf04d39f5c64b43d88b2005a"></div>
+
+<div class="native-ad-wrapper">
+  <div id={CONTAINER_ID} class="native-ad-placeholder">
+    <span class="ad-label">Sponsored</span>
+  </div>
 </div>
 
+<script is:inline define:vars={{ CONTAINER_ID, SCRIPT_SRC }}>
+(function() {
+  var container = document.getElementById(CONTAINER_ID);
+  if (!container) return;
+
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = SCRIPT_SRC;
+  script.async = true;
+  script.setAttribute('data-cfasync', 'false');
+  script.onload = function() {
+    container.classList.add('ad-loaded');
+  };
+  script.onerror = function() {
+    container.style.display = 'none';
+  };
+
+  container.appendChild(script);
+})();
+</script>
+
 <style>
-.native-ad-container {
-  margin: 0;
-  padding: 16px;
-  background: #0f172a;
-  border-top: 1px solid #1e293b;
-  border-bottom: 1px solid #1e293b;
-  text-align: center;
-  min-height: 100px;
-}
+  .native-ad-wrapper {
+    margin: 0;
+    padding: 16px;
+    background: #0f172a;
+    border-top: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .native-ad-placeholder {
+    width: 100%;
+    min-height: 100px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ad-label {
+    font-size: 10px;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 2px;
+    right: 4px;
+  }
+  .ad-loaded .ad-label {
+    display: none;
+  }
 </style>
