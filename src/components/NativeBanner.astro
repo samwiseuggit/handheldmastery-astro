@@ -1,30 +1,64 @@
 <!-- Desktop: Native Banner | Mobile/Tablet: 300x250 Banner -->
-<div class="ad-nat-desktop">
-  <div class="ad-nat-ph">
-    <span class="ad-nat-tag">Sponsored</span>
-    <script is:inline async="async" data-cfasync="false" src="https://pl29763344.effectivecpmnetwork.com/8b7696e02f356d6562fb7d33ae23ef75/invoke.js"></script>
-    <div id="container-8b7696e02f356d6562fb7d33ae23ef75"></div>
-  </div>
+<div id="ad-nat-slot" class="ad-nat-slot">
+  <span id="ad-nat-label" class="ad-nat-tag">Sponsored</span>
 </div>
 
-<div class="ad-nat-mobile">
-  <div class="ad-nat-ph-300">
-    <span class="ad-nat-tag">Advertisement</span>
-    <script is:inline>
-      atOptions = { 'key' : '5a80ce7f116946c73b77837f2eb6616', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
-    </script>
-    <script is:inline src="https://www.highperformanceformat.com/5a80ce7f116946c73b77837f2eb6616/invoke.js"></script>
-  </div>
-</div>
+<script is:inline>
+  (function() {
+    var slot = document.getElementById('ad-nat-slot');
+    var label = document.getElementById('ad-nat-label');
+    if (!slot) return;
+    var isDesktop = window.matchMedia('(min-width: 768px)').matches;
+
+    if (isDesktop) {
+      // Desktop: native banner
+      if (label) label.textContent = 'Sponsored';
+      slot.style.minHeight = '100px';
+
+      var script = document.createElement('script');
+      script.async = true;
+      script.setAttribute('data-cfasync', 'false');
+      script.src = 'https://pl29763344.effectivecpmnetwork.com/8b7696e02f356d6562fb7d33ae23ef75/invoke.js';
+      script.onload = function() { if(label) label.style.display='none'; };
+      script.onerror = function() { slot.style.display='none'; };
+      slot.appendChild(script);
+
+      var container = document.createElement('div');
+      container.id = 'container-8b7696e02f356d6562fb7d33ae23ef75';
+      slot.appendChild(container);
+
+    } else {
+      // Mobile: 300x250 banner via iframe
+      if (label) label.textContent = 'Advertisement';
+      slot.style.minHeight = '250px';
+
+      var key = '5a80ce7f116946c73b77837f2eb6616';
+      var url = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
+
+      var iframe = document.createElement('iframe');
+      iframe.style.width = '300px';
+      iframe.style.height = '250px';
+      iframe.style.border = 'none';
+      iframe.style.overflow = 'hidden';
+      iframe.scrolling = 'no';
+      iframe.setAttribute('allowtransparency', 'true');
+
+      slot.appendChild(iframe);
+
+      var doc = iframe.contentDocument || iframe.contentWindow.document;
+      doc.open();
+      doc.write(
+        '<!DOCTYPE html><html><head><style>body{margin:0;padding:0;overflow:hidden;background:transparent}</style></head><body>' +
+        '<script>atOptions = { "key": "' + key + '", "format": "iframe", "height": 250, "width": 300, "params": {} };<\/script>' +
+        '<script src="' + url + '"><\/script>' +
+        '</body></html>'
+      );
+      doc.close();
+    }
+  })();
+</script>
 
 <style>
-  .ad-nat-desktop { margin:0; padding:16px; background:#0f172a; border-top:1px solid #1e293b; border-bottom:1px solid #1e293b; text-align:center; min-height:100px; display:none; align-items:center; justify-content:center; }
-  .ad-nat-mobile { margin:0; padding:16px; background:#0f172a; border-top:1px solid #1e293b; border-bottom:1px solid #1e293b; text-align:center; min-height:250px; display:flex; align-items:center; justify-content:center; }
-  .ad-nat-ph { width:100%; min-height:100px; position:relative; display:flex; align-items:center; justify-content:center; }
-  .ad-nat-ph-300 { width:300px; height:250px; position:relative; display:flex; align-items:center; justify-content:center; }
+  .ad-nat-slot { margin:0; padding:16px; background:#0f172a; border-top:1px solid #1e293b; border-bottom:1px solid #1e293b; text-align:center; min-height:100px; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; position:relative; }
   .ad-nat-tag { font-size:10px; color:#475569; text-transform:uppercase; letter-spacing:0.5px; position:absolute; top:2px; right:4px; z-index:1; }
-  @media (min-width: 768px) {
-    .ad-nat-desktop { display:flex; }
-    .ad-nat-mobile { display:none !important; }
-  }
 </style>
