@@ -1,6 +1,6 @@
 ---
 const AD_KEY = '7c2df93d5624e49231fd19d9c1271eb8';
-const CONTAINER_ID = `ad-container-${AD_KEY}`;
+const CONTAINER_ID = `ad-banner-300-${AD_KEY}`;
 ---
 
 <div class="ad-wrapper-300">
@@ -14,6 +14,8 @@ const CONTAINER_ID = `ad-container-${AD_KEY}`;
   var container = document.getElementById(CONTAINER_ID);
   if (!container) return;
 
+  // Set Adsterra options
+  window.atOptions = window.atOptions || {};
   window.atOptions = {
     'key': AD_KEY,
     'format': 'iframe',
@@ -22,15 +24,37 @@ const CONTAINER_ID = `ad-container-${AD_KEY}`;
     'params': {}
   };
 
+  // Capture document.write output (Adsterra uses it)
+  var buffer = [];
+  var origWrite = document.write;
+  var origWriteln = document.writeln;
+  document.write = function(html) { buffer.push(String(html)); };
+  document.writeln = function(html) { buffer.push(String(html) + '\n'); };
+
   var script = document.createElement('script');
   script.type = 'text/javascript';
   script.src = 'https://www.highperformanceformat.com/' + AD_KEY + '/invoke.js';
   script.async = true;
+
   script.onload = function() {
+    document.write = origWrite;
+    document.writeln = origWriteln;
+    if (buffer.length > 0) {
+      var wrapper = document.createElement('div');
+      wrapper.innerHTML = buffer.join('');
+      while (wrapper.firstChild) {
+        container.appendChild(wrapper.firstChild);
+      }
+    }
     container.classList.add('ad-loaded');
   };
+
   script.onerror = function() {
+    document.write = origWrite;
+    document.writeln = origWriteln;
     container.style.display = 'none';
+    var outer = container.closest('.ad-wrapper-300');
+    if (outer) outer.style.display = 'none';
   };
 
   container.appendChild(script);
@@ -46,6 +70,7 @@ const CONTAINER_ID = `ad-container-${AD_KEY}`;
     align-items: center;
     justify-content: center;
     padding: 4px;
+    margin: 1rem 0;
   }
   .ad-placeholder-300 {
     width: 300px;

@@ -1,7 +1,6 @@
 ---
 const AD_KEY = '5c26b7ecaf04d39f5c64b43d88b2005a';
-const CONTAINER_ID = `container-${AD_KEY}`;
-const SCRIPT_SRC = `https://pl29763347.effectivecpmnetwork.com/${AD_KEY}/invoke.js`;
+const CONTAINER_ID = `ad-native-${AD_KEY}`;
 ---
 
 <div class="native-ad-wrapper">
@@ -10,24 +9,65 @@ const SCRIPT_SRC = `https://pl29763347.effectivecpmnetwork.com/${AD_KEY}/invoke.
   </div>
 </div>
 
-<script is:inline define:vars={{ CONTAINER_ID, SCRIPT_SRC }}>
+<script is:inline define:vars={{ AD_KEY, CONTAINER_ID }}>
 (function() {
   var container = document.getElementById(CONTAINER_ID);
   if (!container) return;
 
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = SCRIPT_SRC;
-  script.async = true;
-  script.setAttribute('data-cfasync', 'false');
-  script.onload = function() {
-    container.classList.add('ad-loaded');
-  };
-  script.onerror = function() {
-    container.style.display = 'none';
-  };
+  // Try highperformanceformat.com first (same domain as other ads)
+  // Fallback to effectivecpmnetwork.com if needed
+  var scriptUrls = [
+    'https://www.highperformanceformat.com/' + AD_KEY + '/invoke.js',
+    'https://pl29763347.effectivecpmnetwork.com/' + AD_KEY + '/invoke.js'
+  ];
 
-  container.appendChild(script);
+  var buffer = [];
+  var origWrite = document.write;
+  var origWriteln = document.writeln;
+
+  function tryLoad(urlIndex) {
+    if (urlIndex >= scriptUrls.length) {
+      // All failed
+      document.write = origWrite;
+      document.writeln = origWriteln;
+      container.style.display = 'none';
+      var outer = container.closest('.native-ad-wrapper');
+      if (outer) outer.style.display = 'none';
+      return;
+    }
+
+    buffer = [];
+    document.write = function(html) { buffer.push(String(html)); };
+    document.writeln = function(html) { buffer.push(String(html) + '\n'); };
+
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = scriptUrls[urlIndex];
+    script.async = true;
+    script.setAttribute('data-cfasync', 'false');
+
+    script.onload = function() {
+      document.write = origWrite;
+      document.writeln = origWriteln;
+      if (buffer.length > 0) {
+        var wrapper = document.createElement('div');
+        wrapper.innerHTML = buffer.join('');
+        while (wrapper.firstChild) {
+          container.appendChild(wrapper.firstChild);
+        }
+      }
+      container.classList.add('ad-loaded');
+    };
+
+    script.onerror = function() {
+      // Try next URL
+      tryLoad(urlIndex + 1);
+    };
+
+    container.appendChild(script);
+  }
+
+  tryLoad(0);
 })();
 </script>
 
@@ -60,6 +100,7 @@ const SCRIPT_SRC = `https://pl29763347.effectivecpmnetwork.com/${AD_KEY}/invoke.
     position: absolute;
     top: 2px;
     right: 4px;
+    z-index: 1;
   }
   .ad-loaded .ad-label {
     display: none;

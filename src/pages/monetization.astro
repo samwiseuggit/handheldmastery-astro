@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Banner300x250 from "../components/Banner300x250.astro";
 
 const programs = [
   { name: "Amazon Associates", commission: "1-10%", cookie: "24 hours", category: "General", url: "https://affiliate-program.amazon.com/" },
@@ -24,6 +25,10 @@ const tips = [
     <div class="mb-10 text-center">
       <h1 class="text-3xl font-extrabold text-text-primary sm:text-4xl">Monetization Hub</h1>
       <p class="mt-3 text-lg text-text-muted">Turn your handheld gaming passion into passive income.</p>
+    </div>
+
+    <div class="flex justify-center mb-6">
+      <Banner300x250 />
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">

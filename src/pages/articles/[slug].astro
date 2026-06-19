@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Banner300x250 from "../../components/Banner300x250.astro";
 import { getCollection, getEntry } from "astro:content";
 import { render } from "astro:content";
 
@@ -50,6 +51,8 @@ const related = allArticles
         ))}
       </div>
     </div>
+
+    <Banner300x250 />
 
     <!-- Article Body -->
     <article class="prose-custom mb-12">

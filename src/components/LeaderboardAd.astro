@@ -1,58 +1,115 @@
 ---
-const AD_KEY = '4428d04f24f7240a987e9ddf4e0c117c';
-const CONTAINER_ID = `ad-container-${AD_KEY}`;
+// Desktop: 728x90 | Mobile/Tablet: 300x250
+const AD_KEY_728 = '4428d04f24f7240a987e9ddf4e0c117c';
+const AD_KEY_300 = '7c2df93d5624e49231fd19d9c1271eb8';
+const ID_728 = `ad-lb-728-${AD_KEY_728}`;
+const ID_300 = `ad-lb-300-${AD_KEY_300}`;
 ---
 
-<div class="ad-wrapper">
-  <div id={CONTAINER_ID} class="ad-placeholder">
+<!-- Desktop: 728x90 -->
+<div class="ad-wrapper-desktop">
+  <div id={ID_728} class="ad-placeholder-728">
     <span class="ad-label">Advertisement</span>
   </div>
 </div>
 
-<script is:inline define:vars={{ AD_KEY, CONTAINER_ID }}>
+<!-- Mobile/Tablet: 300x250 -->
+<div class="ad-wrapper-mobile">
+  <div id={ID_300} class="ad-placeholder-300">
+    <span class="ad-label">Advertisement</span>
+  </div>
+</div>
+
+<script is:inline define:vars={{ AD_KEY_728, AD_KEY_300, ID_728, ID_300 }}>
 (function() {
-  var container = document.getElementById(CONTAINER_ID);
-  if (!container) return;
+  function loadAd(containerId, adKey, width, height) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
 
-  // Set Adsterra options
-  window.atOptions = {
-    'key': AD_KEY,
-    'format': 'iframe',
-    'height': 90,
-    'width': 728,
-    'params': {}
-  };
+    // Set Adsterra options
+    window.atOptions = window.atOptions || {};
+    window.atOptions = {
+      'key': adKey,
+      'format': 'iframe',
+      'height': height,
+      'width': width,
+      'params': {}
+    };
 
-  // Create and load the script
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = 'https://www.highperformanceformat.com/' + AD_KEY + '/invoke.js';
-  script.async = true;
-  script.onload = function() {
-    container.classList.add('ad-loaded');
-  };
-  script.onerror = function() {
-    container.style.display = 'none';
-  };
+    // Capture document.write output
+    var buffer = [];
+    var origWrite = document.write;
+    var origWriteln = document.writeln;
+    document.write = function(html) { buffer.push(String(html)); };
+    document.writeln = function(html) { buffer.push(String(html) + '\n'); };
 
-  // Insert script into container
-  container.appendChild(script);
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://www.highperformanceformat.com/' + adKey + '/invoke.js';
+    script.async = true;
+
+    script.onload = function() {
+      document.write = origWrite;
+      document.writeln = origWriteln;
+      if (buffer.length > 0) {
+        var wrapper = document.createElement('div');
+        wrapper.innerHTML = buffer.join('');
+        // Move all children into container
+        while (wrapper.firstChild) {
+          container.appendChild(wrapper.firstChild);
+        }
+      }
+      container.classList.add('ad-loaded');
+    };
+
+    script.onerror = function() {
+      document.write = origWrite;
+      document.writeln = origWriteln;
+      container.style.display = 'none';
+      // Hide the wrapper too
+      var wrapper = container.closest('.ad-wrapper-desktop, .ad-wrapper-mobile');
+      if (wrapper) wrapper.style.display = 'none';
+    };
+
+    container.appendChild(script);
+  }
+
+  // Load both — CSS will show/hide the right one
+  loadAd(ID_728, AD_KEY_728, 728, 90);
+  loadAd(ID_300, AD_KEY_300, 300, 250);
 })();
 </script>
 
 <style>
-  .ad-wrapper {
+  .ad-wrapper-desktop {
     background: #0f172a;
     border-bottom: 1px solid #1e293b;
     min-height: 90px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .ad-wrapper-mobile {
+    background: #0f172a;
+    border-bottom: 1px solid #1e293b;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+  }
+  .ad-placeholder-728 {
+    width: 728px;
+    height: 90px;
+    max-width: 100%;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .ad-placeholder {
-    width: 728px;
-    height: 90px;
-    max-width: 100%;
+  .ad-placeholder-300 {
+    width: 300px;
+    height: 250px;
     position: relative;
     display: flex;
     align-items: center;
@@ -69,5 +126,11 @@ const CONTAINER_ID = `ad-container-${AD_KEY}`;
   }
   .ad-loaded .ad-label {
     display: none;
+  }
+
+  /* Desktop: show 728x90, hide 300x250 */
+  @media (min-width: 768px) {
+    .ad-wrapper-desktop { display: flex; }
+    .ad-wrapper-mobile { display: none !important; }
   }
 </style>
