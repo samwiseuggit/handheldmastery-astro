@@ -2,25 +2,29 @@
 interface Props {
   active?: string;
 }
+
 const { active } = Astro.props;
 
 const navLinks = [
-  { label: "Home", href: "/", id: "home" },
-  { label: "Compare", href: "/compare", id: "compare" },
-  { label: "Blog", href: "/blog", id: "blog" },
-  { label: "Toolbox", href: "/toolbox", id: "toolbox" },
-  { label: "Monetization", href: "/monetization", id: "monetization" },
-  { label: "Sitemap", href: "/sitemap", id: "sitemap" },
-  { label: "Contact", href: "/contact", id: "contact" },
+  { name: "Home", href: "/", id: "home" },
+  { name: "Compare", href: "/compare", id: "compare" },
+  { name: "Blog", href: "/blog", id: "blog" },
+  { name: "Toolbox", href: "/toolbox", id: "toolbox" },
+  { name: "Monetization", href: "/monetization", id: "monetization" },
+  { name: "Sitemap", href: "/sitemap", id: "sitemap" },
+  { name: "Contact", href: "/contact", id: "contact" },
 ];
 ---
 
 <nav class="bg-bg-dark border-b border-border-dark sticky top-0 z-50">
-  <div class="max-w-[1280px] mx-auto flex items-center justify-between px-4 h-[140px]">
+  <div class="max-w-[1280px] mx-auto flex items-center justify-between px-4 h-[80px] md:h-[140px]">
+    <!-- Logo -->
     <a href="/" class="flex items-center shrink-0" style="line-height:0">
-      <img src="/logo.png" alt="Hand Held Mastery" class="h-[112px] block" />
+      <img src="/logo.png" alt="Hand Held Mastery" class="h-[56px] md:h-[112px] block">
     </a>
-    <div class="flex items-center gap-1">
+
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center gap-1">
       {navLinks.map((link) => (
         <a
           href={link.href}
@@ -30,9 +34,92 @@ const navLinks = [
               : "text-text-muted hover:text-text-primary"
           }`}
         >
-          {link.label}
+          {link.name}
+        </a>
+      ))}
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden flex flex-col gap-1.5 p-2"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <span class="block w-6 h-0.5 bg-text-primary transition-transform origin-center" id="bar-1"></span>
+      <span class="block w-6 h-0.5 bg-text-primary transition-opacity" id="bar-2"></span>
+      <span class="block w-6 h-0.5 bg-text-primary transition-transform origin-center" id="bar-3"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-bg-dark border-t border-border-dark absolute left-0 right-0 z-50"
+  >
+    <div class="px-4 py-3 flex flex-col gap-1">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class={`text-base font-medium px-3 py-2.5 transition-colors ${
+            active === link.id
+              ? "bg-card-dark text-accent-cyan"
+              : "text-text-muted hover:text-text-primary hover:bg-card-dark"
+          }`}
+        >
+          {link.name}
         </a>
       ))}
     </div>
   </div>
 </nav>
+
+<script is:inline>
+  (function() {
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var bar1 = document.getElementById('bar-1');
+    var bar2 = document.getElementById('bar-2');
+    var bar3 = document.getElementById('bar-3');
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', function() {
+      var isOpen = !menu.classList.contains('hidden');
+      if (isOpen) {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        if (bar1) bar1.style.transform = '';
+        if (bar2) bar2.style.opacity = '1';
+        if (bar3) bar3.style.transform = '';
+      } else {
+        menu.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        if (bar1) bar1.style.transform = 'translateY(8px) rotate(45deg)';
+        if (bar2) bar2.style.opacity = '0';
+        if (bar3) bar3.style.transform = 'translateY(-8px) rotate(-45deg)';
+      }
+    });
+
+    // Close menu on link click
+    menu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        if (bar1) bar1.style.transform = '';
+        if (bar2) bar2.style.opacity = '1';
+        if (bar3) bar3.style.transform = '';
+      });
+    });
+
+    // Close menu on outside click
+    document.addEventListener('click', function(e) {
+      if (!btn.contains(e.target) && !menu.contains(e.target) && !menu.classList.contains('hidden')) {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        if (bar1) bar1.style.transform = '';
+        if (bar2) bar2.style.opacity = '1';
+        if (bar3) bar3.style.transform = '';
+      }
+    });
+  })();
+</script>

@@ -1,95 +1,23 @@
----
-const AD_KEY = '7c2df93d5624e49231fd19d9c1271eb8';
-const CONTAINER_ID = `ad-banner-300-${AD_KEY}`;
----
-
-<div class="ad-wrapper-300">
-  <div id={CONTAINER_ID} class="ad-placeholder-300">
-    <span class="ad-label">Advertisement</span>
+<div class="ad-bn-wrapper">
+  <div id="ad-bn-300" class="ad-bn-ph">
+    <span class="ad-bn-tag">Advertisement</span>
+    <script is:inline>
+      (function() {
+        var c = document.getElementById('ad-bn-300'); if (!c) return;
+        window.atOptions = { key: '7c2df93d5624e49231fd19d9c1271eb8', format: 'iframe', height: 250, width: 300, params: {} };
+        var s = document.createElement('script');
+        s.src = 'https://www.highperformanceformat.com/7c2df93d5624e49231fd19d9c1271eb8/invoke.js';
+        s.async = true; s.onload = function() { c.classList.add('ad-bn-ok'); };
+        s.onerror = function() { c.style.display='none'; };
+        c.appendChild(s);
+      })();
+    </script>
   </div>
 </div>
 
-<script is:inline define:vars={{ AD_KEY, CONTAINER_ID }}>
-(function() {
-  var container = document.getElementById(CONTAINER_ID);
-  if (!container) return;
-
-  // Set Adsterra options
-  window.atOptions = window.atOptions || {};
-  window.atOptions = {
-    'key': AD_KEY,
-    'format': 'iframe',
-    'height': 250,
-    'width': 300,
-    'params': {}
-  };
-
-  // Capture document.write output (Adsterra uses it)
-  var buffer = [];
-  var origWrite = document.write;
-  var origWriteln = document.writeln;
-  document.write = function(html) { buffer.push(String(html)); };
-  document.writeln = function(html) { buffer.push(String(html) + '\n'); };
-
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = 'https://www.highperformanceformat.com/' + AD_KEY + '/invoke.js';
-  script.async = true;
-
-  script.onload = function() {
-    document.write = origWrite;
-    document.writeln = origWriteln;
-    if (buffer.length > 0) {
-      var wrapper = document.createElement('div');
-      wrapper.innerHTML = buffer.join('');
-      while (wrapper.firstChild) {
-        container.appendChild(wrapper.firstChild);
-      }
-    }
-    container.classList.add('ad-loaded');
-  };
-
-  script.onerror = function() {
-    document.write = origWrite;
-    document.writeln = origWriteln;
-    container.style.display = 'none';
-    var outer = container.closest('.ad-wrapper-300');
-    if (outer) outer.style.display = 'none';
-  };
-
-  container.appendChild(script);
-})();
-</script>
-
 <style>
-  .ad-wrapper-300 {
-    background: #0f172a;
-    border: 1px solid #1e293b;
-    min-height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-    margin: 1rem 0;
-  }
-  .ad-placeholder-300 {
-    width: 300px;
-    height: 250px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ad-label {
-    font-size: 10px;
-    color: #475569;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: absolute;
-    top: 2px;
-    right: 4px;
-  }
-  .ad-loaded .ad-label {
-    display: none;
-  }
+  .ad-bn-wrapper { background:#0f172a; border:1px solid #1e293b; min-height:250px; display:flex; align-items:center; justify-content:center; padding:4px; margin:1rem 0; }
+  .ad-bn-ph { width:300px; height:250px; position:relative; display:flex; align-items:center; justify-content:center; }
+  .ad-bn-tag { font-size:10px; color:#475569; text-transform:uppercase; letter-spacing:0.5px; position:absolute; top:2px; right:4px; }
+  .ad-bn-ok .ad-bn-tag { display:none; }
 </style>

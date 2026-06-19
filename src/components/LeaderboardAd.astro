@@ -1,136 +1,47 @@
----
-// Desktop: 728x90 | Mobile/Tablet: 300x250
-const AD_KEY_728 = '4428d04f24f7240a987e9ddf4e0c117c';
-const AD_KEY_300 = '7c2df93d5624e49231fd19d9c1271eb8';
-const ID_728 = `ad-lb-728-${AD_KEY_728}`;
-const ID_300 = `ad-lb-300-${AD_KEY_300}`;
----
-
-<!-- Desktop: 728x90 -->
-<div class="ad-wrapper-desktop">
-  <div id={ID_728} class="ad-placeholder-728">
-    <span class="ad-label">Advertisement</span>
+<!-- Desktop: 728x90 | Mobile/Tablet: 300x250 -->
+<div class="ad-lb-desktop">
+  <div id="ad-lb-desk" class="ad-ph-728">
+    <span class="ad-tag">Advertisement</span>
+    <script is:inline>
+      (function() {
+        var c = document.getElementById('ad-lb-desk'); if (!c) return;
+        window.atOptions = { key: '4428d04f24f7240a987e9ddf4e0c117c', format: 'iframe', height: 90, width: 728, params: {} };
+        var s = document.createElement('script');
+        s.src = 'https://www.highperformanceformat.com/4428d04f24f7240a987e9ddf4e0c117c/invoke.js';
+        s.async = true; s.onload = function() { c.classList.add('ad-ok'); };
+        s.onerror = function() { c.style.display='none'; };
+        c.appendChild(s);
+      })();
+    </script>
   </div>
 </div>
 
-<!-- Mobile/Tablet: 300x250 -->
-<div class="ad-wrapper-mobile">
-  <div id={ID_300} class="ad-placeholder-300">
-    <span class="ad-label">Advertisement</span>
+<div class="ad-lb-mobile">
+  <div id="ad-lb-mob" class="ad-ph-300">
+    <span class="ad-tag">Advertisement</span>
+    <script is:inline>
+      (function() {
+        var c = document.getElementById('ad-lb-mob'); if (!c) return;
+        window.atOptions = { key: '7c2df93d5624e49231fd19d9c1271eb8', format: 'iframe', height: 250, width: 300, params: {} };
+        var s = document.createElement('script');
+        s.src = 'https://www.highperformanceformat.com/7c2df93d5624e49231fd19d9c1271eb8/invoke.js';
+        s.async = true; s.onload = function() { c.classList.add('ad-ok'); };
+        s.onerror = function() { c.style.display='none'; };
+        c.appendChild(s);
+      })();
+    </script>
   </div>
 </div>
-
-<script is:inline define:vars={{ AD_KEY_728, AD_KEY_300, ID_728, ID_300 }}>
-(function() {
-  function loadAd(containerId, adKey, width, height) {
-    var container = document.getElementById(containerId);
-    if (!container) return;
-
-    // Set Adsterra options
-    window.atOptions = window.atOptions || {};
-    window.atOptions = {
-      'key': adKey,
-      'format': 'iframe',
-      'height': height,
-      'width': width,
-      'params': {}
-    };
-
-    // Capture document.write output
-    var buffer = [];
-    var origWrite = document.write;
-    var origWriteln = document.writeln;
-    document.write = function(html) { buffer.push(String(html)); };
-    document.writeln = function(html) { buffer.push(String(html) + '\n'); };
-
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://www.highperformanceformat.com/' + adKey + '/invoke.js';
-    script.async = true;
-
-    script.onload = function() {
-      document.write = origWrite;
-      document.writeln = origWriteln;
-      if (buffer.length > 0) {
-        var wrapper = document.createElement('div');
-        wrapper.innerHTML = buffer.join('');
-        // Move all children into container
-        while (wrapper.firstChild) {
-          container.appendChild(wrapper.firstChild);
-        }
-      }
-      container.classList.add('ad-loaded');
-    };
-
-    script.onerror = function() {
-      document.write = origWrite;
-      document.writeln = origWriteln;
-      container.style.display = 'none';
-      // Hide the wrapper too
-      var wrapper = container.closest('.ad-wrapper-desktop, .ad-wrapper-mobile');
-      if (wrapper) wrapper.style.display = 'none';
-    };
-
-    container.appendChild(script);
-  }
-
-  // Load both — CSS will show/hide the right one
-  loadAd(ID_728, AD_KEY_728, 728, 90);
-  loadAd(ID_300, AD_KEY_300, 300, 250);
-})();
-</script>
 
 <style>
-  .ad-wrapper-desktop {
-    background: #0f172a;
-    border-bottom: 1px solid #1e293b;
-    min-height: 90px;
-    display: none;
-    align-items: center;
-    justify-content: center;
-  }
-  .ad-wrapper-mobile {
-    background: #0f172a;
-    border-bottom: 1px solid #1e293b;
-    min-height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-  }
-  .ad-placeholder-728 {
-    width: 728px;
-    height: 90px;
-    max-width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ad-placeholder-300 {
-    width: 300px;
-    height: 250px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ad-label {
-    font-size: 10px;
-    color: #475569;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: absolute;
-    top: 2px;
-    right: 4px;
-  }
-  .ad-loaded .ad-label {
-    display: none;
-  }
-
-  /* Desktop: show 728x90, hide 300x250 */
+  .ad-lb-desktop { background:#0f172a; border-bottom:1px solid #1e293b; min-height:90px; display:none; align-items:center; justify-content:center; }
+  .ad-lb-mobile { background:#0f172a; border-bottom:1px solid #1e293b; min-height:250px; display:flex; align-items:center; justify-content:center; padding:4px; }
+  .ad-ph-728 { width:728px; height:90px; max-width:100%; position:relative; display:flex; align-items:center; justify-content:center; }
+  .ad-ph-300 { width:300px; height:250px; position:relative; display:flex; align-items:center; justify-content:center; }
+  .ad-tag { font-size:10px; color:#475569; text-transform:uppercase; letter-spacing:0.5px; position:absolute; top:2px; right:4px; }
+  .ad-ok .ad-tag { display:none; }
   @media (min-width: 768px) {
-    .ad-wrapper-desktop { display: flex; }
-    .ad-wrapper-mobile { display: none !important; }
+    .ad-lb-desktop { display:flex; }
+    .ad-lb-mobile { display:none !important; }
   }
 </style>

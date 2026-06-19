@@ -1,108 +1,47 @@
----
-const AD_KEY = '5c26b7ecaf04d39f5c64b43d88b2005a';
-const CONTAINER_ID = `ad-native-${AD_KEY}`;
----
-
-<div class="native-ad-wrapper">
-  <div id={CONTAINER_ID} class="native-ad-placeholder">
-    <span class="ad-label">Sponsored</span>
+<!-- Desktop: Native Banner | Mobile/Tablet: 300x250 Banner -->
+<div class="ad-nat-desktop">
+  <div id="ad-nat-desk" class="ad-nat-ph">
+    <span class="ad-nat-tag">Sponsored</span>
+    <script is:inline>
+      (function() {
+        var c = document.getElementById('ad-nat-desk'); if (!c) return;
+        var s = document.createElement('script');
+        s.src = 'https://pl29763347.effectivecpmnetwork.com/5c26b7ecaf04d39f5c64b43d88b2005a/invoke.js';
+        s.async = true; s.setAttribute('data-cfasync','false');
+        s.onload = function() { c.classList.add('ad-nat-ok'); };
+        s.onerror = function() { c.style.display='none'; };
+        c.appendChild(s);
+      })();
+    </script>
   </div>
 </div>
 
-<script is:inline define:vars={{ AD_KEY, CONTAINER_ID }}>
-(function() {
-  var container = document.getElementById(CONTAINER_ID);
-  if (!container) return;
-
-  // Try highperformanceformat.com first (same domain as other ads)
-  // Fallback to effectivecpmnetwork.com if needed
-  var scriptUrls = [
-    'https://www.highperformanceformat.com/' + AD_KEY + '/invoke.js',
-    'https://pl29763347.effectivecpmnetwork.com/' + AD_KEY + '/invoke.js'
-  ];
-
-  var buffer = [];
-  var origWrite = document.write;
-  var origWriteln = document.writeln;
-
-  function tryLoad(urlIndex) {
-    if (urlIndex >= scriptUrls.length) {
-      // All failed
-      document.write = origWrite;
-      document.writeln = origWriteln;
-      container.style.display = 'none';
-      var outer = container.closest('.native-ad-wrapper');
-      if (outer) outer.style.display = 'none';
-      return;
-    }
-
-    buffer = [];
-    document.write = function(html) { buffer.push(String(html)); };
-    document.writeln = function(html) { buffer.push(String(html) + '\n'); };
-
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = scriptUrls[urlIndex];
-    script.async = true;
-    script.setAttribute('data-cfasync', 'false');
-
-    script.onload = function() {
-      document.write = origWrite;
-      document.writeln = origWriteln;
-      if (buffer.length > 0) {
-        var wrapper = document.createElement('div');
-        wrapper.innerHTML = buffer.join('');
-        while (wrapper.firstChild) {
-          container.appendChild(wrapper.firstChild);
-        }
-      }
-      container.classList.add('ad-loaded');
-    };
-
-    script.onerror = function() {
-      // Try next URL
-      tryLoad(urlIndex + 1);
-    };
-
-    container.appendChild(script);
-  }
-
-  tryLoad(0);
-})();
-</script>
+<div class="ad-nat-mobile">
+  <div id="ad-nat-mob" class="ad-nat-ph-300">
+    <span class="ad-nat-tag">Advertisement</span>
+    <script is:inline>
+      (function() {
+        var c = document.getElementById('ad-nat-mob'); if (!c) return;
+        window.atOptions = { key: '7c2df93d5624e49231fd19d9c1271eb8', format: 'iframe', height: 250, width: 300, params: {} };
+        var s = document.createElement('script');
+        s.src = 'https://www.highperformanceformat.com/7c2df93d5624e49231fd19d9c1271eb8/invoke.js';
+        s.async = true; s.onload = function() { c.classList.add('ad-nat-ok'); };
+        s.onerror = function() { c.style.display='none'; };
+        c.appendChild(s);
+      })();
+    </script>
+  </div>
+</div>
 
 <style>
-  .native-ad-wrapper {
-    margin: 0;
-    padding: 16px;
-    background: #0f172a;
-    border-top: 1px solid #1e293b;
-    border-bottom: 1px solid #1e293b;
-    text-align: center;
-    min-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .native-ad-placeholder {
-    width: 100%;
-    min-height: 100px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ad-label {
-    font-size: 10px;
-    color: #475569;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: absolute;
-    top: 2px;
-    right: 4px;
-    z-index: 1;
-  }
-  .ad-loaded .ad-label {
-    display: none;
+  .ad-nat-desktop { margin:0; padding:16px; background:#0f172a; border-top:1px solid #1e293b; border-bottom:1px solid #1e293b; text-align:center; min-height:100px; display:none; align-items:center; justify-content:center; }
+  .ad-nat-mobile { margin:0; padding:16px; background:#0f172a; border-top:1px solid #1e293b; border-bottom:1px solid #1e293b; text-align:center; min-height:250px; display:flex; align-items:center; justify-content:center; }
+  .ad-nat-ph { width:100%; min-height:100px; position:relative; display:flex; align-items:center; justify-content:center; }
+  .ad-nat-ph-300 { width:300px; height:250px; position:relative; display:flex; align-items:center; justify-content:center; }
+  .ad-nat-tag { font-size:10px; color:#475569; text-transform:uppercase; letter-spacing:0.5px; position:absolute; top:2px; right:4px; z-index:1; }
+  .ad-nat-ok .ad-nat-tag { display:none; }
+  @media (min-width: 768px) {
+    .ad-nat-desktop { display:flex; }
+    .ad-nat-mobile { display:none !important; }
   }
 </style>
