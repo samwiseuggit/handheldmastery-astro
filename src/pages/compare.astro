@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Banner300x250 from "../components/Banner300x250.astro";
 import { getCollection } from "astro:content";
 
 const allProducts = await getCollection("products");
@@ -84,8 +83,6 @@ const subCategoryLabels: Record<string, string> = {
         </button>
       ))}
     </div>
-
-    <Banner300x250 />
 
     <!-- Product Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="product-grid">

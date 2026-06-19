@@ -1,6 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Banner300x250 from "../../components/Banner300x250.astro";
 import { getCollection } from "astro:content";
 
 const BRAND_LINKS: Record<string, string> = {
@@ -90,8 +89,6 @@ const badge = CATEGORY_LABELS[p.category] || p.category;
         ))}
       </div>
     </div>
-
-    <Banner300x250 />
 
     <!-- Specs Table (consoles only) -->
     {p.specs && p.specs.length > 0 && (

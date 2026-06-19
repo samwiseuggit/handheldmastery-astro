@@ -1,3 +1,4 @@
+<!-- 300x250 — All platforms, article pages only -->
 <div id="ad-bn-slot" class="ad-bn-slot">
   <span class="ad-bn-tag">Advertisement</span>
 </div>
@@ -6,17 +7,15 @@
   (function() {
     var slot = document.getElementById('ad-bn-slot');
     if (!slot) return;
-    var key = '5a80ce7f116946c73b77837f2eb6616';
+    var key = '5a80ce7f116946c73b77837f2eb661f6';
     var url = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
 
-    // Create iframe to isolate atOptions from other ads on the page
     var iframe = document.createElement('iframe');
     iframe.style.width = '300px';
     iframe.style.height = '250px';
     iframe.style.border = 'none';
     iframe.style.overflow = 'hidden';
     iframe.scrolling = 'no';
-    iframe.setAttribute('allowtransparency', 'true');
 
     slot.innerHTML = '';
     slot.appendChild(iframe);

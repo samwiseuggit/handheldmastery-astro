@@ -1,4 +1,4 @@
-<!-- Desktop: Native Banner | Mobile/Tablet: 300x250 Banner -->
+<!-- Desktop: Native Banner | Tablet/Mobile: 160x300 -->
 <div id="ad-nat-slot" class="ad-nat-slot">
   <span id="ad-nat-label" class="ad-nat-tag">Sponsored</span>
 </div>
@@ -28,20 +28,19 @@
       slot.appendChild(container);
 
     } else {
-      // Mobile: 300x250 banner via iframe
+      // Tablet/Mobile: 160x300 banner via iframe
       if (label) label.textContent = 'Advertisement';
-      slot.style.minHeight = '250px';
+      slot.style.minHeight = '300px';
 
-      var key = '5a80ce7f116946c73b77837f2eb6616';
+      var key = '1a4f783befba01b8d47aede5beabd340';
       var url = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
 
       var iframe = document.createElement('iframe');
-      iframe.style.width = '300px';
-      iframe.style.height = '250px';
+      iframe.style.width = '160px';
+      iframe.style.height = '300px';
       iframe.style.border = 'none';
       iframe.style.overflow = 'hidden';
       iframe.scrolling = 'no';
-      iframe.setAttribute('allowtransparency', 'true');
 
       slot.appendChild(iframe);
 
@@ -49,7 +48,7 @@
       doc.open();
       doc.write(
         '<!DOCTYPE html><html><head><style>body{margin:0;padding:0;overflow:hidden;background:transparent}</style></head><body>' +
-        '<script>atOptions = { "key": "' + key + '", "format": "iframe", "height": 250, "width": 300, "params": {} };<\/script>' +
+        '<script>atOptions = { "key": "' + key + '", "format": "iframe", "height": 300, "width": 160, "params": {} };<\/script>' +
         '<script src="' + url + '"><\/script>' +
         '</body></html>'
       );
@@ -61,4 +60,7 @@
 <style>
   .ad-nat-slot { margin:0; padding:16px; background:#0f172a; border-top:1px solid #1e293b; border-bottom:1px solid #1e293b; text-align:center; min-height:100px; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; position:relative; }
   .ad-nat-tag { font-size:10px; color:#475569; text-transform:uppercase; letter-spacing:0.5px; position:absolute; top:2px; right:4px; z-index:1; }
+  @media (max-width: 767px) {
+    .ad-nat-slot { min-height:300px; }
+  }
 </style>

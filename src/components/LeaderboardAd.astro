@@ -1,4 +1,4 @@
-<!-- Desktop: 728x90 | Mobile/Tablet: 300x250 -->
+<!-- Desktop: 728x90 | Tablet/Mobile: 320x50 -->
 <div id="ad-lb-slot" class="ad-lb-slot">
   <span class="ad-lb-tag">Advertisement</span>
 </div>
@@ -8,19 +8,17 @@
     var slot = document.getElementById('ad-lb-slot');
     if (!slot) return;
     var isDesktop = window.matchMedia('(min-width: 768px)').matches;
-    var key = isDesktop ? '4428d04f24f7240a987e9ddf4e0c117c' : '5a80ce7f116946c73b77837f2eb6616';
-    var h = isDesktop ? 90 : 250;
-    var w = isDesktop ? 728 : 300;
+    var key = isDesktop ? '4428d04f24f7240a987e9ddf4e0c117c' : 'f65c9006c0a80c200904dc6226fab08c';
+    var h = isDesktop ? 90 : 50;
+    var w = isDesktop ? 728 : 320;
     var url = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
 
-    // Create iframe to isolate atOptions from other ads on the page
     var iframe = document.createElement('iframe');
     iframe.style.width = w + 'px';
     iframe.style.height = h + 'px';
     iframe.style.border = 'none';
     iframe.style.overflow = 'hidden';
     iframe.scrolling = 'no';
-    iframe.setAttribute('allowtransparency', 'true');
 
     slot.innerHTML = '';
     slot.appendChild(iframe);
@@ -40,4 +38,7 @@
 <style>
   .ad-lb-slot { background:#0f172a; border-bottom:1px solid #1e293b; min-height:90px; display:flex; align-items:center; justify-content:center; position:relative; }
   .ad-lb-tag { font-size:10px; color:#475569; text-transform:uppercase; letter-spacing:0.5px; position:absolute; top:2px; right:4px; z-index:1; }
+  @media (max-width: 767px) {
+    .ad-lb-slot { min-height:50px; }
+  }
 </style>
