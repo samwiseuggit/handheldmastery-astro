@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Banner300x250 from "../../components/Banner300x250.astro";
 import { getCollection } from "astro:content";
 
 const BRAND_LINKS: Record<string, string> = {
@@ -90,6 +91,8 @@ const badge = CATEGORY_LABELS[p.category] || p.category;
       </div>
     </div>
 
+    <Banner300x250 />
+
     <!-- Specs Table (consoles only) -->
     {p.specs && p.specs.length > 0 && (
       <div class="mb-8">
@@ -135,9 +138,4 @@ const badge = CATEGORY_LABELS[p.category] || p.category;
           </a>
         )}
         <a href={`https://www.amazon.com/s?k=${p.name.replace(/ /g, "+")}`} target="_blank" rel="noopener noreferrer" class="inline-block px-5 py-2.5 bg-accent-purple text-white font-semibold text-sm hover:bg-accent-purple-hover transition-colors">
-          Amazon
-        </a>
-      </div>
-    </div>
-  </div>
-</Layout>
+       

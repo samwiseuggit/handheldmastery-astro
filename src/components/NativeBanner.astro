@@ -1,36 +1,19 @@
 <!-- Desktop: Native Banner | Mobile/Tablet: 300x250 Banner -->
 <div class="ad-nat-desktop">
-  <div id="container-8b7696e02f356d6562fb7d33ae23ef75" class="ad-nat-ph">
+  <div class="ad-nat-ph">
     <span class="ad-nat-tag">Sponsored</span>
-    <script is:inline>
-      (function() {
-        var c = document.getElementById('container-8b7696e02f356d6562fb7d33ae23ef75'); if (!c) return;
-        var s = document.createElement('script');
-        s.async = true;
-        s.setAttribute('data-cfasync','false');
-        s.src = 'https://pl29763344.effectivecpmnetwork.com/8b7696e02f356d6562fb7d33ae23ef75/invoke.js';
-        s.onload = function() { c.classList.add('ad-nat-ok'); };
-        s.onerror = function() { c.style.display='none'; var w = c.closest('.ad-nat-desktop'); if(w) w.style.display='none'; };
-        c.appendChild(s);
-      })();
-    </script>
+    <script is:inline async="async" data-cfasync="false" src="https://pl29763344.effectivecpmnetwork.com/8b7696e02f356d6562fb7d33ae23ef75/invoke.js"></script>
+    <div id="container-8b7696e02f356d6562fb7d33ae23ef75"></div>
   </div>
 </div>
 
 <div class="ad-nat-mobile">
-  <div id="ad-nat-mob" class="ad-nat-ph-300">
+  <div class="ad-nat-ph-300">
     <span class="ad-nat-tag">Advertisement</span>
     <script is:inline>
-      (function() {
-        var c = document.getElementById('ad-nat-mob'); if (!c) return;
-        window.atOptions = { key: '5a80ce7f116946c73b77837f2eb661f6', format: 'iframe', height: 250, width: 300, params: {} };
-        var s = document.createElement('script');
-        s.src = 'https://www.highperformanceformat.com/5a80ce7f116946c73b77837f2eb661f6/invoke.js';
-        s.async = true; s.onload = function() { c.classList.add('ad-nat-ok'); };
-        s.onerror = function() { c.style.display='none'; var w = c.closest('.ad-nat-mobile'); if(w) w.style.display='none'; };
-        c.appendChild(s);
-      })();
+      atOptions = { 'key' : '5a80ce7f116946c73b77837f2eb6616', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
     </script>
+    <script is:inline src="https://www.highperformanceformat.com/5a80ce7f116946c73b77837f2eb6616/invoke.js"></script>
   </div>
 </div>
 
@@ -40,7 +23,6 @@
   .ad-nat-ph { width:100%; min-height:100px; position:relative; display:flex; align-items:center; justify-content:center; }
   .ad-nat-ph-300 { width:300px; height:250px; position:relative; display:flex; align-items:center; justify-content:center; }
   .ad-nat-tag { font-size:10px; color:#475569; text-transform:uppercase; letter-spacing:0.5px; position:absolute; top:2px; right:4px; z-index:1; }
-  .ad-nat-ok .ad-nat-tag { display:none; }
   @media (min-width: 768px) {
     .ad-nat-desktop { display:flex; }
     .ad-nat-mobile { display:none !important; }

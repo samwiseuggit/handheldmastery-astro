@@ -1,23 +1,15 @@
 <div class="ad-bn-wrapper">
-  <div id="ad-bn-300" class="ad-bn-ph">
+  <div class="ad-bn-ph">
     <span class="ad-bn-tag">Advertisement</span>
     <script is:inline>
-      (function() {
-        var c = document.getElementById('ad-bn-300'); if (!c) return;
-        window.atOptions = { key: '5a80ce7f116946c73b77837f2eb661f6', format: 'iframe', height: 250, width: 300, params: {} };
-        var s = document.createElement('script');
-        s.src = 'https://www.highperformanceformat.com/5a80ce7f116946c73b77837f2eb661f6/invoke.js';
-        s.async = true; s.onload = function() { c.classList.add('ad-bn-ok'); };
-        s.onerror = function() { c.style.display='none'; };
-        c.appendChild(s);
-      })();
+      atOptions = { 'key' : '5a80ce7f116946c73b77837f2eb6616', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
     </script>
+    <script is:inline src="https://www.highperformanceformat.com/5a80ce7f116946c73b77837f2eb6616/invoke.js"></script>
   </div>
 </div>
 
 <style>
   .ad-bn-wrapper { background:#0f172a; border:1px solid #1e293b; min-height:250px; display:flex; align-items:center; justify-content:center; padding:4px; margin:1rem 0; }
   .ad-bn-ph { width:300px; height:250px; position:relative; display:flex; align-items:center; justify-content:center; }
-  .ad-bn-tag { font-size:10px; color:#475569; text-transform:uppercase; letter-spacing:0.5px; position:absolute; top:2px; right:4px; }
-  .ad-bn-ok .ad-bn-tag { display:none; }
+  .ad-bn-tag { font-size:10px; color:#475569; text-transform:uppercase; letter-spacing:0.5px; position:absolute; top:2px; right:4px; z-index:1; }
 </style>
