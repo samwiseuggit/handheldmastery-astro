@@ -308,6 +308,6 @@ The best first accessory depends on your use case. Frequent travelers should con
 
 ## Sources
 
-- [Valve Steam Deck OLED product page](https://www.steamdeck.com/en/oled)
-- [Valve Steam Deck technical specifications](https://www.steamdeck.com/en/tech)
-- [Valve Steam Deck basic use and troubleshooting guide](https://help.steampowered.com/en/faqs/view/69E3-14AF-9764-4C28)
+- <a href="https://www.steamdeck.com/en/oled" target="_blank" rel="noopener noreferrer">Valve Steam Deck OLED product page</a>
+- <a href="https://www.steamdeck.com/en/tech" target="_blank" rel="noopener noreferrer">Valve Steam Deck technical specifications</a>
+- <a href="https://help.steampowered.com/en/faqs/view/69E3-14AF-9764-4C28" target="_blank" rel="noopener noreferrer">Valve Steam Deck basic use and troubleshooting guide</a>
