@@ -21,9 +21,51 @@ const related = allArticles
   .filter((a) => a.slug !== article.slug)
   .sort(() => Math.random() - 0.5)
   .slice(0, 3);
+
+const articleUrl = new URL(`/articles/${article.slug}`, "https://handheldmastery.com").toString();
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": article.data.type === "review" ? "Review" : "BlogPosting",
+  headline: article.data.title,
+  description: article.data.description,
+  datePublished: article.data.date,
+  dateModified: article.data.date,
+  mainEntityOfPage: articleUrl,
+  author: {
+    "@type": "Organization",
+    name: "Hand Held Mastery",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Hand Held Mastery",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://handheldmastery.com/logo.png",
+    },
+  },
+};
+const faqSchema = article.data.faq && article.data.faq.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: article.data.faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+} : null;
+const structuredData = [articleSchema, faqSchema].filter(Boolean);
 ---
 
-<Layout title={`${article.data.title} | Hand Held Mastery`} description={article.data.description} active="blog">
+<Layout
+  title={`${article.data.seoTitle || article.data.title} | Hand Held Mastery`}
+  description={article.data.description}
+  active="blog"
+  ogType="article"
+  structuredData={structuredData}
+>
   <div class="max-w-[1100px] mx-auto px-4 pt-5 pb-16">
     <!-- Breadcrumb -->
     <nav class="text-sm text-text-dim mb-6">

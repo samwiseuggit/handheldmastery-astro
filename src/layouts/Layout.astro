@@ -9,9 +9,17 @@ interface Props {
   title: string;
   description?: string;
   active?: string;
+  ogType?: string;
+  structuredData?: Record<string, unknown>[];
 }
 
-const { title, description = "The definitive technical resource for handheld PC gaming consoles, accessories, and optimization guides.", active } = Astro.props;
+const {
+  title,
+  description = "The definitive technical resource for handheld PC gaming consoles, accessories, and optimization guides.",
+  active,
+  ogType = "website",
+  structuredData = [],
+} = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, "https://handheldmastery.com").toString();
 ---
 
@@ -25,10 +33,14 @@ const canonicalUrl = new URL(Astro.url.pathname, "https://handheldmastery.com").
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Hand Held Mastery" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    {structuredData.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
     <title>{title}</title>
   </head>
   <body class="min-h-screen flex flex-col">

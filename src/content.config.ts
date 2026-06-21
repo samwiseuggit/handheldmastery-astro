@@ -9,6 +9,14 @@ const articles = defineCollection({
     readTime: z.string(),
     tags: z.array(z.string()),
     description: z.string(),
+    seoTitle: z.string().optional(),
+    type: z.string().optional(),
+    keyword: z.string().optional(),
+    products: z.array(z.string()).optional(),
+    faq: z.array(z.object({
+      question: z.string(),
+      answer: z.string(),
+    })).optional(),
   }),
 });
 
