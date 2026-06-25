@@ -1,50 +1,73 @@
-<!-- Desktop: 728x90 below the whole header -->
-<div class="ad-lb-slot ad-lb-slot-desktop">
-  <span class="ad-lb-tag">Advertisement</span>
-  <script is:inline>
-    atOptions = {
-      'key' : '4428d04f24f7240a987e9ddf4e0c117c',
-      'format' : 'iframe',
-      'height' : 90,
-      'width' : 728,
-      'params' : {}
-    };
-  </script>
-  <script is:inline src="https://www.highperformanceformat.com/4428d04f24f7240a987e9ddf4e0c117c/invoke.js"></script>
-</div>
+<div class="ad-lb-slot ad-lb-slot-desktop" id="ad-lb-slot-desktop"></div>
+<div class="ad-lb-slot ad-lb-slot-mobile" id="ad-lb-slot-mobile"></div>
 
-<!-- Tablet/Mobile: 320x50 below the whole header -->
-<div class="ad-lb-slot ad-lb-slot-mobile">
-  <span class="ad-lb-tag">Advertisement</span>
-  <script is:inline>
-    atOptions = {
-      'key' : 'f65c9006c0a80c200904dc6226fab08c',
-      'format' : 'iframe',
-      'height' : 50,
-      'width' : 320,
-      'params' : {}
-    };
-  </script>
-  <script is:inline src="https://www.highperformanceformat.com/f65c9006c0a80c200904dc6226fab08c/invoke.js"></script>
-</div>
+<script is:inline>
+  (function() {
+    var desktopSlot = document.getElementById('ad-lb-slot-desktop');
+    var mobileSlot = document.getElementById('ad-lb-slot-mobile');
+    if (!desktopSlot || !mobileSlot) return;
+
+    function appendIframeAd(slot, key, width, height) {
+      var label = document.createElement('span');
+      label.className = 'ad-lb-tag';
+      label.textContent = 'Advertisement';
+      slot.appendChild(label);
+
+      var optionsScript = document.createElement('script');
+      optionsScript.text = "atOptions = {'key':'" + key + "','format':'iframe','height':" + height + ",'width':" + width + ",'params':{}};";
+      slot.appendChild(optionsScript);
+
+      var invokeScript = document.createElement('script');
+      invokeScript.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
+      slot.appendChild(invokeScript);
+    }
+
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      appendIframeAd(desktopSlot, '4428d04f24f7240a987e9ddf4e0c117c', 728, 90);
+    } else {
+      appendIframeAd(mobileSlot, 'f65c9006c0a80c200904dc6226fab08c', 320, 50);
+    }
+  })();
+</script>
 
 <style>
   .ad-lb-slot {
-    background:#0f172a;
-    border-bottom:1px solid #1e293b;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    width:100%;
-    overflow:hidden;
+    background: #0f172a;
+    border-bottom: 1px solid #1e293b;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: none;
+    align-items: center;
+    justify-content: center;
   }
-  .ad-lb-tag { font-size:10px; color:#475569; text-transform:uppercase; letter-spacing:0.5px; position:absolute; top:2px; right:4px; z-index:1; }
-  .ad-lb-slot-desktop { min-height:90px; padding:8px 12px; }
-  .ad-lb-slot-mobile { display:none; min-height:50px; padding:8px 12px; }
-  .ad-lb-slot :global(iframe) { display:block; margin:0 auto; }
-  @media (max-width: 767px) {
-    .ad-lb-slot-desktop { display:none; }
-    .ad-lb-slot-mobile { display:flex; }
+
+  .ad-lb-slot-desktop {
+    min-height: 90px;
+    padding: 8px 12px;
+  }
+
+  .ad-lb-slot-mobile {
+    min-height: 50px;
+    padding: 8px 12px;
+  }
+
+  .ad-lb-tag {
+    font-size: 10px;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    z-index: 1;
+  }
+
+  .ad-lb-slot:empty {
+    display: none;
+  }
+
+  .ad-lb-slot:not(:empty) {
+    display: flex;
   }
 </style>

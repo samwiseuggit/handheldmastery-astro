@@ -1,31 +1,80 @@
-<!-- Desktop: Native Banner | Tablet/Mobile: 160x300 -->
-<div class="ad-nat-slot ad-nat-slot-desktop">
-  <span class="ad-nat-tag">Sponsored</span>
-  <script async="async" data-cfasync="false" src="https://pl29763344.effectivecpmnetwork.com/8b7696e02f356d6562fb7d33ae23ef75/invoke.js"></script>
-  <div id="container-8b7696e02f356d6562fb7d33ae23ef75"></div>
-</div>
+<div class="ad-nat-slot ad-nat-slot-desktop" id="ad-nat-slot-desktop"></div>
+<div class="ad-nat-slot ad-nat-slot-mobile" id="ad-nat-slot-mobile"></div>
 
-<div class="ad-nat-slot ad-nat-slot-mobile">
-  <span class="ad-nat-tag">Advertisement</span>
-  <script is:inline>
-    atOptions = {
-      'key' : '1a4f783befba01b8d47aede5beabd340',
-      'format' : 'iframe',
-      'height' : 300,
-      'width' : 160,
-      'params' : {}
-    };
-  </script>
-  <script is:inline src="https://www.highperformanceformat.com/1a4f783befba01b8d47aede5beabd340/invoke.js"></script>
-</div>
+<script is:inline>
+  (function() {
+    var desktopSlot = document.getElementById('ad-nat-slot-desktop');
+    var mobileSlot = document.getElementById('ad-nat-slot-mobile');
+    if (!desktopSlot || !mobileSlot) return;
+
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      var desktopLabel = document.createElement('span');
+      desktopLabel.className = 'ad-nat-tag';
+      desktopLabel.textContent = 'Sponsored';
+      desktopSlot.appendChild(desktopLabel);
+
+      var nativeScript = document.createElement('script');
+      nativeScript.async = true;
+      nativeScript.setAttribute('data-cfasync', 'false');
+      nativeScript.src = 'https://pl29763344.effectivecpmnetwork.com/8b7696e02f356d6562fb7d33ae23ef75/invoke.js';
+      desktopSlot.appendChild(nativeScript);
+
+      var nativeContainer = document.createElement('div');
+      nativeContainer.id = 'container-8b7696e02f356d6562fb7d33ae23ef75';
+      desktopSlot.appendChild(nativeContainer);
+    } else {
+      var mobileLabel = document.createElement('span');
+      mobileLabel.className = 'ad-nat-tag';
+      mobileLabel.textContent = 'Advertisement';
+      mobileSlot.appendChild(mobileLabel);
+
+      var optionsScript = document.createElement('script');
+      optionsScript.text = "atOptions = {'key':'1a4f783befba01b8d47aede5beabd340','format':'iframe','height':300,'width':160,'params':{}};";
+      mobileSlot.appendChild(optionsScript);
+
+      var invokeScript = document.createElement('script');
+      invokeScript.src = 'https://www.highperformanceformat.com/1a4f783befba01b8d47aede5beabd340/invoke.js';
+      mobileSlot.appendChild(invokeScript);
+    }
+  })();
+</script>
 
 <style>
-  .ad-nat-slot { margin:0; padding:16px; background:#0f172a; border-top:1px solid #1e293b; border-bottom:1px solid #1e293b; text-align:center; min-height:100px; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; position:relative; }
-  .ad-nat-tag { font-size:10px; color:#475569; text-transform:uppercase; letter-spacing:0.5px; position:absolute; top:2px; right:4px; z-index:1; }
-  .ad-nat-slot-mobile { display:none; }
-  .ad-nat-slot-mobile :global(iframe) { display:block; margin:0 auto; }
-  @media (max-width: 767px) {
-    .ad-nat-slot-desktop { display:none; }
-    .ad-nat-slot-mobile { display:flex; min-height:300px; }
+  .ad-nat-slot {
+    margin: 0;
+    padding: 16px;
+    background: #0f172a;
+    border-top: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+    text-align: center;
+    min-height: 100px;
+    position: relative;
+    overflow: hidden;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ad-nat-slot-mobile {
+    min-height: 300px;
+  }
+
+  .ad-nat-tag {
+    font-size: 10px;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    z-index: 1;
+  }
+
+  .ad-nat-slot:empty {
+    display: none;
+  }
+
+  .ad-nat-slot:not(:empty) {
+    display: flex;
   }
 </style>
