@@ -1,46 +1,50 @@
-<!-- Desktop: 728x90 | Tablet/Mobile: 320x50 -->
+<!-- Desktop: 728x90 below the whole header -->
 <div class="ad-lb-slot ad-lb-slot-desktop">
   <span class="ad-lb-tag">Advertisement</span>
-  <div id="container-4428d04f24f7240a987e9ddf4e0c117c"></div>
+  <script is:inline>
+    atOptions = {
+      'key' : '4428d04f24f7240a987e9ddf4e0c117c',
+      'format' : 'iframe',
+      'height' : 90,
+      'width' : 728,
+      'params' : {}
+    };
+  </script>
+  <script is:inline src="https://www.highperformanceformat.com/4428d04f24f7240a987e9ddf4e0c117c/invoke.js"></script>
 </div>
-<script is:inline>
-  atOptions = {
-    key: '4428d04f24f7240a987e9ddf4e0c117c',
-    format: 'iframe',
-    height: 90,
-    width: 728,
-    params: {},
-  };
-</script>
-<script
-  is:inline
-  src="https://www.highperformanceformat.com/4428d04f24f7240a987e9ddf4e0c117c/invoke.js"
-></script>
 
+<!-- Tablet/Mobile: 320x50 below the whole header -->
 <div class="ad-lb-slot ad-lb-slot-mobile">
   <span class="ad-lb-tag">Advertisement</span>
-  <div id="container-f65c9006c0a80c200904dc6226fab08c"></div>
+  <script is:inline>
+    atOptions = {
+      'key' : 'f65c9006c0a80c200904dc6226fab08c',
+      'format' : 'iframe',
+      'height' : 50,
+      'width' : 320,
+      'params' : {}
+    };
+  </script>
+  <script is:inline src="https://www.highperformanceformat.com/f65c9006c0a80c200904dc6226fab08c/invoke.js"></script>
 </div>
-<script is:inline>
-  atOptions = {
-    key: 'f65c9006c0a80c200904dc6226fab08c',
-    format: 'iframe',
-    height: 50,
-    width: 320,
-    params: {},
-  };
-</script>
-<script
-  is:inline
-  src="https://www.highperformanceformat.com/f65c9006c0a80c200904dc6226fab08c/invoke.js"
-></script>
 
 <style>
-  .ad-lb-slot { background:#0f172a; border-bottom:1px solid #1e293b; min-height:90px; display:flex; align-items:center; justify-content:center; position:relative; }
+  .ad-lb-slot {
+    background:#0f172a;
+    border-bottom:1px solid #1e293b;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    width:100%;
+    overflow:hidden;
+  }
   .ad-lb-tag { font-size:10px; color:#475569; text-transform:uppercase; letter-spacing:0.5px; position:absolute; top:2px; right:4px; z-index:1; }
-  .ad-lb-slot-mobile { display:none; }
+  .ad-lb-slot-desktop { min-height:90px; padding:8px 12px; }
+  .ad-lb-slot-mobile { display:none; min-height:50px; padding:8px 12px; }
+  .ad-lb-slot :global(iframe) { display:block; margin:0 auto; }
   @media (max-width: 767px) {
     .ad-lb-slot-desktop { display:none; }
-    .ad-lb-slot-mobile { display:flex; min-height:50px; }
+    .ad-lb-slot-mobile { display:flex; }
   }
 </style>
