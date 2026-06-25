@@ -1,66 +1,38 @@
 <!-- Desktop: Native Banner | Tablet/Mobile: 160x300 -->
-<div id="ad-nat-slot" class="ad-nat-slot">
-  <span id="ad-nat-label" class="ad-nat-tag">Sponsored</span>
+<div class="ad-nat-slot ad-nat-slot-desktop">
+  <span class="ad-nat-tag">Sponsored</span>
+  <div id="container-8b7696e02f356d6562fb7d33ae23ef75"></div>
 </div>
+<script
+  is:inline
+  data-cfasync="false"
+  src="https://pl29763344.effectivecpmnetwork.com/8b7696e02f356d6562fb7d33ae23ef75/invoke.js"
+></script>
 
+<div class="ad-nat-slot ad-nat-slot-mobile">
+  <span class="ad-nat-tag">Advertisement</span>
+  <div id="container-1a4f783befba01b8d47aede5beabd340"></div>
+</div>
 <script is:inline>
-  (function() {
-    var slot = document.getElementById('ad-nat-slot');
-    var label = document.getElementById('ad-nat-label');
-    if (!slot) return;
-    var isDesktop = window.matchMedia('(min-width: 768px)').matches;
-
-    if (isDesktop) {
-      // Desktop: native banner
-      if (label) label.textContent = 'Sponsored';
-      slot.style.minHeight = '100px';
-
-      var script = document.createElement('script');
-      script.async = true;
-      script.setAttribute('data-cfasync', 'false');
-      script.src = 'https://pl29763344.effectivecpmnetwork.com/8b7696e02f356d6562fb7d33ae23ef75/invoke.js';
-      script.onload = function() { if(label) label.style.display='none'; };
-      script.onerror = function() { slot.style.display='none'; };
-      slot.appendChild(script);
-
-      var container = document.createElement('div');
-      container.id = 'container-8b7696e02f356d6562fb7d33ae23ef75';
-      slot.appendChild(container);
-
-    } else {
-      // Tablet/Mobile: 160x300 banner via iframe
-      if (label) label.textContent = 'Advertisement';
-      slot.style.minHeight = '300px';
-
-      var key = '1a4f783befba01b8d47aede5beabd340';
-      var url = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
-
-      var iframe = document.createElement('iframe');
-      iframe.style.width = '160px';
-      iframe.style.height = '300px';
-      iframe.style.border = 'none';
-      iframe.style.overflow = 'hidden';
-      iframe.scrolling = 'no';
-
-      slot.appendChild(iframe);
-
-      var doc = iframe.contentDocument || iframe.contentWindow.document;
-      doc.open();
-      doc.write(
-        '<!DOCTYPE html><html><head><style>body{margin:0;padding:0;overflow:hidden;background:transparent}</style></head><body>' +
-        '<script>atOptions = { "key": "' + key + '", "format": "iframe", "height": 300, "width": 160, "params": {} };<\/script>' +
-        '<script src="' + url + '"><\/script>' +
-        '</body></html>'
-      );
-      doc.close();
-    }
-  })();
+  atOptions = {
+    key: '1a4f783befba01b8d47aede5beabd340',
+    format: 'iframe',
+    height: 300,
+    width: 160,
+    params: {},
+  };
 </script>
+<script
+  is:inline
+  src="https://www.highperformanceformat.com/1a4f783befba01b8d47aede5beabd340/invoke.js"
+></script>
 
 <style>
   .ad-nat-slot { margin:0; padding:16px; background:#0f172a; border-top:1px solid #1e293b; border-bottom:1px solid #1e293b; text-align:center; min-height:100px; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; position:relative; }
   .ad-nat-tag { font-size:10px; color:#475569; text-transform:uppercase; letter-spacing:0.5px; position:absolute; top:2px; right:4px; z-index:1; }
+  .ad-nat-slot-mobile { display:none; }
   @media (max-width: 767px) {
-    .ad-nat-slot { min-height:300px; }
+    .ad-nat-slot-desktop { display:none; }
+    .ad-nat-slot-mobile { display:flex; min-height:300px; }
   }
 </style>
