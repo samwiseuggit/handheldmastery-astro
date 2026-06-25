@@ -4,19 +4,32 @@
   (function() {
     var slot = document.getElementById('ad-bn-slot');
     if (!slot) return;
+    var label = slot.querySelector('.ad-bn-tag');
+    var key = '5a80ce7f116946c73b77837f2eb661f6';
+    var url = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
 
-    var label = document.createElement('span');
-    label.className = 'ad-bn-tag';
-    label.textContent = 'Advertisement';
-    slot.appendChild(label);
+    if (label) label.textContent = 'Advertisement';
 
-    var optionsScript = document.createElement('script');
-    optionsScript.text = "atOptions = {'key':'5a80ce7f116946c73b77837f2eb661f6','format':'iframe','height':250,'width':300,'params':{}};";
-    slot.appendChild(optionsScript);
+    var iframe = document.createElement('iframe');
+    iframe.style.width = '300px';
+    iframe.style.height = '250px';
+    iframe.style.border = 'none';
+    iframe.style.overflow = 'hidden';
+    iframe.scrolling = 'no';
+    iframe.loading = 'eager';
+    iframe.title = 'Article advertisement';
 
-    var invokeScript = document.createElement('script');
-    invokeScript.src = 'https://www.highperformanceformat.com/5a80ce7f116946c73b77837f2eb661f6/invoke.js';
-    slot.appendChild(invokeScript);
+    slot.appendChild(iframe);
+
+    var doc = iframe.contentDocument || iframe.contentWindow.document;
+    doc.open();
+    doc.write(
+      '<!DOCTYPE html><html><head><style>body{margin:0;padding:0;overflow:hidden;background:transparent}</style></head><body>' +
+      '<script>atOptions={"key":"' + key + '","format":"iframe","height":250,"width":300,"params":{}};<\/script>' +
+      '<script src="' + url + '"><\/script>' +
+      '</body></html>'
+    );
+    doc.close();
   })();
 </script>
 
