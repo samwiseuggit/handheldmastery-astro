@@ -1,32 +1,11 @@
-<div id="ad-bn-slot" class="ad-bn-slot"></div>
-
-<script is:inline>
-  (function() {
-    var slot = document.getElementById('ad-bn-slot');
-    if (!slot) return;
-    var label = slot.querySelector('.ad-bn-tag');
-    var key = '5a80ce7f116946c73b77837f2eb661f6';
-    var url = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
-
-    if (label) label.textContent = 'Advertisement';
-
-    var iframe = document.createElement('iframe');
-    iframe.style.width = '300px';
-    iframe.style.height = '250px';
-    iframe.style.border = 'none';
-    iframe.style.overflow = 'hidden';
-    iframe.scrolling = 'no';
-    iframe.loading = 'eager';
-    iframe.title = 'Article advertisement';
-
-    slot.appendChild(iframe);
-
-    var doc = iframe.contentDocument || iframe.contentWindow.document;
-    doc.open();
-    doc.write(`<!DOCTYPE html><html><head><style>body{margin:0;padding:0;overflow:hidden;background:transparent}</style></head><body><script>atOptions={"key":"${key}","format":"iframe","height":250,"width":300,"params":{}};<\/script><script src="${url}"><\/script></body></html>`);
-    doc.close();
-  })();
-</script>
+<!-- 300x250 -- All platforms, article pages only -->
+<div class="ad-bn-slot">
+  <span class="ad-bn-tag">Advertisement</span>
+  <script is:inline>
+    atOptions = { 'key' : '5a80ce7f116946c73b77837f2eb661f6', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+  </script>
+  <script is:inline src="https://www.highperformanceformat.com/5a80ce7f116946c73b77837f2eb661f6/invoke.js"></script>
+</div>
 
 <style>
   .ad-bn-slot {
@@ -36,10 +15,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 8px;
+    padding: 4px;
     margin: 1rem 0;
     position: relative;
-    overflow: hidden;
   }
 
   .ad-bn-tag {

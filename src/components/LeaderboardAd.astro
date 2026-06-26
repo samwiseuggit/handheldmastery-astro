@@ -1,51 +1,39 @@
-<div id="ad-lb-slot" class="ad-lb-slot">
+<!-- Desktop: 728x90 | Tablet/Mobile: 320x50 -->
+<div class="ad-lb-desktop">
   <span class="ad-lb-tag">Advertisement</span>
+  <script is:inline>
+    atOptions = { 'key' : '4428d04f24f7240a987e9ddf4e0c117c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+  </script>
+  <script is:inline src="https://www.highperformanceformat.com/4428d04f24f7240a987e9ddf4e0c117c/invoke.js"></script>
 </div>
 
-<script is:inline>
-  (function() {
-    var slot = document.getElementById('ad-lb-slot');
-    if (!slot) return;
-
-    var isDesktop = window.matchMedia('(min-width: 768px)').matches;
-    var key = isDesktop ? '4428d04f24f7240a987e9ddf4e0c117c' : 'f65c9006c0a80c200904dc6226fab08c';
-    var height = isDesktop ? 90 : 50;
-    var width = isDesktop ? 728 : 320;
-    var url = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
-    var label = slot.querySelector('.ad-lb-tag');
-
-    if (label) label.textContent = 'Advertisement';
-
-    var iframe = document.createElement('iframe');
-    iframe.style.width = width + 'px';
-    iframe.style.height = height + 'px';
-    iframe.style.border = 'none';
-    iframe.style.overflow = 'hidden';
-    iframe.scrolling = 'no';
-    iframe.loading = 'eager';
-    iframe.title = 'Site advertisement';
-
-    slot.appendChild(iframe);
-
-    var doc = iframe.contentDocument || iframe.contentWindow.document;
-    doc.open();
-    doc.write(`<!DOCTYPE html><html><head><style>body{margin:0;padding:0;overflow:hidden;background:transparent}</style></head><body><script>atOptions={"key":"${key}","format":"iframe","height":${height},"width":${width},"params":{}};<\/script><script src="${url}"><\/script></body></html>`);
-    doc.close();
-  })();
-</script>
+<div class="ad-lb-mobile">
+  <span class="ad-lb-tag">Advertisement</span>
+  <script is:inline>
+    atOptions = { 'key' : 'f65c9006c0a80c200904dc6226fab08c', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+  </script>
+  <script is:inline src="https://www.highperformanceformat.com/f65c9006c0a80c200904dc6226fab08c/invoke.js"></script>
+</div>
 
 <style>
-  .ad-lb-slot {
+  .ad-lb-desktop {
     background: #0f172a;
     border-bottom: 1px solid #1e293b;
-    width: 100%;
     min-height: 90px;
-    padding: 8px 12px;
-    overflow: hidden;
+    display: none;
+    align-items: center;
+    justify-content: center;
     position: relative;
+  }
+
+  .ad-lb-mobile {
+    background: #0f172a;
+    border-bottom: 1px solid #1e293b;
+    min-height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
 
   .ad-lb-tag {
@@ -59,9 +47,13 @@
     z-index: 1;
   }
 
-  @media (max-width: 767px) {
-    .ad-lb-slot {
-      min-height: 50px;
+  @media (min-width: 768px) {
+    .ad-lb-desktop {
+      display: flex;
+    }
+
+    .ad-lb-mobile {
+      display: none !important;
     }
   }
 </style>
