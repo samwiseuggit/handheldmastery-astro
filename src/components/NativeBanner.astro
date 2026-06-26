@@ -41,12 +41,7 @@
 
       var doc = iframe.contentDocument || iframe.contentWindow.document;
       doc.open();
-      doc.write(
-        '<!DOCTYPE html><html><head><style>body{margin:0;padding:0;overflow:hidden;background:transparent}</style></head><body>' +
-        '<script>atOptions={"key":"' + key + '","format":"iframe","height":300,"width":160,"params":{}};<\/script>' +
-        '<script src="' + url + '"><\/script>' +
-        '</body></html>'
-      );
+      doc.write(`<!DOCTYPE html><html><head><style>body{margin:0;padding:0;overflow:hidden;background:transparent}</style></head><body><script>atOptions={"key":"${key}","format":"iframe","height":300,"width":160,"params":{}};<\/script><script src="${url}"><\/script></body></html>`);
       doc.close();
     }
   })();
