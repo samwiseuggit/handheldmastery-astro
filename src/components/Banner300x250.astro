@@ -5,15 +5,11 @@
   (function() {
     var slot = document.getElementById('ad-bn-slot');
     if (!slot) return;
-    var key = '5a80ce7f116946c73b77837f2eb661f6';
-
-    var optScript = document.createElement('script');
-    optScript.textContent = "atOptions = { 'key' : '" + key + "', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };";
-    slot.appendChild(optScript);
-
-    var srcScript = document.createElement('script');
-    srcScript.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
-    slot.appendChild(srcScript);
+    var fragment = document.createRange().createContextualFragment(
+      '<script>atOptions = { \'key\' : \'5a80ce7f116946c73b77837f2eb661f6\', \'format\' : \'iframe\', \'height\' : 250, \'width\' : 300, \'params\' : {} };<\/script>' +
+      '<script src="https://www.highperformanceformat.com/5a80ce7f116946c73b77837f2eb661f6/invoke.js"><\/script>'
+    );
+    slot.appendChild(fragment);
   })();
 </script>
 

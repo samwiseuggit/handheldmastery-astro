@@ -6,22 +6,26 @@
     var slot = document.getElementById('ad-lb-slot');
     if (!slot) return;
     var isDesktop = window.matchMedia('(min-width: 768px)').matches;
-    var key = isDesktop ? '4428d04f24f7240a987e9ddf4e0c117c' : 'f65c9006c0a80c200904dc6226fab08c';
-    var h = isDesktop ? 90 : 50;
-    var w = isDesktop ? 728 : 320;
 
-    slot.style.minHeight = h + 'px';
-
-    var optScript = document.createElement('script');
-    optScript.textContent = "atOptions = { 'key' : '" + key + "', 'format' : 'iframe', 'height' : " + h + ", 'width' : " + w + ", 'params' : {} };";
-    slot.appendChild(optScript);
-
-    var srcScript = document.createElement('script');
-    srcScript.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
-    slot.appendChild(srcScript);
+    if (isDesktop) {
+      var fragment = document.createRange().createContextualFragment(
+        '<script>atOptions = { \'key\' : \'4428d04f24f7240a987e9ddf4e0c117c\', \'format\' : \'iframe\', \'height\' : 90, \'width\' : 728, \'params\' : {} };<\/script>' +
+        '<script src="https://www.highperformanceformat.com/4428d04f24f7240a987e9ddf4e0c117c/invoke.js"><\/script>'
+      );
+      slot.appendChild(fragment);
+    } else {
+      var fragment = document.createRange().createContextualFragment(
+        '<script>atOptions = { \'key\' : \'f65c9006c0a80c200904dc6226fab08c\', \'format\' : \'iframe\', \'height\' : 50, \'width\' : 320, \'params\' : {} };<\/script>' +
+        '<script src="https://www.highperformanceformat.com/f65c9006c0a80c200904dc6226fab08c/invoke.js"><\/script>'
+      );
+      slot.appendChild(fragment);
+    }
   })();
 </script>
 
 <style>
-  .ad-lb-slot { background:#0f172a; border-bottom:1px solid #1e293b; display:flex; align-items:center; justify-content:center; }
+  .ad-lb-slot { background:#0f172a; border-bottom:1px solid #1e293b; min-height:90px; display:flex; align-items:center; justify-content:center; }
+  @media (max-width: 767px) {
+    .ad-lb-slot { min-height:50px; }
+  }
 </style>
