@@ -6,26 +6,33 @@
     var slot = document.getElementById('ad-lb-slot');
     if (!slot) return;
     var isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    var key = isDesktop ? '4428d04f24f7240a987e9ddf4e0c117c' : 'f65c9006c0a80c200904dc6226fab08c';
+    var h = isDesktop ? 90 : 50;
+    var w = isDesktop ? 728 : 320;
+    var url = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
 
-    if (isDesktop) {
-      var fragment = document.createRange().createContextualFragment(
-        '<script>atOptions = { \'key\' : \'4428d04f24f7240a987e9ddf4e0c117c\', \'format\' : \'iframe\', \'height\' : 90, \'width\' : 728, \'params\' : {} };<\/script>' +
-        '<script src="https://www.highperformanceformat.com/4428d04f24f7240a987e9ddf4e0c117c/invoke.js"><\/script>'
-      );
-      slot.appendChild(fragment);
-    } else {
-      var fragment = document.createRange().createContextualFragment(
-        '<script>atOptions = { \'key\' : \'f65c9006c0a80c200904dc6226fab08c\', \'format\' : \'iframe\', \'height\' : 50, \'width\' : 320, \'params\' : {} };<\/script>' +
-        '<script src="https://www.highperformanceformat.com/f65c9006c0a80c200904dc6226fab08c/invoke.js"><\/script>'
-      );
-      slot.appendChild(fragment);
-    }
+    var iframe = document.createElement('iframe');
+    iframe.style.width = w + 'px';
+    iframe.style.height = h + 'px';
+    iframe.style.border = '0';
+    iframe.scrolling = 'no';
+    iframe.frameBorder = '0';
+
+    slot.innerHTML = '';
+    slot.appendChild(iframe);
+
+    var d = iframe.contentWindow.document;
+    d.open();
+    d.write('<html><head><style>*{margin:0;padding:0}</style></head><body>');
+    d.write("<script>atOptions = {'key':'" + key + "','format':'iframe','height':" + h + ",");
+    d.write("'width':" + w + ",'params':{}};<\/script>");
+    d.write("<script src='" + url + "'><\/script>");
+    d.write('</body></html>');
+    d.close();
   })();
 </script>
 
 <style>
   .ad-lb-slot { background:#0f172a; border-bottom:1px solid #1e293b; min-height:90px; display:flex; align-items:center; justify-content:center; }
-  @media (max-width: 767px) {
-    .ad-lb-slot { min-height:50px; }
-  }
+  @media (max-width: 767px) { .ad-lb-slot { min-height:50px; } }
 </style>

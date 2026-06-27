@@ -8,24 +8,44 @@
     var isDesktop = window.matchMedia('(min-width: 768px)').matches;
 
     if (isDesktop) {
-      var fragment = document.createRange().createContextualFragment(
-        '<script async="async" data-cfasync="false" src="https://pl29763344.effectivecpmnetwork.com/8b7696e02f356d6562fb7d33ae23ef75/invoke.js"><\/script>' +
-        '<div id="container-8b7696e02f356d6562fb7d33ae23ef75"></div>'
-      );
-      slot.appendChild(fragment);
+      slot.style.minHeight = '100px';
+
+      var s = document.createElement('script');
+      s.async = true;
+      s.setAttribute('data-cfasync', 'false');
+      s.src = 'https://pl29763344.effectivecpmnetwork.com/8b7696e02f356d6562fb7d33ae23ef75/invoke.js';
+      slot.appendChild(s);
+
+      var container = document.createElement('div');
+      container.id = 'container-8b7696e02f356d6562fb7d33ae23ef75';
+      slot.appendChild(container);
+
     } else {
-      var fragment = document.createRange().createContextualFragment(
-        '<script>atOptions = { \'key\' : \'1a4f783befba01b8d47aede5beabd340\', \'format\' : \'iframe\', \'height\' : 300, \'width\' : 160, \'params\' : {} };<\/script>' +
-        '<script src="https://www.highperformanceformat.com/1a4f783befba01b8d47aede5beabd340/invoke.js"><\/script>'
-      );
-      slot.appendChild(fragment);
+      slot.style.minHeight = '300px';
+      var key = '1a4f783befba01b8d47aede5beabd340';
+      var url = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
+
+      var iframe = document.createElement('iframe');
+      iframe.style.width = '160px';
+      iframe.style.height = '300px';
+      iframe.style.border = '0';
+      iframe.scrolling = 'no';
+      iframe.frameBorder = '0';
+
+      slot.appendChild(iframe);
+
+      var d = iframe.contentWindow.document;
+      d.open();
+      d.write('<html><head><style>*{margin:0;padding:0}</style></head><body>');
+      d.write("<script>atOptions = {'key':'" + key + "','format':'iframe','height':300,'width':160,'params':{}};<\/script>");
+      d.write("<script src='" + url + "'><\/script>");
+      d.write('</body></html>');
+      d.close();
     }
   })();
 </script>
 
 <style>
   .ad-nat-slot { margin:0; padding:16px; background:#0f172a; border-top:1px solid #1e293b; border-bottom:1px solid #1e293b; text-align:center; min-height:100px; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; }
-  @media (max-width: 767px) {
-    .ad-nat-slot { min-height:300px; }
-  }
+  @media (max-width: 767px) { .ad-nat-slot { min-height:300px; } }
 </style>
