@@ -1,38 +1,24 @@
-<!-- Leaderboard: 728x90 desktop / 320x50 mobile -->
-<div id="ad-lb-slot" class="ad-lb-slot"></div>
+<!-- Desktop 728x90 -->
+<div class="ad-lb-desktop">
+  <script is:inline>
+    atOptions = {'key' : '4428d04f24f7240a987e9ddf4e0c117c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {}};
+  </script>
+  <script is:inline src="https://www.highperformanceformat.com/4428d04f24f7240a987e9ddf4e0c117c/invoke.js"></script>
+</div>
 
-<script is:inline>
-  (function() {
-    var slot = document.getElementById('ad-lb-slot');
-    if (!slot) return;
-    var isDesktop = window.matchMedia('(min-width: 768px)').matches;
-    var key = isDesktop ? '4428d04f24f7240a987e9ddf4e0c117c' : 'f65c9006c0a80c200904dc6226fab08c';
-    var h = isDesktop ? 90 : 50;
-    var w = isDesktop ? 728 : 320;
-    var url = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
-
-    var iframe = document.createElement('iframe');
-    iframe.style.width = w + 'px';
-    iframe.style.height = h + 'px';
-    iframe.style.border = '0';
-    iframe.scrolling = 'no';
-    iframe.frameBorder = '0';
-
-    slot.innerHTML = '';
-    slot.appendChild(iframe);
-
-    var d = iframe.contentWindow.document;
-    d.open();
-    d.write('<html><head><style>*{margin:0;padding:0}</style></head><body>');
-    d.write("<script>atOptions = {'key':'" + key + "','format':'iframe','height':" + h + ",");
-    d.write("'width':" + w + ",'params':{}};<\/script>");
-    d.write("<script src='" + url + "'><\/script>");
-    d.write('</body></html>');
-    d.close();
-  })();
-</script>
+<!-- Mobile 320x50 -->
+<div class="ad-lb-mobile">
+  <script is:inline>
+    atOptions = {'key' : 'f65c9006c0a80c200904dc6226fab08c', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {}};
+  </script>
+  <script is:inline src="https://www.highperformanceformat.com/f65c9006c0a80c200904dc6226fab08c/invoke.js"></script>
+</div>
 
 <style>
-  .ad-lb-slot { background:#0f172a; border-bottom:1px solid #1e293b; min-height:90px; display:flex; align-items:center; justify-content:center; }
-  @media (max-width: 767px) { .ad-lb-slot { min-height:50px; } }
+  .ad-lb-desktop { background:#0f172a; border-bottom:1px solid #1e293b; min-height:90px; display:none; align-items:center; justify-content:center; }
+  .ad-lb-mobile { background:#0f172a; border-bottom:1px solid #1e293b; min-height:50px; display:flex; align-items:center; justify-content:center; }
+  @media (min-width: 768px) {
+    .ad-lb-desktop { display:flex; }
+    .ad-lb-mobile { display:none !important; }
+  }
 </style>
