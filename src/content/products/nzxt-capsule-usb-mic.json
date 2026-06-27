@@ -1,0 +1,13 @@
+{
+  "name": "NZXT Capsule USB Mic",
+  "category": "Peripherals",
+  "rating": 4.2,
+  "price": 89,
+  "description": "Compact USB microphone for handheld streamers.",
+  "tags": [
+    "USB-C",
+    "Cardioid pattern",
+    "Plug & play"
+  ],
+  "slug": "nzxt-capsule-usb-mic"
+}

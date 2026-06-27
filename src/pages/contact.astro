@@ -1,0 +1,84 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const faqs = [
+  { q: "How can I suggest a device for review?", a: "Send us a message using the form below or email hello@handheldmastery.com with the device details." },
+  { q: "Do you accept guest articles?", a: "Yes! We're always looking for knowledgeable contributors. Reach out with your article idea and we'll discuss." },
+  { q: "How do I report an outdated price or spec?", a: "Use the contact form and select 'Correction' as the subject. We verify and update within 48 hours." },
+  { q: "Can I advertise on Hand Held Mastery?", a: "Absolutely. We offer display ads, sponsored content, and affiliate partnerships. Contact us for our media kit." },
+];
+---
+
+<Layout title="Contact Us | Hand Held Mastery" active="contact">
+  <div class="max-w-[1280px] mx-auto px-4 py-10">
+    <div class="mb-6 text-center">
+      <h1 class="text-3xl font-extrabold text-text-primary sm:text-4xl">Contact Us</h1>
+      <p class="mt-3 text-lg text-text-muted">Questions, feedback, or collaboration ideas? We'd love to hear from you.</p>
+    </div>
+
+    <img src="/images/hero-gaming.jpg" alt="Gaming setup" class="w-full h-[180px] object-cover rounded-lg mb-8" />
+
+    <div class="grid gap-8 lg:grid-cols-3">
+      <div class="lg:col-span-2">
+        <div class="bg-card-dark border border-border-dark p-6">
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label class="mb-1 block text-sm font-medium text-[#CBD5E1]">Name</label>
+                <input type="text" name="name" required class="w-full border border-[#334155] bg-[#1E293B] px-3 py-2 text-sm text-[#E2E8F0] outline-none focus:border-accent-cyan" placeholder="Your name" />
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-[#CBD5E1]">Email</label>
+                <input type="email" name="email" required class="w-full border border-[#334155] bg-[#1E293B] px-3 py-2 text-sm text-[#E2E8F0] outline-none focus:border-accent-cyan" placeholder="you@example.com" />
+              </div>
+            </div>
+            <div>
+              <label class="mb-1 block text-sm font-medium text-[#CBD5E1]">Subject</label>
+              <select name="subject" required class="w-full border border-[#334155] bg-[#1E293B] px-3 py-2 text-sm text-[#E2E8F0] outline-none focus:border-accent-cyan">
+                <option value="">Select a subject...</option>
+                <option value="general">General Inquiry</option>
+                <option value="partnership">Partnership / Advertising</option>
+                <option value="correction">Correction / Update</option>
+                <option value="review">Device Review Request</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="mb-1 block text-sm font-medium text-[#CBD5E1]">Message</label>
+              <textarea name="message" required rows="5" class="w-full border border-[#334155] bg-[#1E293B] px-3 py-2 text-sm text-[#E2E8F0] outline-none focus:border-accent-cyan resize-y" placeholder="Tell us what's on your mind..."></textarea>
+            </div>
+            <button type="submit" class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-accent-purple hover:bg-accent-purple-hover transition-colors">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-card-dark border border-border-dark p-5">
+          <h3 class="text-base font-bold text-text-primary mb-3">Email</h3>
+          <a href="mailto:hello@handheldmastery.com" class="text-sm text-accent-cyan hover:text-sky-300">hello@handheldmastery.com</a>
+        </div>
+        <div class="bg-card-dark border border-border-dark p-5">
+          <h3 class="text-base font-bold text-text-primary mb-3">Social</h3>
+          <div class="flex flex-col gap-2">
+            <span class="text-sm text-text-muted">@HandHeldMastery</span>
+            <span class="text-sm text-text-muted">Hand Held Mastery</span>
+            <span class="text-sm text-text-muted">handheldmastery.com</span>
+          </div>
+        </div>
+        <div class="bg-card-dark border border-border-dark p-5">
+          <h3 class="text-base font-bold text-text-primary mb-3">FAQ</h3>
+          <div class="space-y-3">
+            {faqs.map((faq) => (
+              <details>
+                <summary class="cursor-pointer text-sm font-medium text-[#CBD5E1] hover:text-accent-cyan">{faq.q}</summary>
+                <p class="mt-1 text-sm leading-relaxed text-text-muted">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

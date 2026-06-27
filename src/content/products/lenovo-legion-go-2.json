@@ -1,0 +1,48 @@
+{
+  "name": "Lenovo Legion Go 2 OLED",
+  "category": "Consoles",
+  "rating": 4.3,
+  "price": 1349,
+  "description": "Biggest OLED screen, detachable controllers, kickstand.",
+  "tags": [
+    "8.8\" OLED 144Hz",
+    "AMD Z2 Extreme",
+    "74Wh battery",
+    "864g"
+  ],
+  "slug": "lenovo-legion-go-2",
+  "specs": [
+    {
+      "label": "Display",
+      "value": "8.8\" OLED, 144Hz"
+    },
+    {
+      "label": "Resolution",
+      "value": "2560 x 1600 (16:10)"
+    },
+    {
+      "label": "Processor",
+      "value": "AMD Z2 Extreme"
+    },
+    {
+      "label": "RAM",
+      "value": "32GB LPDDR5X"
+    },
+    {
+      "label": "Storage",
+      "value": "1TB / 2TB NVMe"
+    },
+    {
+      "label": "Battery",
+      "value": "74Wh (4-7h)"
+    },
+    {
+      "label": "Weight",
+      "value": "864g"
+    },
+    {
+      "label": "OS",
+      "value": "Windows 11"
+    }
+  ]
+}

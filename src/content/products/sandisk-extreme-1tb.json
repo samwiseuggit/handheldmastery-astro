@@ -1,0 +1,13 @@
+{
+  "name": "SanDisk Extreme 1TB",
+  "category": "Storage",
+  "rating": 4.2,
+  "price": 79,
+  "description": "Reliable high-speed microSD for portable gaming.",
+  "tags": [
+    "UHS-I U3",
+    "A2 V30",
+    "190 MB/s"
+  ],
+  "slug": "sandisk-extreme-1tb"
+}

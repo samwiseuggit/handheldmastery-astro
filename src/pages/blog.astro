@@ -1,0 +1,137 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import blogHeader from "/images/blog-header.jpg";
+
+const allArticles = await getCollection("articles");
+allArticles.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
+
+const categoryTabs = ["All", "Versus", "How-To", "Guides", "Blog"];
+
+const getArticleCategory = (cat: string) => {
+  if (cat.includes("vs")) return "Versus";
+  if (cat.includes("How-To")) return "How-To";
+  if (cat.includes("Guide")) return "Guides";
+  return "Blog";
+};
+
+const getCategoryGradient = (cat: string) => {
+  const category = getArticleCategory(cat);
+  switch (category) {
+    case "Versus":
+      return "linear-gradient(135deg, #7C3AED, #2563EB)";
+    case "How-To":
+      return "linear-gradient(135deg, #0891B2, #10B981)";
+    case "Guides":
+      return "linear-gradient(135deg, #D97706, #EF4444)";
+    case "Blog":
+      return "linear-gradient(135deg, #6366F1, #8B5CF6)";
+    default:
+      return "linear-gradient(135deg, #1E293B, #334155)";
+  }
+};
+
+const getCategoryIcon = (cat: string) => {
+  const category = getArticleCategory(cat);
+  switch (category) {
+    case "Versus": return "VS";
+    case "How-To": return "⚡";
+    case "Guides": return "📖";
+    case "Blog": return "📝";
+    default: return "📄";
+  }
+};
+---
+
+<Layout title="Blog | Hand Held Mastery" active="blog">
+  <div class="max-w-[1280px] mx-auto px-4 py-10">
+    <!-- Header Section -->
+    <div class="mb-8 text-center">
+      <h1 class="text-3xl font-extrabold text-text-primary sm:text-4xl">Latest Articles</h1>
+      <p class="mt-3 text-lg text-text-muted">{allArticles.length}+ guides, comparisons, and how-tos for handheld gaming.</p>
+    </div>
+
+    <!-- Hero Banner -->
+    <div class="mb-10 w-full overflow-hidden rounded-xl border border-border-dark">
+      <img
+        src={blogHeader}
+        alt="Person writing a blog post in a cozy home office"
+        class="w-full h-[200px] object-cover"
+        loading="eager"
+      />
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="flex flex-wrap gap-2 mb-8">
+      {categoryTabs.map((tab) => (
+        <button
+          class="cat-tab px-4 py-2 text-sm font-medium border border-border-dark bg-card-dark text-text-muted hover:text-text-primary hover:bg-[#1E293B] transition-all rounded-md"
+          data-tab={tab}
+        >
+          {tab}
+        </button>
+      ))}
+    </div>
+
+    <!-- Article Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="article-grid">
+      {allArticles.map((article) => (
+        <a
+          href={`/articles/${article.slug}`}
+          class="article-card group block bg-card-dark border border-border-dark rounded-xl overflow-hidden hover:border-accent-purple hover:shadow-lg hover:shadow-accent-purple/10 transition-all duration-300"
+          data-tab={getArticleCategory(article.data.category)}
+        >
+          <!-- Gradient Thumbnail -->
+          <div
+            class="w-full h-[120px] flex items-center justify-center relative overflow-hidden"
+            style={`background: ${getCategoryGradient(article.data.category)};`}
+          >
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10"></div>
+            <span class="text-3xl select-none drop-shadow-lg">{getCategoryIcon(article.data.category)}</span>
+            <span
+              class="absolute top-3 right-3 px-2 py-0.5 text-xs font-semibold bg-black/40 text-white rounded-full backdrop-blur-sm"
+            >
+              {getArticleCategory(article.data.category)}
+            </span>
+          </div>
+          <!-- Card Content -->
+          <div class="p-5">
+            <span class="inline-block px-2 py-0.5 text-xs bg-[#0F172A] text-accent-cyan-light mb-3 rounded">
+              {article.data.category}
+            </span>
+            <h3 class="text-sm font-semibold text-text-primary mb-2 line-clamp-2 group-hover:text-accent-purple transition-colors">
+              {article.data.title}
+            </h3>
+            <p class="text-xs text-text-dim mb-3">{article.data.date} &middot; {article.data.readTime}</p>
+            <span class="inline-flex items-center text-xs font-medium text-accent-purple group-hover:translate-x-1 transition-transform">
+              Read article &rarr;
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <script is:inline>
+    const tabs = document.querySelectorAll('.cat-tab');
+    const cards = document.querySelectorAll('.article-card');
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const t = tab.dataset.tab;
+        tabs.forEach((btn) => {
+          btn.style.backgroundColor = btn === tab ? '#7C3AED' : '#111827';
+          btn.style.color = btn === tab ? '#FFFFFF' : '#94A3B8';
+          btn.style.borderColor = btn === tab ? '#7C3AED' : '#1E293B';
+        });
+        cards.forEach((card) => {
+          card.style.display = t === 'All' || card.dataset.tab === t ? 'block' : 'none';
+        });
+      });
+    });
+    if (tabs[0]) {
+      tabs[0].style.backgroundColor = '#7C3AED';
+      tabs[0].style.color = '#FFFFFF';
+      tabs[0].style.borderColor = '#7C3AED';
+    }
+  </script>
+</Layout>

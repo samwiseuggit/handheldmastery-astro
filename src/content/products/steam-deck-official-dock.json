@@ -1,0 +1,13 @@
+{
+  "name": "Steam Deck Official Dock",
+  "category": "Docks & Hubs",
+  "rating": 4.2,
+  "price": 89,
+  "description": "Valve's official dock with DisplayPort 1.4.",
+  "tags": [
+    "DisplayPort 1.4",
+    "HDMI 2.0",
+    "3x USB-A 3.1"
+  ],
+  "slug": "steam-deck-official-dock"
+}

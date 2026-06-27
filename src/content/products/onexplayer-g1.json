@@ -1,0 +1,48 @@
+{
+  "name": "OneXPlayer G1",
+  "category": "Consoles",
+  "rating": 3.9,
+  "price": 1599,
+  "description": "Ultimate 2-in-1 handheld powerhouse.",
+  "tags": [
+    "8.8\" 144Hz",
+    "AMD Z2 Extreme",
+    "74Wh battery",
+    "900g"
+  ],
+  "slug": "onexplayer-g1",
+  "specs": [
+    {
+      "label": "Display",
+      "value": "8.8\" IPS, 144Hz"
+    },
+    {
+      "label": "Resolution",
+      "value": "2560 x 1600 (16:10)"
+    },
+    {
+      "label": "Processor",
+      "value": "AMD Z2 Extreme"
+    },
+    {
+      "label": "RAM",
+      "value": "64GB LPDDR5X"
+    },
+    {
+      "label": "Storage",
+      "value": "2TB / 4TB NVMe"
+    },
+    {
+      "label": "Battery",
+      "value": "74Wh (3-6h)"
+    },
+    {
+      "label": "Weight",
+      "value": "900g"
+    },
+    {
+      "label": "OS",
+      "value": "Windows 11"
+    }
+  ]
+}

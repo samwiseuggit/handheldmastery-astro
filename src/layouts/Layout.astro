@@ -1,0 +1,63 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import LeaderboardAd from "../components/LeaderboardAd.astro";
+import NativeBanner from "../components/NativeBanner.astro";
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  active?: string;
+  ogType?: string;
+  structuredData?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description = "The definitive technical resource for handheld PC gaming consoles, accessories, and optimization guides.",
+  active,
+  ogType = "website",
+  structuredData = [],
+} = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, "https://handheldmastery.com").toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Hand Held Mastery" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    {structuredData.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Navbar active={active} />
+    <LeaderboardAd />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <NativeBanner />
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  body {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    background-color: #0B0F1A;
+    color: #E2E8F0;
+  }
+</style>

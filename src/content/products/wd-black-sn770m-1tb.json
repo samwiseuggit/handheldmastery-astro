@@ -1,0 +1,13 @@
+{
+  "name": "WD Black SN770M 1TB",
+  "category": "Storage",
+  "rating": 4.5,
+  "price": 69,
+  "description": "Great value 2230 SSD for Steam Deck upgrades.",
+  "tags": [
+    "PCIe 4.0",
+    "5150 MB/s",
+    "2230 form factor"
+  ],
+  "slug": "wd-black-sn770m-1tb"
+}
