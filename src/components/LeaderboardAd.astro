@@ -1,11 +1,24 @@
-<!-- Leaderboard: 728x90 -->
-<div class="ad-lb-slot">
+<style>
+  .lb-mobileShow { display: none; }
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .lb-mobileShow { display: inline; }
+  }
+  .lb-mobileHide { display: inline; }
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .lb-mobileHide { display: none; }
+  }
+</style>
+
+<div class="lb-mobileHide">
   <script is:inline data-cfasync="false">
     atOptions = {'key' : '4428d04f24f7240a987e9ddf4e0c117c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {}};
   </script>
   <script is:inline data-cfasync="false" src="https://www.highperformanceformat.com/4428d04f24f7240a987e9ddf4e0c117c/invoke.js"></script>
 </div>
 
-<style>
-  .ad-lb-slot { background:#0f172a; border-bottom:1px solid #1e293b; min-height:90px; display:flex; align-items:center; justify-content:center; }
-</style>
+<div class="lb-mobileShow">
+  <script is:inline data-cfasync="false">
+    atOptions = {'key' : 'f65c9006c0a80c200904dc6226fab08c', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {}};
+  </script>
+  <script is:inline data-cfasync="false" src="https://www.highperformanceformat.com/f65c9006c0a80c200904dc6226fab08c/invoke.js"></script>
+</div>
