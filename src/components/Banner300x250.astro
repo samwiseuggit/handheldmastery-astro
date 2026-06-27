@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!-- 300x250 -- All platforms, article pages only -->
 <div class="ad-bn-slot">
   <span class="ad-bn-tag">Advertisement</span>
@@ -30,4 +31,27 @@
     right: 4px;
     z-index: 1;
   }
+=======
+<!-- Banner 300x250 -->
+<div id="ad-bn-slot" class="ad-bn-slot"></div>
+
+<script is:inline>
+  (function() {
+    var slot = document.getElementById('ad-bn-slot');
+    if (!slot) return;
+    var key = '5a80ce7f116946c73b77837f2eb661f6';
+
+    var optScript = document.createElement('script');
+    optScript.textContent = "atOptions = { 'key' : '" + key + "', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };";
+    slot.appendChild(optScript);
+
+    var srcScript = document.createElement('script');
+    srcScript.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
+    slot.appendChild(srcScript);
+  })();
+</script>
+
+<style>
+  .ad-bn-slot { background:#0f172a; border:1px solid #1e293b; min-height:250px; display:flex; align-items:center; justify-content:center; padding:4px; margin:1rem 0; }
+>>>>>>> Stashed changes
 </style>

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!-- Desktop: Native Banner | Tablet/Mobile: 160x300 -->
 <div class="ad-nat-desktop">
   <span class="ad-nat-tag">Sponsored</span>
@@ -64,4 +65,45 @@
       display: none !important;
     }
   }
+=======
+<!-- Native Banner: native desktop / 160x300 mobile -->
+<div id="ad-nat-slot" class="ad-nat-slot"></div>
+
+<script is:inline>
+  (function() {
+    var slot = document.getElementById('ad-nat-slot');
+    if (!slot) return;
+    var isDesktop = window.matchMedia('(min-width: 768px)').matches;
+
+    if (isDesktop) {
+      slot.style.minHeight = '100px';
+
+      var s = document.createElement('script');
+      s.async = true;
+      s.setAttribute('data-cfasync', 'false');
+      s.src = 'https://pl29763344.effectivecpmnetwork.com/8b7696e02f356d6562fb7d33ae23ef75/invoke.js';
+      slot.appendChild(s);
+
+      var container = document.createElement('div');
+      container.id = 'container-8b7696e02f356d6562fb7d33ae23ef75';
+      slot.appendChild(container);
+
+    } else {
+      slot.style.minHeight = '300px';
+      var key = '1a4f783befba01b8d47aede5beabd340';
+
+      var optScript = document.createElement('script');
+      optScript.textContent = "atOptions = { 'key' : '" + key + "', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };";
+      slot.appendChild(optScript);
+
+      var srcScript = document.createElement('script');
+      srcScript.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
+      slot.appendChild(srcScript);
+    }
+  })();
+</script>
+
+<style>
+  .ad-nat-slot { margin:0; padding:16px; background:#0f172a; border-top:1px solid #1e293b; border-bottom:1px solid #1e293b; text-align:center; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; }
+>>>>>>> Stashed changes
 </style>

@@ -74,6 +74,14 @@ const badge = CATEGORY_LABELS[p.category] || p.category;
       <span>{p.name}</span>
     </nav>
 
+    <!-- Product Image Placeholder -->
+    <div class="w-full h-[220px] rounded-lg mb-6 flex items-center justify-center" style="background: linear-gradient(135deg, #1E293B, #334155);">
+      <div class="text-center">
+        <div class="text-5xl mb-2">&#127918;</div>
+        <span class="text-sm text-text-muted uppercase tracking-wider font-semibold">{badge}</span>
+      </div>
+    </div>
+
     <!-- Product Header -->
     <div class="mb-8">
       <span class="inline-block px-3 py-1 bg-[#0F172A] text-accent-cyan-light text-xs font-semibold uppercase tracking-wider mb-3">
@@ -135,4 +143,9 @@ const badge = CATEGORY_LABELS[p.category] || p.category;
           </a>
         )}
         <a href={`https://www.amazon.com/s?k=${p.name.replace(/ /g, "+")}`} target="_blank" rel="noopener noreferrer" class="inline-block px-5 py-2.5 bg-accent-purple text-white font-semibold text-sm hover:bg-accent-purple-hover transition-colors">
-       
+          Buy on Amazon
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

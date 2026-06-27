@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!-- Desktop: 728x90 | Tablet/Mobile: 320x50 -->
 <div class="ad-lb-desktop">
   <span class="ad-lb-tag">Advertisement</span>
@@ -56,4 +57,32 @@
       display: none !important;
     }
   }
+=======
+<!-- Leaderboard: 728x90 desktop / 320x50 mobile -->
+<div id="ad-lb-slot" class="ad-lb-slot"></div>
+
+<script is:inline>
+  (function() {
+    var slot = document.getElementById('ad-lb-slot');
+    if (!slot) return;
+    var isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    var key = isDesktop ? '4428d04f24f7240a987e9ddf4e0c117c' : 'f65c9006c0a80c200904dc6226fab08c';
+    var h = isDesktop ? 90 : 50;
+    var w = isDesktop ? 728 : 320;
+
+    slot.style.minHeight = h + 'px';
+
+    var optScript = document.createElement('script');
+    optScript.textContent = "atOptions = { 'key' : '" + key + "', 'format' : 'iframe', 'height' : " + h + ", 'width' : " + w + ", 'params' : {} };";
+    slot.appendChild(optScript);
+
+    var srcScript = document.createElement('script');
+    srcScript.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
+    slot.appendChild(srcScript);
+  })();
+</script>
+
+<style>
+  .ad-lb-slot { background:#0f172a; border-bottom:1px solid #1e293b; display:flex; align-items:center; justify-content:center; }
+>>>>>>> Stashed changes
 </style>

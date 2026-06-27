@@ -43,11 +43,11 @@ const consoleShortDesc: Record<string, string> = {
 };
 
 const categories = [
-  { name: "Consoles", count: products.filter((p) => p.data.category === "Consoles").length, slug: "Consoles" },
-  { name: "Power Solutions", count: products.filter((p) => p.data.category === "Power Solutions").length, slug: "Power Solutions" },
-  { name: "Storage", count: products.filter((p) => p.data.category === "Storage").length, slug: "Storage" },
-  { name: "Docks & Hubs", count: products.filter((p) => p.data.category === "Docks & Hubs").length, slug: "Docks & Hubs" },
-  { name: "Peripherals", count: products.filter((p) => p.data.category === "Peripherals").length, slug: "Peripherals" },
+  { name: "Consoles", count: products.filter((p) => p.data.category === "Consoles").length, slug: "Consoles", image: "/images/hero-consoles.jpg" },
+  { name: "Power Solutions", count: products.filter((p) => p.data.category === "Power Solutions").length, slug: "Power Solutions", image: "/images/category-power.jpg" },
+  { name: "Storage", count: products.filter((p) => p.data.category === "Storage").length, slug: "Storage", image: "/images/category-storage.jpg" },
+  { name: "Docks & Hubs", count: products.filter((p) => p.data.category === "Docks & Hubs").length, slug: "Docks & Hubs", image: "/images/category-docks.jpg" },
+  { name: "Peripherals", count: products.filter((p) => p.data.category === "Peripherals").length, slug: "Peripherals", image: "/images/category-peripherals.jpg" },
 ];
 
 const tools = [
@@ -73,33 +73,46 @@ const articleShortDescs: Record<string, string> = {
   <div class="max-w-[1200px] mx-auto px-4 py-10">
 
     <!-- Hero -->
-    <div class="py-10 text-center">
-      <h1 class="mb-3">
-        <span class="block text-4xl sm:text-5xl font-bold bg-gradient-to-r from-accent-purple via-[#A78BFA] to-accent-cyan bg-clip-text text-transparent">
-          Hand Held
-        </span>
-        <span class="block text-4xl sm:text-5xl font-extrabold text-text-primary mt-1">
-          Mastery
-        </span>
-      </h1>
-      <p class="text-text-muted text-base max-w-xl mx-auto mb-8">
-        The definitive technical resource for handheld gaming consoles,<br class="hidden sm:block" />
-        accessories, and optimization. 50+ products and 30 in-depth articles.
-      </p>
-      <div class="flex flex-wrap items-center justify-center gap-3">
-        <a
-          href="/compare"
-          class="inline-flex items-center gap-2 bg-accent-purple hover:bg-accent-purple-hover text-white font-semibold px-6 py-2.5 text-sm transition-colors"
-        >
-          Compare Products <span>→</span>
-        </a>
-        <a
-          href="/blog"
-          class="inline-flex items-center gap-2 bg-card-dark border border-border-dark hover:border-accent-purple text-text-muted hover:text-text-primary font-medium px-6 py-2.5 text-sm transition-colors"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-          Read 30 Articles
-        </a>
+    <div class="relative rounded-lg overflow-hidden mb-10">
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <img
+          src="/images/hero-consoles.jpg"
+          alt="Three handheld gaming consoles on a dark surface with neon accent lighting"
+          class="w-full h-full object-cover"
+        />
+        <!-- Dark gradient overlay for text readability -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0B0D14] via-[#0B0D14]/85 to-[#0B0D14]/60"></div>
+      </div>
+      <!-- Hero Content -->
+      <div class="relative z-10 py-16 text-center px-4">
+        <h1 class="mb-3">
+          <span class="block text-4xl sm:text-5xl font-bold bg-gradient-to-r from-accent-purple via-[#A78BFA] to-accent-cyan bg-clip-text text-transparent">
+            Hand Held
+          </span>
+          <span class="block text-4xl sm:text-5xl font-extrabold text-text-primary mt-1">
+            Mastery
+          </span>
+        </h1>
+        <p class="text-text-muted text-base max-w-xl mx-auto mb-8">
+          The definitive technical resource for handheld gaming consoles,<br class="hidden sm:block" />
+          accessories, and optimization. 50+ products and 30 in-depth articles.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="/compare"
+            class="inline-flex items-center gap-2 bg-accent-purple hover:bg-accent-purple-hover text-white font-semibold px-6 py-2.5 text-sm transition-colors"
+          >
+            Compare Products <span>→</span>
+          </a>
+          <a
+            href="/blog"
+            class="inline-flex items-center gap-2 bg-card-dark/80 backdrop-blur-sm border border-border-dark hover:border-accent-purple text-text-muted hover:text-text-primary font-medium px-6 py-2.5 text-sm transition-colors"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+            Read 30 Articles
+          </a>
+        </div>
       </div>
     </div>
 
@@ -128,7 +141,19 @@ const articleShortDescs: Record<string, string> = {
     </div>
 
     <!-- Featured Consoles (2026) -->
-    <h2 class="text-lg font-bold text-text-primary mb-4">Featured Consoles (2026)</h2>
+    <div class="relative rounded-lg overflow-hidden mb-4">
+      <div class="absolute inset-0 z-0 opacity-20">
+        <img
+          src="/images/hero-consoles.jpg"
+          alt="Decorative background of handheld gaming consoles for the featured section"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0B0D14] via-[#0B0D14]/90 to-[#0B0D14]"></div>
+      </div>
+      <div class="relative z-10 py-4 px-4">
+        <h2 class="text-lg font-bold text-text-primary">Featured Consoles (2026)</h2>
+      </div>
+    </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-14">
       {featuredConsoles.map((p) => (
         <a
@@ -153,22 +178,64 @@ const articleShortDescs: Record<string, string> = {
     <!-- Browse by Category -->
     <h2 class="text-lg font-bold text-text-primary mb-4">Browse by Category</h2>
     <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-14">
-      {categories.map((cat, i) => (
+      {categories.map((cat) => (
         <a
           href={`/compare?cat=${encodeURIComponent(cat.slug)}`}
-          class="bg-card-dark border border-border-dark p-5 text-center hover:border-accent-purple transition-all group"
+          class="bg-card-dark border border-border-dark overflow-hidden hover:border-accent-purple transition-all group"
         >
-          <div class={`w-10 h-10 mx-auto mb-3 rounded-full flex items-center justify-center ${["bg-[#1E293B] text-accent-purple", "bg-[#1E293B] text-accent-cyan", "bg-[#1E293B] text-accent-cyan-light", "bg-[#1E293B] text-accent-purple", "bg-[#1E293B] text-accent-cyan"][i]}`}>
-            {i === 0 && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="16" rx="2"/><path d="M12 8v4"/><circle cx="12" cy="15" r="1"/></svg>}
-            {i === 1 && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>}
-            {i === 2 && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>}
-            {i === 3 && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>}
-            {i === 4 && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>}
+          <!-- Category Image -->
+          <div class="h-28 overflow-hidden">
+            <img
+              src={cat.image}
+              alt={`${cat.name} category - browse ${cat.count} handheld gaming products`}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
           </div>
-          <h3 class="text-sm font-semibold text-text-primary">{cat.name}</h3>
-          <p class="text-xs text-text-dim mt-1">{cat.count} products</p>
+          <!-- Category Info -->
+          <div class="p-4 text-center">
+            <h3 class="text-sm font-semibold text-text-primary">{cat.name}</h3>
+            <p class="text-xs text-text-dim mt-1">{cat.count} products</p>
+          </div>
         </a>
       ))}
+    </div>
+
+    <!-- Why Handheld Gaming? -->
+    <div class="relative rounded-lg overflow-hidden mb-14">
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <img
+          src="/images/hero-gaming.jpg"
+          alt="Person gaming on a train with a handheld console, showcasing portable gaming lifestyle"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0B0D14]/95 via-[#0B0D14]/75 to-[#0B0D14]/40"></div>
+      </div>
+      <!-- Content -->
+      <div class="relative z-10 py-16 px-6 sm:px-12">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text-primary mb-4">
+            Take Your Games <span class="bg-gradient-to-r from-accent-purple to-accent-cyan bg-clip-text text-transparent">Anywhere</span>
+          </h2>
+          <p class="text-text-muted text-base leading-relaxed mb-6">
+            Handheld PCs deliver desktop-quality gaming in a portable form factor. Play AAA titles on the train, indie gems in bed, or competitive multiplayer at a coffee shop.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+              <span class="text-sm text-text-muted">AAA Gaming</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+              <span class="text-sm text-text-muted">Full PC Library</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent-cyan-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+              <span class="text-sm text-text-muted">Play Anywhere</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Latest Articles -->
