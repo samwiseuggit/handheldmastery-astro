@@ -1,6 +1,6 @@
 ---
 title: "Best Power Banks for Handheld Gaming PCs in 2026"
-seoTitle: "Best Power Bank for Handheld Gaming PC in 2026"
+seoTitle: "Best Power Bank for Handheld Gaming PC in 2026: Top Picks"
 category: "Guide"
 date: "2026-07-01"
 readTime: "14 min read"
