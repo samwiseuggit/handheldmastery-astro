@@ -9,10 +9,7 @@ astro-site/
 ├── src/
 │   ├── components/          # Reusable Astro components
 │   │   ├── Navbar.astro
-│   │   ├── Footer.astro
-│   │   ├── LeaderboardAd.astro
-│   │   ├── Banner300x250.astro
-│   │   └── NativeBanner.astro
+│   │   └── Footer.astro
 │   ├── layouts/
 │   │   └── Layout.astro     # Base page layout
 │   ├── pages/               # File-based routing
@@ -97,7 +94,7 @@ No environment variables are required for basic operation. The site builds entir
 - [ ] Test navigation links (no 404s)
 - [ ] Verify article pages render (`/articles/how-to-install-emudeck`)
 - [ ] Verify product pages render (`/compare/steam-deck-oled`)
-- [ ] Confirm Adsterra ads load (leaderboard, native banner)
+- [ ] Confirm security headers are active and no unwanted redirects occur
 - [ ] Verify contact form submits to Formspree
 - [ ] Test mobile responsiveness
 - [ ] Run Lighthouse audit (target: 90+ all categories)

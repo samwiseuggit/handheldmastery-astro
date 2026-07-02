@@ -1,8 +1,6 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import LeaderboardAd from "../components/LeaderboardAd.astro";
-import NativeBanner from "../components/NativeBanner.astro";
 import '../styles/global.css';
 
 interface Props {
@@ -21,6 +19,21 @@ const {
   structuredData = [],
 } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, "https://handheldmastery.com").toString();
+const csp = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'none'",
+  "frame-src 'none'",
+  "connect-src 'self' https://formspree.io",
+  "worker-src 'self'",
+  "manifest-src 'self'",
+  "img-src 'self' data: https:",
+  "font-src 'self' https://fonts.gstatic.com data:",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "script-src 'self' 'unsafe-inline'",
+  "form-action 'self' https://formspree.io",
+].join("; ");
 ---
 
 <!doctype html>
@@ -29,6 +42,7 @@ const canonicalUrl = new URL(Astro.url.pathname, "https://handheldmastery.com").
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta http-equiv="Content-Security-Policy" content={csp} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta property="og:title" content={title} />
@@ -42,14 +56,47 @@ const canonicalUrl = new URL(Astro.url.pathname, "https://handheldmastery.com").
       <script type="application/ld+json" set:html={JSON.stringify(item)} />
     ))}
     <title>{title}</title>
+    <script is:inline>
+      (function() {
+        if (!('serviceWorker' in navigator)) return;
+
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.getRegistrations()
+            .then(function(registrations) {
+              return Promise.all(registrations.map(function(registration) {
+                var scriptUrl =
+                  (registration.active && registration.active.scriptURL) ||
+                  (registration.waiting && registration.waiting.scriptURL) ||
+                  (registration.installing && registration.installing.scriptURL) ||
+                  '';
+
+                if (!scriptUrl || !scriptUrl.endsWith('/sw.js')) {
+                  return false;
+                }
+
+                return registration.unregister();
+              }));
+            })
+            .then(function() {
+              if (!('caches' in window)) return;
+              return caches.keys().then(function(keys) {
+                return Promise.all(keys.map(function(key) {
+                  return caches.delete(key);
+                }));
+              });
+            })
+            .catch(function() {
+              // Ignore cleanup failures; the benign service worker also self-unregisters.
+            });
+        });
+      })();
+    </script>
   </head>
   <body class="min-h-screen flex flex-col">
     <Navbar active={active} />
-    <LeaderboardAd />
     <main class="flex-1">
       <slot />
     </main>
-    <NativeBanner />
     <Footer />
   </body>
 </html>
