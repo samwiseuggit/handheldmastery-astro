@@ -19,7 +19,7 @@ const {
   structuredData = [],
 } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, "https://handheldmastery.com").toString();
-const googleAnalyticsId = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID;
+const googleAnalyticsId = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID || "G-Q1DZ6TCWDH";
 const csp = [
   "default-src 'self'",
   "base-uri 'self'",

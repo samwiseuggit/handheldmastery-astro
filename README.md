@@ -129,7 +129,7 @@ docker-compose up --build
 
 ## Analytics
 
-To enable Google Analytics 4, add the site's measurement ID to `.env` or your deployment environment:
+Google Analytics 4 is configured with the Hand Held Mastery measurement ID. To use a different property in a non-production deployment, add its measurement ID to `.env` or the deployment environment:
 
 ```bash
 PUBLIC_GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
