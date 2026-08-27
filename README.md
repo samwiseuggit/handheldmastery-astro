@@ -127,6 +127,16 @@ docker-compose up --build
 - **Server**: Nginx (Docker)
 - **Hosting**: Coolify on Contabo VPS
 
+## Analytics
+
+To enable Google Analytics 4, add the site's measurement ID to `.env` or your deployment environment:
+
+```bash
+PUBLIC_GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
+```
+
+The analytics script is omitted entirely when this value is unset.
+
 ## License
 
 Proprietary - Hand Held Mastery
