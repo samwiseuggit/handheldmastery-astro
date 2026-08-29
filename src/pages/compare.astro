@@ -71,7 +71,7 @@ const initialRows = rowsFor(initialLeft, initialRight);
   </div>
 
   <script define:vars={{ products }}>
-    const bySlug = new Map(products.map((product) => [product.slug, product]);
+    const bySlug = new Map(products.map((product) => [product.slug, product]));
     const leftSelect = document.querySelector('#compare-left');
     const rightSelect = document.querySelector('#compare-right');
     const rowsElement = document.querySelector('#comparison-rows');
