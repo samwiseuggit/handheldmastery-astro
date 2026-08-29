@@ -314,15 +314,3 @@ faq:
 <li>Hall effect sticks and premium control hardware justify the price premium for you</li>
 </ul>
 <p>Neither device is objectively &quot;better.&quot; The Steam Deck OLED is the smarter purchase for most buyers — it delivers 85% of the Ally X&#39;s practical gaming experience at 55% of the cost, wrapped in a superior display. The ROG Ally X is the enthusiast&#39;s choice, the device you buy when you&#39;ve already accepted that handheld PC gaming is your primary hobby and you want the absolute maximum performance Windows can deliver. Choose the Deck for value and polish. Choose the Ally X for power and flexibility.</p>
-
-<h2>Frequently Asked Questions</h2>
-<h3>Which is better for most people, Steam Deck OLED or ROG Ally X?</h3>
-<p>The Steam Deck OLED is the better fit for most buyers who primarily use Steam and want a lower-friction, console-like handheld. The ROG Ally X is the stronger choice when Windows compatibility, Game Pass, and higher performance matter more than price.</p>
-<h3>Is the ROG Ally X worth more than the Steam Deck OLED?</h3>
-<p>It can be worth the premium for buyers who need Windows launchers, Game Pass, higher power limits, and the Ally X's larger battery. It is not automatically better value for a Steam-first library.</p>
-<h3>Which has the better display?</h3>
-<p>The Steam Deck OLED is the better choice for HDR, contrast, and color. The ROG Ally X offers a sharper 1080p panel with 120Hz VRR, which can suit fast-paced games.</p>
-<h3>Can the Steam Deck OLED run Game Pass and Epic Games Store games?</h3>
-<p>SteamOS can run some non-Steam services through workarounds, but Windows on the ROG Ally X is the more direct option for PC Game Pass, Epic Games Store, and other Windows launchers.</p>
-<h3>Which is better for travel?</h3>
-<p>The Steam Deck OLED is the better value-focused travel option, while the ROG Ally X is the better Windows travel option if its larger battery and broader launcher support justify the added cost.</p>
