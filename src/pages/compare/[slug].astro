@@ -55,6 +55,19 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props;
 const p = product.data;
+const allProducts = await getCollection("products");
+const alternatives = allProducts
+  .map((candidate) => candidate.data)
+  .filter((candidate) => candidate.category === p.category && candidate.slug !== p.slug)
+  .sort((a, b) => b.rating - a.rating || a.price - b.price);
+const categoryProducts = alternatives.concat(p);
+const averagePrice = categoryProducts.reduce((total, candidate) => total + candidate.price, 0) / categoryProducts.length;
+const priceDifference = p.price - averagePrice;
+const topRated = categoryProducts.reduce((best, candidate) => candidate.rating > best.rating ? candidate : best, p);
+const primaryAlternative = alternatives[0];
+const priceContext = Math.abs(priceDifference) < 1
+  ? "priced right around the category average"
+  : `${priceDifference > 0 ? "priced" : "costing"} $${Math.abs(Math.round(priceDifference)).toLocaleString("en-US")} ${priceDifference > 0 ? "above" : "below"} the category average`;
 
 const stars = "\u2605".repeat(Math.floor(p.rating)) + (p.rating % 1 >= 0.3 ? "\u00BD" : "") + "\u2606".repeat(5 - Math.floor(p.rating) - (p.rating % 1 >= 0.3 ? 1 : 0));
 
@@ -131,6 +144,25 @@ const badge = CATEGORY_LABELS[p.category] || p.category;
         <li>Rated {p.rating}/5.0 by the community</li>
       </ul>
     </div>
+
+    <section class="mb-8 border border-border-dark bg-card-dark p-5 sm:p-6" aria-labelledby="buying-context-title">
+      <p class="text-xs font-semibold tracking-[0.18em] uppercase text-accent-cyan-light">Buying context</p>
+      <h2 id="buying-context-title" class="mt-1 text-xl font-bold text-text-primary">Where {p.name} fits in the {p.category.toLowerCase()} lineup</h2>
+      <p class="mt-3 leading-relaxed text-text-muted">At ${p.price.toLocaleString("en-US")}, the {p.name} is {priceContext}. Its {p.rating}/5 HHM rating {p.slug === topRated.slug ? "is the strongest score in this category" : `sits alongside ${topRated.name}, the current category leader at ${topRated.rating}/5`}.</p>
+      <div class="mt-5 grid gap-3 sm:grid-cols-3">
+        <div class="border border-border-dark bg-[#0B0F1A] p-4"><p class="text-xs uppercase tracking-wider text-text-dim">Best fit signals</p><p class="mt-2 text-sm font-medium leading-relaxed text-text-secondary">{p.tags.slice(0, 2).join(" · ")}</p></div>
+        <div class="border border-border-dark bg-[#0B0F1A] p-4"><p class="text-xs uppercase tracking-wider text-text-dim">Price position</p><p class="mt-2 text-sm font-medium text-text-secondary">{priceContext}</p></div>
+        <div class="border border-border-dark bg-[#0B0F1A] p-4"><p class="text-xs uppercase tracking-wider text-text-dim">Alternatives</p><p class="mt-2 text-sm font-medium text-text-secondary">{alternatives.length} comparable {alternatives.length === 1 ? "option" : "options"} in our database</p></div>
+      </div>
+      {primaryAlternative && <a href={`/compare?left=${p.slug}&right=${primaryAlternative.slug}`} class="mt-5 inline-block border border-accent-cyan px-5 py-2.5 text-sm font-semibold text-accent-cyan hover:bg-accent-cyan hover:text-[#0B0F1A] transition-colors">Compare with {primaryAlternative.name}</a>}
+    </section>
+
+    {alternatives.length > 0 && (
+      <section class="mb-8" aria-labelledby="alternatives-title">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between mb-4 pb-2 border-b border-border-dark"><div><h2 id="alternatives-title" class="text-xl font-bold text-text-primary">Compare with alternatives</h2><p class="mt-1 text-sm text-text-dim">Same-category options, ordered by HHM rating and price.</p></div><a href="/compare" class="text-sm font-semibold text-accent-cyan hover:text-accent-cyan-light">Open comparison workbench</a></div>
+        <div class="grid gap-3 md:grid-cols-3">{alternatives.slice(0, 3).map((alternative) => <article class="border border-border-dark bg-card-dark p-4"><p class="text-xs font-semibold tracking-wider uppercase text-accent-cyan-light">{alternative.rating}/5 HHM</p><h3 class="mt-2 font-semibold text-text-primary">{alternative.name}</h3><p class="mt-2 text-sm text-text-muted">${alternative.price.toLocaleString("en-US")} · {alternative.tags.slice(0, 2).join(" · ")}</p><a href={`/compare?left=${p.slug}&right=${alternative.slug}`} class="mt-4 inline-block text-sm font-semibold text-accent-cyan hover:text-accent-cyan-light">Compare side by side <span aria-hidden="true">→</span></a></article>)}</div>
+      </section>
+    )}
 
     <!-- Where to Buy -->
     <div class="mb-8">

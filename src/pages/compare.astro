@@ -2,136 +2,114 @@
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
-const allProducts = await getCollection("products");
-
-const categories = [
-  "All",
-  "Consoles",
-  "Power Solutions",
-  "Storage",
-  "Docks & Hubs",
-  "Peripherals",
-];
-
-const categoryLabels: Record<string, string> = {
-  Consoles: "CONSOLE",
-  "Power Solutions": "POWER SOLUTION",
-  Storage: "STORAGE",
-  "Docks & Hubs": "DOCK & HUB",
-  Peripherals: "PERIPHERAL",
+type Product = {
+  name: string;
+  category: string;
+  rating: number;
+  price: number;
+  description: string;
+  tags: string[];
+  slug: string;
+  specs?: { label: string; value: string }[];
 };
 
-const subCategoryLabels: Record<string, string> = {
-  "Baseus 65W GaN3 Pro": "WALL CHARGER",
-  "Anker Nano II 65W": "WALL CHARGER",
-  "UGREEN Nexode 100W": "WALL CHARGER",
-  "INIU 100W 25000mAh": "POWER BANK",
-  "Anker 737 Power Bank 24000mAh": "POWER BANK",
-  "Shargeek Storm 2": "POWER BANK",
-  "JSAUX 100W Right-Angle Cable": "CABLE",
-  "Samsung 990 EVO Plus 1TB": "SSD",
-  "Samsung 990 EVO Plus 2TB": "SSD",
-  "WD Black SN770M 1TB": "SSD",
-  "Sabrent Rocket 2230 1TB": "SSD",
-  "Samsung Pro Ultimate 1TB": "MICROSD",
-  "SanDisk Extreme 1TB": "MICROSD",
-  "Lexar Play 1TB": "MICROSD",
-  "Samsung T7 Shield 1TB": "EXTERNAL SSD",
-  "SanDisk Extreme 512GB": "MICROSD",
-  "Samsung 990 EVO Plus 4TB": "SSD",
-  "JSAUX RGB Docking Station": "DOCK",
-  "Steam Deck Official Dock": "DOCK",
-  "Anker 6-in-1 USB-C Hub": "PORTABLE HUB",
-  "Syntech 6-in-1 Docking Station": "DOCK",
-  "UGREEN Revodok Pro": "DOCK",
-  "Baseus 17-in-1 Docking Station": "DOCK",
-  "JSAUX HB0603 6-in-1 Hub": "HUB",
-  "ivoler 6-in-1 Dock": "DOCK",
-  "Dell D6000 Universal Dock": "DOCK",
-  "CalDigit TS4 Thunderbolt 4 Dock": "DOCK",
-  "JSAUX Anti-Glare Screen Protector": "SCREEN PROTECTOR",
-  "amFilm OneTouch Glass": "SCREEN PROTECTOR",
-  "Skull & Co. GripCase": "CASE & GRIP",
-  "JSAUX ModCase": "CASE & GRIP",
-  "GuliKit Hall Effect Joystick": "JOYSTICK REPLACEMENT",
-  "8BitDo Ultimate 2C": "EXTERNAL CONTROLLER",
-  "JSVER Carrying Case": "CARRYING CASE",
-  "Killswitch Case & Grip": "CASE & GRIP",
-  "DeltaHub Carpio 2.0": "ERGONOMIC ACCESSORY",
-  "Steam Controller 2": "EXTERNAL CONTROLLER",
-  "Xbox Wireless Controller": "EXTERNAL CONTROLLER",
-  "PS5 DualSense Edge": "EXTERNAL CONTROLLER",
-  "NZXT Capsule USB Mic": "AUDIO ACCESSORY",
-};
+const products = (await getCollection("products")).map((entry) => entry.data as Product);
+const consoles = products.filter((product) => product.category === "Consoles");
+const initialLeft = consoles[0] ?? products[0];
+const initialRight = consoles[1] ?? products[1] ?? initialLeft;
+const categories = ["All", "Consoles", "Power Solutions", "Storage", "Docks & Hubs", "Peripherals"];
+const formatPrice = (price: number) => `$${price.toLocaleString("en-US")}`;
+
+function rowsFor(left: Product, right: Product) {
+  const labels = [...new Set([...(left.specs ?? []).map((spec) => spec.label), ...(right.specs ?? []).map((spec) => spec.label)])];
+  return [
+    ["Category", left.category, right.category],
+    ["Price", formatPrice(left.price), formatPrice(right.price)],
+    ["HHM rating", `${left.rating}/5`, `${right.rating}/5`],
+    ["Key features", left.tags.join(" · "), right.tags.join(" · ")],
+    ...labels.map((label) => [label, left.specs?.find((spec) => spec.label === label)?.value ?? "—", right.specs?.find((spec) => spec.label === label)?.value ?? "—"]),
+  ];
+}
+
+const initialRows = rowsFor(initialLeft, initialRight);
 ---
 
-<Layout title="Product Comparison | Hand Held Mastery" active="compare">
-  <div class="max-w-[1280px] mx-auto px-4 py-10">
-    <div class="mb-6 text-center">
-      <h1 class="text-3xl font-extrabold text-text-primary sm:text-4xl">Product Comparison</h1>
-      <p class="mt-3 text-lg text-text-muted">Compare {allProducts.length}+ handheld gaming products.</p>
-    </div>
+<Layout title="Compare Handheld Gaming Gear | Hand Held Mastery" description="Compare handheld gaming PCs, accessories, docks, storage, and power gear with practical buying context." active="compare">
+  <div class="max-w-[1280px] mx-auto px-4 py-10 sm:py-14">
+    <header class="max-w-3xl mb-10">
+      <p class="text-xs font-semibold tracking-[0.22em] uppercase text-accent-cyan-light mb-3">Comparison workbench</p>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-text-primary">Compare by your setup, not just the spec sheet.</h1>
+      <p class="mt-4 text-lg leading-relaxed text-text-muted">Choose two products in the same category to see their price, core features, and available technical specifications side by side.</p>
+    </header>
 
-    <img src="/images/hero-consoles.jpg" alt="Handheld gaming consoles collection" class="w-full h-[180px] object-cover rounded-lg mb-8" />
+    <section class="mb-14 border border-border-dark bg-card-dark" aria-labelledby="comparison-title">
+      <div class="p-5 sm:p-7 border-b border-border-dark">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div><p class="text-xs font-semibold tracking-[0.18em] uppercase text-accent-cyan-light">Side-by-side</p><h2 id="comparison-title" class="mt-1 text-2xl font-bold text-text-primary">Make a direct comparison</h2></div>
+          <p id="comparison-category" class="text-sm text-text-dim">{initialLeft.category}</p>
+        </div>
+        <div class="mt-6 grid gap-4 lg:grid-cols-[1fr_auto_1fr] lg:items-end">
+          <label class="block"><span class="mb-2 block text-xs font-semibold tracking-wider uppercase text-text-muted">First product</span><select id="compare-left" class="w-full border border-border-dark bg-[#0B0F1A] px-4 py-3 text-text-primary focus:border-accent-cyan focus:outline-none">{products.map((product) => <option value={product.slug} selected={product.slug === initialLeft.slug}>{product.name}</option>)}</select></label>
+          <button id="swap-products" class="border border-border-dark px-4 py-3 text-sm font-semibold text-text-secondary hover:border-accent-cyan hover:text-accent-cyan transition-colors" type="button">Swap</button>
+          <label class="block"><span class="mb-2 block text-xs font-semibold tracking-wider uppercase text-text-muted">Second product</span><select id="compare-right" class="w-full border border-border-dark bg-[#0B0F1A] px-4 py-3 text-text-primary focus:border-accent-cyan focus:outline-none">{products.filter((product) => product.category === initialLeft.category && product.slug !== initialLeft.slug).map((product) => <option value={product.slug} selected={product.slug === initialRight.slug}>{product.name}</option>)}</select></label>
+        </div>
+      </div>
 
-    <!-- Category Filters -->
-    <div class="flex flex-wrap gap-2 mb-4" id="category-filters">
-      {categories.map((cat) => (
-        <button
-          class="filter-btn px-4 py-2 text-sm font-medium border border-border-dark bg-card-dark text-text-muted hover:text-text-primary hover:bg-[#1E293B] transition-all"
-          data-category={cat}
-        >
-          {cat} ({cat === "All" ? allProducts.length : allProducts.filter((p) => p.data.category === cat).length})
-        </button>
-      ))}
-    </div>
+      <div class="grid border-b border-border-dark lg:grid-cols-2">
+        <article class="p-5 sm:p-7 lg:border-r border-border-dark"><p class="text-xs font-semibold tracking-[0.18em] uppercase text-text-dim">Pick this one if</p><h3 id="left-choice-title" class="mt-2 text-xl font-bold text-text-primary">{initialLeft.name}</h3><p id="left-choice" class="mt-3 leading-relaxed text-text-muted">You prioritize {initialLeft.tags.slice(0, 2).join(" and ").toLowerCase()} in this category.</p><a id="left-product-link" class="mt-4 inline-block text-sm font-semibold text-accent-cyan hover:text-accent-cyan-light" href={`/compare/${initialLeft.slug}`}>Read product guide</a></article>
+        <article class="p-5 sm:p-7"><p class="text-xs font-semibold tracking-[0.18em] uppercase text-text-dim">Pick this one if</p><h3 id="right-choice-title" class="mt-2 text-xl font-bold text-text-primary">{initialRight.name}</h3><p id="right-choice" class="mt-3 leading-relaxed text-text-muted">You prioritize {initialRight.tags.slice(0, 2).join(" and ").toLowerCase()} in this category.</p><a id="right-product-link" class="mt-4 inline-block text-sm font-semibold text-accent-cyan hover:text-accent-cyan-light" href={`/compare/${initialRight.slug}`}>Read product guide</a></article>
+      </div>
 
-    <!-- Product Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="product-grid">
-      {allProducts.map((p) => (
-        <a
-          href={`/compare/${p.data.slug}`}
-          class="product-card block bg-card-dark border border-border-dark p-5 hover:border-accent-purple transition-all hover:-translate-y-0.5"
-          data-category={p.data.category}
-        >
-          <span class="text-xs font-semibold tracking-wider uppercase text-accent-cyan-light mb-2 block">
-            {subCategoryLabels[p.data.name] || categoryLabels[p.data.category] || p.data.category.toUpperCase()}
-          </span>
-          <h3 class="text-base font-semibold text-text-primary mb-2">{p.data.name}</h3>
-          <p class="text-xl font-bold text-text-primary mb-2">${p.data.price}</p>
-          <p class="text-sm text-text-dim leading-relaxed mb-3">{p.data.description}</p>
-          <div class="flex flex-wrap gap-2">
-            {p.data.tags.map((tag) => (
-              <span class="text-xs px-2 py-1 bg-[#0F172A] text-text-muted">{tag}</span>
-            ))}
-          </div>
-        </a>
-      ))}
-    </div>
+      <div class="overflow-x-auto"><table class="w-full min-w-[720px] text-sm"><thead class="bg-[#0B0F1A] text-left"><tr><th class="w-[22%] px-5 py-4 font-semibold text-text-muted">What matters</th><th id="left-header" class="w-[39%] px-5 py-4 font-semibold text-text-primary">{initialLeft.name}</th><th id="right-header" class="w-[39%] px-5 py-4 font-semibold text-text-primary">{initialRight.name}</th></tr></thead><tbody id="comparison-rows">{initialRows.map(([label, leftValue, rightValue]) => <tr class="border-t border-border-dark align-top"><th class="px-5 py-4 text-left font-medium text-text-secondary">{label}</th><td class="px-5 py-4 text-text-muted">{leftValue}</td><td class="px-5 py-4 text-text-muted">{rightValue}</td></tr>)}</tbody></table></div>
+    </section>
+
+    <section aria-labelledby="catalog-title">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-5"><div><p class="text-xs font-semibold tracking-[0.18em] uppercase text-accent-cyan-light">Browse by setup</p><h2 id="catalog-title" class="mt-1 text-2xl font-bold text-text-primary">Find the next product to compare</h2></div><p class="text-sm text-text-dim">Open a product guide to compare it with same-category alternatives.</p></div>
+      <div class="flex flex-wrap gap-2 mb-6" id="category-filters">{categories.map((category, index) => <button class:list={["filter-btn", "px-4", "py-2", "text-sm", "font-medium", "border", "transition-colors", index === 0 ? "border-accent-purple bg-accent-purple text-white" : "border-border-dark bg-card-dark text-text-muted hover:border-accent-cyan hover:text-text-primary"]} data-category={category} type="button">{category} ({category === "All" ? products.length : products.filter((product) => product.category === category).length})</button>)}</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="product-grid">{products.map((product) => <a href={`/compare/${product.slug}`} class="product-card group block border border-border-dark bg-card-dark p-5 transition-all hover:-translate-y-0.5 hover:border-accent-cyan" data-category={product.category}><span class="text-xs font-semibold tracking-wider uppercase text-accent-cyan-light">{product.category}</span><h3 class="mt-3 text-lg font-semibold text-text-primary group-hover:text-accent-cyan transition-colors">{product.name}</h3><div class="mt-3 flex items-baseline justify-between gap-4"><p class="text-xl font-bold text-text-primary">{formatPrice(product.price)}</p><p class="text-sm text-star-yellow">{product.rating}/5 HHM</p></div><p class="mt-3 text-sm leading-relaxed text-text-dim">{product.description}</p><p class="mt-4 text-sm font-semibold text-accent-cyan">View guide and alternatives <span aria-hidden="true">→</span></p></a>)}</div>
+    </section>
   </div>
 
-  <script is:inline>
-    // Client-side category filtering
-    const buttons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.product-card');
-    buttons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const cat = btn.dataset.category;
-        buttons.forEach((b) => {
-          b.style.backgroundColor = b === btn ? '#7C3AED' : '#111827';
-          b.style.color = b === btn ? '#FFFFFF' : '#94A3B8';
-          b.style.borderColor = b === btn ? '#7C3AED' : '#1E293B';
-        });
-        cards.forEach((card) => {
-          card.style.display = cat === 'All' || card.dataset.category === cat ? 'block' : 'none';
-        });
-      });
-    });
-    // Set "All" as active initially
-    if (buttons[0]) {
-      buttons[0].style.backgroundColor = '#7C3AED';
-      buttons[0].style.color = '#FFFFFF';
-      buttons[0].style.borderColor = '#7C3AED';
+  <script define:vars={{ products }}>
+    const bySlug = new Map(products.map((product) => [product.slug, product]);
+    const leftSelect = document.querySelector('#compare-left');
+    const rightSelect = document.querySelector('#compare-right');
+    const rowsElement = document.querySelector('#comparison-rows');
+    const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character]);
+    const money = (price) => `$${Number(price).toLocaleString('en-US')}`;
+    const rowsForClient = (left, right) => {
+      const labels = [...new Set([...(left.specs || []).map((spec) => spec.label), ...(right.specs || []).map((spec) => spec.label)])];
+      return [['Category', left.category, right.category], ['Price', money(left.price), money(right.price)], ['HHM rating', `${left.rating}/5`, `${right.rating}/5`], ['Key features', left.tags.join(' · '), right.tags.join(' · ')], ...labels.map((label) => [label, (left.specs || []).find((spec) => spec.label === label)?.value || '—', (right.specs || []).find((spec) => spec.label === label)?.value || '—'])];
+    };
+    function setRightOptions(left, selectedSlug) {
+      const candidates = products.filter((product) => product.category === left.category && product.slug !== left.slug);
+      const selected = candidates.some((product) => product.slug === selectedSlug) ? selectedSlug : candidates[0]?.slug || left.slug;
+      rightSelect.innerHTML = (candidates.length ? candidates : [left]).map((product) => `<option value="${escapeHtml(product.slug)}"${product.slug === selected ? ' selected' : ''}>${escapeHtml(product.name)}</option>`).join('');
+      return selected;
     }
+    function updateComparison(keepRight = true) {
+      const left = bySlug.get(leftSelect.value) || products[0];
+      const right = bySlug.get(setRightOptions(left, keepRight ? rightSelect.value : '')) || left;
+      document.querySelector('#comparison-category').textContent = left.category;
+      document.querySelector('#left-header').textContent = left.name;
+      document.querySelector('#right-header').textContent = right.name;
+      document.querySelector('#left-choice-title').textContent = left.name;
+      document.querySelector('#right-choice-title').textContent = right.name;
+      document.querySelector('#left-choice').textContent = `You prioritize ${left.tags.slice(0, 2).join(' and ').toLowerCase()} in this category.`;
+      document.querySelector('#right-choice').textContent = `You prioritize ${right.tags.slice(0, 2).join(' and ').toLowerCase()} in this category.`;
+      document.querySelector('#left-product-link').href = `/compare/${left.slug}`;
+      document.querySelector('#right-product-link').href = `/compare/${right.slug}`;
+      rowsElement.innerHTML = rowsForClient(left, right).map(([label, leftValue, rightValue]) => `<tr class="border-t border-border-dark align-top"><th class="px-5 py-4 text-left font-medium text-text-secondary">${escapeHtml(label)}</th><td class="px-5 py-4 text-text-muted">${escapeHtml(leftValue)}</td><td class="px-5 py-4 text-text-muted">${escapeHtml(rightValue)}</td></tr>`).join('');
+      const url = new URL(window.location.href); url.searchParams.set('left', left.slug); url.searchParams.set('right', right.slug); window.history.replaceState({}, '', url);
+    }
+    const requestedLeft = bySlug.get(new URLSearchParams(window.location.search).get('left'));
+    const requestedRight = bySlug.get(new URLSearchParams(window.location.search).get('right'));
+    if (requestedLeft) { leftSelect.value = requestedLeft.slug; setRightOptions(requestedLeft, requestedRight?.slug || ''); }
+    updateComparison(true);
+    leftSelect.addEventListener('change', () => updateComparison(false));
+    rightSelect.addEventListener('change', () => updateComparison(true));
+    document.querySelector('#swap-products').addEventListener('click', () => { const left = bySlug.get(leftSelect.value); const right = bySlug.get(rightSelect.value); if (!left || !right || left.category !== right.category) return; leftSelect.value = right.slug; setRightOptions(right, left.slug); updateComparison(true); });
+    const buttons = document.querySelectorAll('.filter-btn'); const cards = document.querySelectorAll('.product-card');
+    buttons.forEach((button) => button.addEventListener('click', () => { const category = button.dataset.category; buttons.forEach((item) => item.classList.toggle('border-accent-purple', item === button)); buttons.forEach((item) => item.classList.toggle('bg-accent-purple', item === button)); buttons.forEach((item) => item.classList.toggle('text-white', item === button)); cards.forEach((card) => { card.style.display = category === 'All' || card.dataset.category === category ? 'block' : 'none'; }); }));
   </script>
 </Layout>
