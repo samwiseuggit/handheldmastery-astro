@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import CommerceArtwork from "../components/CommerceArtwork.astro";
 
 const allArticles = await getCollection("articles");
 allArticles.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
@@ -14,32 +15,6 @@ const getArticleCategory = (cat: string) => {
   return "Blog";
 };
 
-const getCategoryGradient = (cat: string) => {
-  const category = getArticleCategory(cat);
-  switch (category) {
-    case "Versus":
-      return "linear-gradient(135deg, #7C3AED, #2563EB)";
-    case "How-To":
-      return "linear-gradient(135deg, #0891B2, #10B981)";
-    case "Guides":
-      return "linear-gradient(135deg, #D97706, #EF4444)";
-    case "Blog":
-      return "linear-gradient(135deg, #6366F1, #8B5CF6)";
-    default:
-      return "linear-gradient(135deg, #1E293B, #334155)";
-  }
-};
-
-const getCategoryIcon = (cat: string) => {
-  const category = getArticleCategory(cat);
-  switch (category) {
-    case "Versus": return "VS";
-    case "How-To": return "⚡";
-    case "Guides": return "📖";
-    case "Blog": return "📝";
-    default: return "📄";
-  }
-};
 ---
 
 <Layout title="Blog | Hand Held Mastery" active="blog">
@@ -80,13 +55,9 @@ const getCategoryIcon = (cat: string) => {
           class="article-card group block bg-card-dark border border-border-dark rounded-xl overflow-hidden hover:border-accent-purple hover:shadow-lg hover:shadow-accent-purple/10 transition-all duration-300"
           data-tab={getArticleCategory(article.data.category)}
         >
-          <!-- Gradient Thumbnail -->
-          <div
-            class="w-full h-[120px] flex items-center justify-center relative overflow-hidden"
-            style={`background: ${getCategoryGradient(article.data.category)};`}
-          >
+          <div class="relative overflow-hidden">
+            <CommerceArtwork name={article.data.title} category={article.data.category} compact showCaption={false} />
             <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10"></div>
-            <span class="text-3xl select-none drop-shadow-lg">{getCategoryIcon(article.data.category)}</span>
             <span
               class="absolute top-3 right-3 px-2 py-0.5 text-xs font-semibold bg-black/40 text-white rounded-full backdrop-blur-sm"
             >

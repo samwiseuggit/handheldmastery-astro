@@ -2,6 +2,9 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, getEntry } from "astro:content";
 import { render } from "astro:content";
+import AmazonDisclosure from "../../components/AmazonDisclosure.astro";
+import CommerceArtwork from "../../components/CommerceArtwork.astro";
+import { amazonProductUrl } from "../../lib/amazon-affiliate";
 
 export async function getStaticPaths() {
   const articles = await getCollection("articles");
@@ -13,6 +16,9 @@ export async function getStaticPaths() {
 
 const { article } = Astro.props;
 const { Content } = await render(article);
+const mentionedProducts = (await Promise.all(
+  (article.data.products ?? []).map((slug) => getEntry("products", slug)),
+)).filter((product) => product !== undefined);
 
 // Get 3 random related articles
 const allArticles = await getCollection("articles");
@@ -93,6 +99,38 @@ const structuredData = [articleSchema, faqSchema].filter(Boolean);
       </div>
     </div>
 
+    {mentionedProducts.length === 0 && (
+      <div class="mb-8 overflow-hidden rounded-xl">
+        <CommerceArtwork name={article.data.title} category={article.data.category} compact />
+      </div>
+    )}
+
+    {mentionedProducts.length > 0 && (
+      <section class="mb-10 grid overflow-hidden border border-accent-cyan/40 bg-card-dark lg:grid-cols-[1.05fr_0.95fr]">
+        <div class="order-2 lg:order-1">
+          <CommerceArtwork name={mentionedProducts[0].data.name} category={mentionedProducts[0].data.category} showCaption={false} />
+        </div>
+        <aside class="order-1 p-5 sm:p-6 lg:order-2" aria-labelledby="shop-mentioned-products">
+          <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <div class="max-w-2xl">
+              <p class="text-xs font-semibold tracking-[0.18em] uppercase text-accent-cyan-light">Products in this guide</p>
+              <h2 id="shop-mentioned-products" class="mt-1 text-xl font-bold text-text-primary">Check current availability and configurations</h2>
+              <p class="mt-2 text-sm leading-relaxed text-text-muted">Amazon prices and stock can change. Confirm the exact model, capacity, and compatibility on the listing before ordering.</p>
+            </div>
+            <AmazonDisclosure />
+          </div>
+          <div class="mt-5 grid gap-3">
+            {mentionedProducts.slice(0, 4).map((product) => (
+              <a href={amazonProductUrl(product.data.slug, product.data.name)} target="_blank" rel="sponsored noopener noreferrer" class="group flex items-center justify-between gap-4 border border-border-dark bg-[#0B0F1A] px-4 py-3 hover:border-accent-cyan transition-colors">
+                <span class="text-sm font-semibold text-text-primary group-hover:text-accent-cyan">{product.data.name}</span>
+                <span class="shrink-0 text-xs font-bold uppercase tracking-wider text-[#ffb86b]">View on Amazon &rarr;</span>
+              </a>
+            ))}
+          </div>
+        </aside>
+      </section>
+    )}
+
     <!-- Article Body -->
     <article class="prose-custom mb-12">
       <Content />
@@ -116,7 +154,7 @@ const structuredData = [articleSchema, faqSchema].filter(Boolean);
     <!-- CTA -->
     <div class="bg-gradient-to-br from-[rgba(109,40,217,0.15)] to-[rgba(8,145,178,0.15)] border border-border-dark p-8 text-center mb-12">
       <h3 class="text-lg font-bold text-text-primary mb-2">Compare products mentioned in this article</h3>
-      <p class="text-text-muted mb-5">Browse 50+ handheld gaming products with real-time pricing and specs.</p>
+      <p class="text-text-muted mb-5">Browse handheld gaming product guides and specs.</p>
       <a href="/compare" class="inline-flex items-center gap-2 bg-accent-purple text-white font-semibold px-6 py-3 hover:bg-accent-purple-hover transition-colors">
         Go to Comparison &rarr;
       </a>

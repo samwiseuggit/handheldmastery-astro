@@ -1,0 +1,118 @@
+---
+interface Props {
+  name: string;
+  category: string;
+  compact?: boolean;
+  showCaption?: boolean;
+}
+
+const { name, category, compact = false, showCaption = true } = Astro.props;
+const haystack = `${name} ${category}`.toLowerCase();
+const visual = category === "Consoles" || /handheld|steam deck|ally|legion go|claw|zone/.test(haystack)
+  ? "handheld"
+  : category === "Storage" || /ssd|microsd|storage/.test(haystack)
+    ? "storage"
+    : category === "Docks & Hubs" || /dock|hub/.test(haystack)
+      ? "dock"
+      : category === "Power Solutions" || /power|charger|cable/.test(haystack)
+        ? "power"
+        : /controller|joystick|gamepad/.test(haystack)
+          ? "controller"
+          : /case|glass|protector/.test(haystack)
+            ? "case"
+            : "accessory";
+const uid = `art-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+const ariaLabel = `Original illustrative visual for ${name}`;
+---
+
+<figure class:list={["commerce-artwork", compact && "is-compact"]}>
+  <svg viewBox="0 0 640 360" role="img" aria-label={ariaLabel} preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id={`${uid}-bg`} x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#081525" />
+        <stop offset="0.58" stop-color="#10263a" />
+        <stop offset="1" stop-color="#07111f" />
+      </linearGradient>
+      <linearGradient id={`${uid}-accent`} x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#22d3ee" />
+        <stop offset="1" stop-color="#fb923c" />
+      </linearGradient>
+      <pattern id={`${uid}-grid`} width="32" height="32" patternUnits="userSpaceOnUse">
+        <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#38bdf8" stroke-opacity=".07" stroke-width="1" />
+      </pattern>
+    </defs>
+    <rect width="640" height="360" rx="22" fill={`url(#${uid}-bg)`} />
+    <rect width="640" height="360" rx="22" fill={`url(#${uid}-grid)`} />
+    <circle cx="545" cy="56" r="126" fill="#164e63" opacity=".27" />
+    <path d="M0 305 196 360H0Z" fill="#fb923c" opacity=".12" />
+
+    {visual === "handheld" && (
+      <g transform="translate(109 82)">
+        <rect x="0" y="0" width="422" height="196" rx="62" fill="#17384d" stroke={`url(#${uid}-accent)`} stroke-width="5" />
+        <rect x="102" y="25" width="218" height="146" rx="14" fill="#030b16" stroke="#475569" stroke-width="2" />
+        <circle cx="55" cy="56" r="23" fill="#fb923c" /><circle cx="366" cy="56" r="23" fill="#22d3ee" />
+        <path d="M31 130h48M55 106v48" stroke="#f8fafc" stroke-width="9" stroke-linecap="square" />
+        <g fill="#f8fafc"><circle cx="366" cy="112" r="7" /><circle cx="346" cy="132" r="7" /><circle cx="386" cy="132" r="7" /><circle cx="366" cy="152" r="7" /></g>
+        <path d="M127 143 185 76l43 43 31-32 38 56Z" fill="#0e7490" opacity=".72" />
+      </g>
+    )}
+    {visual === "storage" && (
+      <g transform="translate(143 58)">
+        <path d="M0 46 48 0h122v245H0Z" fill="#17384d" stroke="#22d3ee" stroke-width="5" />
+        <g fill="#fb923c">{[0,1,2,3,4].map((i) => <rect x={28 + i * 27} y="22" width="15" height="42" />)}</g>
+        <text x="85" y="155" text-anchor="middle" fill="#f8fafc" font-size="46" font-weight="800">SD</text>
+        <rect x="228" y="20" width="164" height="225" rx="18" fill="#17384d" stroke="#fb923c" stroke-width="5" />
+        <rect x="256" y="57" width="108" height="100" rx="8" fill="#030b16" stroke="#94a3b8" stroke-width="2" />
+        <g fill="#22d3ee">{[0,1,2,3,4,5].map((i) => <rect x={245 + i * 23} y="206" width="13" height="36" />)}</g>
+      </g>
+    )}
+    {visual === "dock" && (
+      <g transform="translate(105 93)">
+        <path d="M40 0h350l40 70v100H0V70Z" fill="#17384d" stroke="#22d3ee" stroke-width="5" />
+        <rect x="95" y="29" width="240" height="62" rx="9" fill="#030b16" />
+        <g fill="#fb923c"><rect x="39" y="121" width="58" height="24" rx="4" /><rect x="118" y="121" width="58" height="24" rx="4" /><rect x="198" y="121" width="42" height="24" rx="4" /></g>
+        <rect x="268" y="116" width="78" height="34" rx="5" fill="#22d3ee" /><rect x="362" y="116" width="40" height="34" rx="5" fill="#f8fafc" />
+      </g>
+    )}
+    {visual === "power" && (
+      <g transform="translate(170 52)">
+        <rect x="0" y="0" width="300" height="254" rx="34" fill="#17384d" stroke="#22d3ee" stroke-width="5" />
+        <rect x="70" y="48" width="160" height="90" rx="12" fill="#030b16" />
+        <path d="m157 58-50 74h48l-12 68 57-88h-50Z" fill="#fb923c" />
+        <rect x="86" y="212" width="54" height="16" rx="8" fill="#22d3ee" /><rect x="160" y="212" width="54" height="16" rx="8" fill="#f8fafc" />
+      </g>
+    )}
+    {visual === "controller" && (
+      <g transform="translate(108 74)">
+        <path d="M89 19c57-25 190-25 247 0 41 17 83 121 69 167-9 28-37 42-61 20l-64-59H145l-64 59c-24 22-52 8-61-20C6 140 48 36 89 19Z" fill="#17384d" stroke="#22d3ee" stroke-width="5" />
+        <path d="M90 83h70M125 48v70" stroke="#f8fafc" stroke-width="13" /><g fill="#fb923c"><circle cx="316" cy="60" r="13" /><circle cx="350" cy="92" r="13" /><circle cx="282" cy="92" r="13" /><circle cx="316" cy="124" r="13" /></g>
+        <circle cx="190" cy="132" r="24" fill="#030b16" /><circle cx="247" cy="132" r="24" fill="#030b16" />
+      </g>
+    )}
+    {visual === "case" && (
+      <g transform="translate(115 54)">
+        <rect x="0" y="0" width="410" height="252" rx="82" fill="#17384d" stroke="#fb923c" stroke-width="6" />
+        <rect x="79" y="31" width="252" height="190" rx="23" fill="#030b16" stroke="#22d3ee" stroke-width="3" />
+        <path d="M28 67v118M382 67v118" stroke="#22d3ee" stroke-width="16" />
+        <path d="m159 253 46-58 47 58" fill="#17384d" stroke="#fb923c" stroke-width="4" />
+      </g>
+    )}
+    {visual === "accessory" && (
+      <g transform="translate(165 70)">
+        <rect x="0" y="0" width="310" height="220" rx="42" fill="#17384d" stroke="#22d3ee" stroke-width="5" />
+        <circle cx="155" cy="110" r="72" fill="#030b16" stroke="#fb923c" stroke-width="5" />
+        <path d="M155 67v86M112 110h86" stroke="#f8fafc" stroke-width="11" />
+      </g>
+    )}
+    <rect x="24" y="22" width="154" height="30" rx="15" fill="#020617" opacity=".76" />
+    <text x="101" y="43" text-anchor="middle" fill="#a5f3fc" font-size="13" font-weight="700" letter-spacing="2">HHM ORIGINAL</text>
+  </svg>
+  {showCaption && <figcaption>Illustrative product visual created by Hand Held Mastery.</figcaption>}
+</figure>
+
+<style>
+  .commerce-artwork { margin: 0; overflow: hidden; border: 1px solid #1e3a4f; background: #081525; }
+  .commerce-artwork svg { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+  .commerce-artwork figcaption { padding: .55rem .8rem; border-top: 1px solid #1e293b; color: #64748b; font-size: .7rem; letter-spacing: .04em; }
+  .commerce-artwork.is-compact svg { aspect-ratio: 16 / 7; }
+</style>

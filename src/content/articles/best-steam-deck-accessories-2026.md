@@ -65,7 +65,7 @@ These four buying rules keep the list grounded:
 | [Steam Deck Official Dock](/compare/steam-deck-official-dock) | $79.00 in Steam's U.S. package API ([Steam API](https://store.steampowered.com/api/packagedetails?packageids=761892&cc=us&l=english)) | First-party fit, included PSU, DisplayPort 1.4, firmware support | Desk and TV setups | Pricier than strong third-party docks |
 | [JSAUX ModCase](/compare/jsaux-modcase) | $29.99 ([JSAUX](https://jsaux.com/products/modcase-for-steam-deck-pc0104)) | Best value case system with travel cover and modularity | Daily portable gaming | Adds more bulk than slim premium cases |
 | [Killswitch Case & Grip](/compare/killswitch-case-grip) | $59.95 Essential kit ([dbrand](https://dbrand.com/shop/killswitch/steam-deck-cases)) | Premium protection and grip | Buyers who want the best-feeling case | Costs about twice as much as ModCase |
-| [amFilm OneTouch Glass](/compare/amfilm-onetouch-glass) | Retailer-variable; Amazon listing had no featured offer at capture time ([Amazon listing](https://www.amazon.com/amFilm-OneTouch-Compatible-Protector-Installation/dp/B0BFB1P1JM)) | Easy alignment tray and 9H tempered glass | First-time screen protector buyers | Live pricing is inconsistent by retailer |
+| [amFilm OneTouch Glass](/compare/amfilm-onetouch-glass) | Retailer-variable; Amazon listing had no featured offer at capture time ([Amazon listing](https://www.amazon.com/amFilm-OneTouch-Compatible-Protector-Installation/dp/B0BFB1P1JM?tag=samwiseug-20)) | Easy alignment tray and 9H tempered glass | First-time screen protector buyers | Live pricing is inconsistent by retailer |
 | [SanDisk Extreme 1TB](/compare/sandisk-extreme-1tb) | Retailer-variable by region and stock ([SanDisk specs](https://www.sandisk.com/products/memory-cards/microsd-cards/sandisk-extreme-uhs-i-microsd?sku=SDSQXAV-1T00-GN6MA)) | Fast, simple 1TB storage expansion | Bigger libraries without SSD surgery | Better for convenience than raw internal SSD speed |
 | [8BitDo Ultimate 2C](/compare/8bitdo-ultimate-2c) | $29.99 ([8BitDo store](https://shop.8bitdo.com/products/8bitdo-ultimate-2c-wireless-controller)) | Cheap, feature-rich pad for docked play | Deck owners who also play on PC | Official compatibility page centers Windows/Android |
 
@@ -159,7 +159,7 @@ This is the "want" pick more than the "need" pick. For many Steam Deck owners, t
 
 ## Best Screen Protector for Easy Installation: amFilm OneTouch Glass
 
-The [amFilm OneTouch Glass](/compare/amfilm-onetouch-glass) is here because most people delay buying a screen protector until after the first scratch scare. The current Amazon product page confirms Steam Deck and Steam Deck OLED compatibility, **9H hardness**, **0.3mm thickness**, an **auto-alignment install process**, and a **2-pack** in the box. At capture time, the listing did not surface a stable featured price, which is why I am treating it as retailer-variable rather than pretending the number is fixed ([Amazon listing](https://www.amazon.com/amFilm-OneTouch-Compatible-Protector-Installation/dp/B0BFB1P1JM)).
+The [amFilm OneTouch Glass](/compare/amfilm-onetouch-glass) is here because most people delay buying a screen protector until after the first scratch scare. The current Amazon product page confirms Steam Deck and Steam Deck OLED compatibility, **9H hardness**, **0.3mm thickness**, an **auto-alignment install process**, and a **2-pack** in the box. At capture time, the listing did not surface a stable featured price, which is why I am treating it as retailer-variable rather than pretending the number is fixed ([Amazon listing](https://www.amazon.com/amFilm-OneTouch-Compatible-Protector-Installation/dp/B0BFB1P1JM?tag=samwiseug-20)).
 
 | Spec | amFilm OneTouch Glass |
 |---|---|
@@ -181,7 +181,7 @@ The [amFilm OneTouch Glass](/compare/amfilm-onetouch-glass) is here because most
 
 If you care more about glare control than absolute clarity, our screen protector comparison still makes the matte-versus-glossy choice worth thinking through.
 
-**Buy placeholder:** Check the current seller and price on the [Amazon product page](https://www.amazon.com/amFilm-OneTouch-Compatible-Protector-Installation/dp/B0BFB1P1JM).
+**Buy placeholder:** Check the current seller and price on the [Amazon product page](https://www.amazon.com/amFilm-OneTouch-Compatible-Protector-Installation/dp/B0BFB1P1JM?tag=samwiseug-20).
 
 **Full review CTA:** Read [Glossy vs. Matte Screen Protectors](/articles/glossy-vs-matte-screen-protectors) before you commit to a glossy protector.
 
@@ -297,7 +297,7 @@ It is a good budget docked-play option if you also use a Windows PC or want a lo
 - [Steam Deck dock tech specifications](https://www.steamdeck.com/en/tech/dock)
 - [JSAUX ModCase for Steam Deck LCD & OLED](https://jsaux.com/products/modcase-for-steam-deck-pc0104)
 - [dbrand Killswitch for Steam Deck](https://dbrand.com/shop/killswitch/steam-deck-cases)
-- [amFilm OneTouch Steam Deck Amazon listing](https://www.amazon.com/amFilm-OneTouch-Compatible-Protector-Installation/dp/B0BFB1P1JM)
+- [amFilm OneTouch Steam Deck Amazon listing](https://www.amazon.com/amFilm-OneTouch-Compatible-Protector-Installation/dp/B0BFB1P1JM?tag=samwiseug-20)
 - [SanDisk Extreme microSD UHS-I official page](https://www.sandisk.com/products/memory-cards/microsd-cards/sandisk-extreme-uhs-i-microsd?sku=SDSQXAV-1T00-GN6MA)
 - [8BitDo Ultimate 2C product page](https://www.8bitdo.com/ultimate-2c-wireless-controller/)
 - [8BitDo Ultimate 2C store listing](https://shop.8bitdo.com/products/8bitdo-ultimate-2c-wireless-controller)

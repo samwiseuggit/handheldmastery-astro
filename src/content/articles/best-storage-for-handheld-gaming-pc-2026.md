@@ -68,11 +68,11 @@ Two rules save most buyers from regrets:
 | Product | Current listed price or MSRP | Type | Rated speed | Best for | Main caveat |
 |---|---|---|---|---|---|
 | [WD_BLACK SN770M 1TB](/compare/wd-black-sn770m-1tb) | $225.00 ([Best Buy](https://www.bestbuy.com/product/wd-black-sn770m-1tb-internal-ssd-pcie-gen-4-x4-m-2-2230-for-rog-ally-and-steam-deck/JXJ62CR8RW/sku/11990950)) | 2230 NVMe SSD | Up to 5150MB/s read, 4900MB/s write ([SanDisk/WD](https://www.sandisk.com/products/ssd/internal-ssd/wd-black-sn770m-nvme-ssd?sku=WDBDNH0010BBK-WRSN)) | Best overall internal handheld upgrade | Price is no longer the bargain lane |
-| [Sabrent Rocket 2230 1TB](/compare/sabrent-rocket-2230-1tb) | Availability inconsistent; Amazon currently unavailable ([Amazon](https://www.amazon.com/SABRENT-Rocket-2230-Performance-SB-2130-1TB/dp/B0BQG6JCRP)) | 2230 NVMe SSD | Up to 5000MB/s read, 4300MB/s write ([Amazon](https://www.amazon.com/SABRENT-Rocket-2230-Performance-SB-2130-1TB/dp/B0BQG6JCRP)) | Best migration-friendly retail 2230 alternative | Harder to buy cleanly at a stable price |
+| [Sabrent Rocket 2230 1TB](/compare/sabrent-rocket-2230-1tb) | Availability inconsistent; Amazon currently unavailable ([Amazon](https://www.amazon.com/SABRENT-Rocket-2230-Performance-SB-2130-1TB/dp/B0BQG6JCRP?tag=samwiseug-20)) | 2230 NVMe SSD | Up to 5000MB/s read, 4300MB/s write ([Amazon](https://www.amazon.com/SABRENT-Rocket-2230-Performance-SB-2130-1TB/dp/B0BQG6JCRP?tag=samwiseug-20)) | Best migration-friendly retail 2230 alternative | Harder to buy cleanly at a stable price |
 | [Samsung 990 EVO Plus 1TB](/compare/samsung-990-evo-plus-1tb) | $289.99 ([Samsung](https://www.samsung.com/us/memory-storage/nvme-ssd/990-evo-plus-gen4-nvme-ssd-1tb-sku-mz-v9s1t0b-am/)) | 2280 NVMe SSD | Up to 7250MB/s read, 6300MB/s write ([Samsung](https://www.samsung.com/us/memory-storage/nvme-ssd/990-evo-plus-gen4-nvme-ssd-1tb-sku-mz-v9s1t0b-am/)) | Best enclosure or supported larger-slot option | Not a drop-in internal fit for every handheld |
 | [Samsung Pro Ultimate 1TB](/compare/samsung-pro-ultimate-1tb) | Current Samsung U.S. 1TB card listing verified: $319.99 for PRO Plus ([Samsung](https://www.samsung.com/us/memory-storage/memory-card/pro-plus-adapter-microsdxc-1tb-sku-mb-md1t0sa-am/)) | 1TB microSD | Up to 180MB/s read, 130MB/s write ([Samsung](https://www.samsung.com/us/memory-storage/memory-card/pro-plus-adapter-microsdxc-1tb-sku-mb-md1t0sa-am/)) | Best premium Samsung microSD lane | Live retail naming does not match the HHM slug exactly |
 | [SanDisk Extreme 1TB](/compare/sandisk-extreme-1tb) | $198.00 public retailer listing ([Walmart](https://www.walmart.com/ip/SanDisk-Extreme-1TB-microSDXC-UHS-I-U3-Flash-Memory-Card/656780616)) | 1TB microSD | Up to 190MB/s read, 130MB/s write ([SanDisk](https://www.sandisk.com/products/memory-cards/microsd-cards/sandisk-extreme-uhs-i-microsd?sku=SDSQXAV-1T00-GN6MA)) | Best balanced everyday microSD | Retail pricing swings wildly between stores |
-| [Lexar PLAY 1TB](/compare/lexar-play-1tb) | $309.99 MSRP ([Lexar](https://americas.lexar.com/product/lexar-play-microsdxc-uhs-i-card/)) | 1TB microSD | Up to 205MB/s read, 140MB/s write ([Amazon](https://www.amazon.com/Lexar-microSDXC-Nintendo-Switch-Smartphones-LMSPLAY001T-BNSNU/dp/B0DQYCG9D6)) | Best gaming-first microSD speed target | Street pricing and stock can be erratic |
+| [Lexar PLAY 1TB](/compare/lexar-play-1tb) | $309.99 MSRP ([Lexar](https://americas.lexar.com/product/lexar-play-microsdxc-uhs-i-card/)) | 1TB microSD | Up to 205MB/s read, 140MB/s write ([Amazon](https://www.amazon.com/Lexar-microSDXC-Nintendo-Switch-Smartphones-LMSPLAY001T-BNSNU/dp/B0DQYCG9D6?tag=samwiseug-20)) | Best gaming-first microSD speed target | Street pricing and stock can be erratic |
 
 If that table already answered the question, stop here and pick by format. If not, the longer sections below explain which drive fits which kind of handheld ownership.
 
@@ -111,7 +111,7 @@ If you want to move your existing library cleanly, pair it with the workflow in 
 
 ## Best retail-package 2230 alternative: Sabrent Rocket 2230 1TB
 
-The [Sabrent Rocket 2230 1TB](/compare/sabrent-rocket-2230-1tb) is the alternative for people who want a retail-grade handheld SSD with cloning-friendly extras and clearer migration language. Amazon's current listing describes a native **M.2 2230** form factor, **up to 5000MB/s read**, **4300MB/s write**, **up to 800K IOPS**, 3D TLC NAND, HMB support, and bundled Acronis cloning software. The caveat is availability: during this run, the main Amazon listing was **currently unavailable** rather than showing a stable U.S. sale price ([Amazon Sabrent Rocket 2230](https://www.amazon.com/SABRENT-Rocket-2230-Performance-SB-2130-1TB/dp/B0BQG6JCRP)).
+The [Sabrent Rocket 2230 1TB](/compare/sabrent-rocket-2230-1tb) is the alternative for people who want a retail-grade handheld SSD with cloning-friendly extras and clearer migration language. Amazon's current listing describes a native **M.2 2230** form factor, **up to 5000MB/s read**, **4300MB/s write**, **up to 800K IOPS**, 3D TLC NAND, HMB support, and bundled Acronis cloning software. The caveat is availability: during this run, the main Amazon listing was **currently unavailable** rather than showing a stable U.S. sale price ([Amazon Sabrent Rocket 2230](https://www.amazon.com/SABRENT-Rocket-2230-Performance-SB-2130-1TB/dp/B0BQG6JCRP?tag=samwiseug-20)).
 
 | Spec | Sabrent Rocket 2230 1TB |
 |---|---|
@@ -241,7 +241,7 @@ This is the most natural add-on if you already know you do not want to open the 
 
 ## Best gaming-focused microSD speed play: Lexar PLAY 1TB
 
-The [Lexar PLAY 1TB](/compare/lexar-play-1tb) is the gaming-first microSD option because its official messaging is aimed straight at entertainment libraries and handheld use. Lexar's official PLAY page lists a **$309.99 MSRP** for the 1TB model, and Amazon's product page lists **up to 205MB/s read**, **140MB/s write**, A2 app performance, and compatibility language that explicitly includes **ASUS ROG Ally** and **Steam Deck** ([Lexar PLAY 1TB](https://americas.lexar.com/product/lexar-play-microsdxc-uhs-i-card/), [Amazon Lexar PLAY 1TB](https://www.amazon.com/Lexar-microSDXC-Nintendo-Switch-Smartphones-LMSPLAY001T-BNSNU/dp/B0DQYCG9D6)).
+The [Lexar PLAY 1TB](/compare/lexar-play-1tb) is the gaming-first microSD option because its official messaging is aimed straight at entertainment libraries and handheld use. Lexar's official PLAY page lists a **$309.99 MSRP** for the 1TB model, and Amazon's product page lists **up to 205MB/s read**, **140MB/s write**, A2 app performance, and compatibility language that explicitly includes **ASUS ROG Ally** and **Steam Deck** ([Lexar PLAY 1TB](https://americas.lexar.com/product/lexar-play-microsdxc-uhs-i-card/), [Amazon Lexar PLAY 1TB](https://www.amazon.com/Lexar-microSDXC-Nintendo-Switch-Smartphones-LMSPLAY001T-BNSNU/dp/B0DQYCG9D6?tag=samwiseug-20)).
 
 | Spec | Lexar PLAY 1TB |
 |---|---|
@@ -314,11 +314,11 @@ The useful ones are boring: a USB enclosure or dock, a proper screwdriver kit, a
 
 - [Best Buy WD_BLACK SN770M 1TB listing](https://www.bestbuy.com/product/wd-black-sn770m-1tb-internal-ssd-pcie-gen-4-x4-m-2-2230-for-rog-ally-and-steam-deck/JXJ62CR8RW/sku/11990950)
 - [SanDisk / WD_BLACK SN770M official specifications](https://www.sandisk.com/products/ssd/internal-ssd/wd-black-sn770m-nvme-ssd?sku=WDBDNH0010BBK-WRSN)
-- [Amazon Sabrent Rocket 2230 1TB listing](https://www.amazon.com/SABRENT-Rocket-2230-Performance-SB-2130-1TB/dp/B0BQG6JCRP)
+- [Amazon Sabrent Rocket 2230 1TB listing](https://www.amazon.com/SABRENT-Rocket-2230-Performance-SB-2130-1TB/dp/B0BQG6JCRP?tag=samwiseug-20)
 - [Samsung 990 EVO Plus 1TB official page](https://www.samsung.com/us/memory-storage/nvme-ssd/990-evo-plus-gen4-nvme-ssd-1tb-sku-mz-v9s1t0b-am/)
 - [Samsung 990 EVO Plus datasheet PDF](https://download.semiconductor.samsung.com/resources/data-sheet/samsung_nvme_ssd_990_evo_plus_datasheet_rev.1.0.pdf)
 - [Samsung PRO Plus 1TB microSD official page](https://www.samsung.com/us/memory-storage/memory-card/pro-plus-adapter-microsdxc-1tb-sku-mb-md1t0sa-am/)
 - [SanDisk Extreme 1TB microSD official page](https://www.sandisk.com/products/memory-cards/microsd-cards/sandisk-extreme-uhs-i-microsd?sku=SDSQXAV-1T00-GN6MA)
 - [Walmart SanDisk Extreme 1TB public listing](https://www.walmart.com/ip/SanDisk-Extreme-1TB-microSDXC-UHS-I-U3-Flash-Memory-Card/656780616)
 - [Lexar PLAY microSDXC UHS-I official page](https://americas.lexar.com/product/lexar-play-microsdxc-uhs-i-card/)
-- [Amazon Lexar PLAY 1TB listing](https://www.amazon.com/Lexar-microSDXC-Nintendo-Switch-Smartphones-LMSPLAY001T-BNSNU/dp/B0DQYCG9D6)
+- [Amazon Lexar PLAY 1TB listing](https://www.amazon.com/Lexar-microSDXC-Nintendo-Switch-Smartphones-LMSPLAY001T-BNSNU/dp/B0DQYCG9D6?tag=samwiseug-20)
